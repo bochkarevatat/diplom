@@ -1,0 +1,103 @@
+.footer{
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    color: white;
+    background: black;
+    height: 55vh;
+    justify-content: space-between;
+}
+.footer__top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-grow: 4;
+}
+.footer__bottom{
+    flex-grow: 1;
+    padding: 0 255px;
+        display: flex;
+        box-sizing: border-box;
+        height: 100px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid #e5e5e5;
+}
+.footer__contacts{
+    flex-grow: 1;
+    margin-left: 10%;
+    align-self: center;
+}
+.footer__subscribers{
+    flex-grow: 1;
+    margin: 0 auto;
+    align-self: start;
+}
+.socials__list{
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: space-between;
+    margin-left: -40px;
+}
+.socials__item{
+    margin-left: 1px;
+}
+.footer__socials{
+    width: 60%;
+}
+
+.footer__items {
+    list-style: none;
+    color: #E5E5E5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.footer__contact{
+    color: #E5E5E5;
+    margin-bottom: 10px;
+}
+.footer-contact__info{
+    margin-left: 15px;
+    color: #E5E5E5;
+}
+.subscribe__input {
+   margin-right: 30px;
+   padding: 10px 20px;
+    width: 60%;
+    border-radius: 3px;
+    background: white;
+    font-size: 24px;
+}
+::placeholder {
+    color: rgb(206, 199, 199);
+  }
+  .subscribe__submit{
+    width: 30%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    font-size: 20px;
+    border: 1px solid grey;
+  }
+    
+
+  .footer__btn{
+    background-color: transparent;
+    border: none;
+  }
+  .footer__bottom_logo{
+    font-size: 36px;
+  }
+  .footer__bottom_logo:hover{
+    color: #FFA800;
+  }
+  .footer-btn__img circle:hover{
+    stroke: #FFA800;
+  }
+  .footer-btn__img path:hover{
+    stroke: #FFA800;
+  }

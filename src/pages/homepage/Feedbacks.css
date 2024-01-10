@@ -1,0 +1,44 @@
+.feedbacks-container{
+    padding: 100px 0px 100px 130px;
+    min-width: 100%;
+    min-height: 550px;
+    background: #fff;
+}
+.feedbacks-head{
+    font-size: 36px;
+    line-height: 42px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #292929;
+}
+
+.feedbacks__list-item{
+    display: flex;
+    justify-content:space-around;
+}
+.feddback-card{
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+}
+.feddback-card__img{
+        width: 50%;
+        height: 50%;
+        object-fit: contain;
+}
+.feddback-card-inner{
+    width: 50%;
+    margin-left: 5px;
+    margin-top: -30px;
+}
+.feddback-card__author{
+    font-size: 24px;
+    font-weight: 500;
+}
+.feddback-card__text{
+    font-size: 18px;
+    color: #928F94;
+}
+.card__author{
+    vertical-align: top;
+}
