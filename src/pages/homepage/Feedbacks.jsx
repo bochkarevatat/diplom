@@ -3,7 +3,7 @@ import { Carousel, ConfigProvider } from 'antd';
 import ReviewCard from './ReviewCard';
 import './Feedbacks.css';
 
-/** Test usage. Do not use in your production. */
+
 const contentStyle = {
   margin: '0',
   height: '500px',

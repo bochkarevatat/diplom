@@ -1,12 +1,15 @@
 import { Outlet, Link } from 'react-router-dom';
-// import ChoiceOfDirection from '../components/ChoiceOfDirection'
+// import {ChoiceOfDirection} from '../components/ChoiceOfDirection';
+// import OrderSort from '../pages/order/OrderSort';
+import SideBarSearch from './order/SideBarSearch'
 
 const TreepPage = () => {
     return (
 
         <>
-        <div>
+       
             {/* <ChoiceOfDirection/> */}
+            {/* <OrderSort/> */}
             <h1></h1>
             <p></p>
             <ul>
@@ -18,8 +21,10 @@ const TreepPage = () => {
                 <Route path="contacts" element={<p>Our contact</p>} />
                 <Route path="team" element={<p>Our team</p>} />
             </Routes> */}
-            <Outlet />
-        </div>
+
+            <div className='loadLine'><SideBarSearch /></div>
+            
+       
         </>
     )
 }
