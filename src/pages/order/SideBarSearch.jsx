@@ -6,7 +6,7 @@ import iconFrom from '../order/img/from.png';
 import iconMinus from '../order/img/minus.png';
 import iconThere from '../order/img/there.png';
 import iconPlus from '../order/img/plus.png'
-// import CardLastTicket from './CardLastTicket'
+import CardLastTicket from './CardLastTicket'
 
 function SideBarSearch (progress) {
 
@@ -169,7 +169,7 @@ function SideBarSearch (progress) {
 								alt="иконка туда" />Обратно</span>
 						<img className={`${hideFrom ? 'there-title-hidden' : 'iconMinusPlus'}`}    
 							onClick={() => setHideFrom(true)}
-							// src={iconPlus} 
+							src={iconPlus} 
               alt="иконка плюс" />
               </summary>
 
@@ -179,7 +179,7 @@ function SideBarSearch (progress) {
 								
 							  <img className="iconMinusPlus"
 								onClick={() => setHideFrom(false)}
-								// src={iconMinus}
+								src={iconMinus}
                 //  alt="иконка плюс"
                  />
 						</div>
@@ -205,7 +205,7 @@ function SideBarSearch (progress) {
 
         </div>
         
-        {/* <CardLastTicket/> */}
+        <CardLastTicket/>
       
        
       </div>

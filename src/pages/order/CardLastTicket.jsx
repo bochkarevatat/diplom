@@ -1,7 +1,7 @@
 import React from 'react';
-import { useEffect, useState} from 'react';
-import rubleIcon from '../order/img/rubleIcon.png';
-import groupIcons from '../order/img/group-icons.png';
+// import { useEffect, useState} from 'react';
+// import rubleIcon from '../order/img/rubleIcon.png';
+// import groupIcons from '../order/img/group-icons.png';
 import './CardLastTicket.css'
 
 // import { departure} from './departure';
@@ -15,7 +15,7 @@ function test() {
 		)
 	  }, []);
 }
-test()
+
 
 const CardLastTicket = () => {
 	
