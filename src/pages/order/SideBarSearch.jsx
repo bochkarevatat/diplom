@@ -2,15 +2,19 @@ import React from 'react';
 import ReactCompoundSlider from './components/ReactCompoundSlider';
 import ReactSliderDouble from './components/ReactSliderDouble';
 import './SideBarSearch.css';
-import subctract from '../order/img/subtract.png';
+import iconFrom from '../order/img/from.png';
 import iconMinus from '../order/img/minus.png';
+import iconThere from '../order/img/there.png';
+import iconPlus from '../order/img/plus.png'
+// import CardLastTicket from './CardLastTicket'
 
 function SideBarSearch (progress) {
 
   const [check, setCheck] = React.useState({coupe: false, reservedSeat: false, seat: false, star: false, wifi:false, express:false
   });
 
- 
+  const [ hide, setHide] = React.useState(false)
+  const [ hideFrom, setHideFrom] = React.useState(false)
 
   
 
@@ -112,39 +116,86 @@ function SideBarSearch (progress) {
 
           <hr className='hr-filter'></hr>
 
-          <div>
-						<div className="there-group">
-							<div><img className="subctract" src={subctract} alt="" /><span className="there-title">Туда</span></div>
+
+
+          
+
+
+					<details className="details-there">
+          <summary>
+						<span className={`${hide ? 'there-title-hidden' : 'there-title_title'}`}>
+							<img className="there-title_img"
+                onClick={() => setHide(true)}
+								src={iconThere}
+								alt="иконка туда" />Туда</span>
+						<img className={`${hide ? 'there-title-hidden' : 'iconMinusPlus'}`}    
+							onClick={() => setHide(true)}
+							src={iconPlus} 
+              alt="иконка плюс" />
+              </summary>
+
+              <div className={`${hide ? 'there-title_title' : 'there-title-hidden'}`}>
+						    <div className="there-group">
+							  <div><img className="there-title_img" src={iconThere} alt="" /><span className="there-title">Туда</span></div>
 								
-							<img className="iconMinus"
-								// onClick={() => setCustomRangeCostFrom(false)}
+							  <img className="iconMinusPlus"
+								onClick={() => setHide(false)}
 								src={iconMinus}
                 //  alt="иконка плюс"
                  />
 						</div>
 
-						<form className="">
+						<form className="departure-time">
 							<label htmlFor="">Время отбытия</label>
-							<ReactSliderDouble />
+							<ReactSliderDouble onChange={(e)=>console.log("C",e)}/>
 						</form>
 
-						<form className="">
-							<div className="">
-								<label htmlFor="c">Время прибытия</label>
-							</div>
-							{/* <ReactSliderDouble/> */}
+						<form className="arrival-time">
+							
+							<label htmlFor="c">Время прибытия</label>
+							<ReactSliderDouble onChange={(e)=>console.log("C",e)}/>
 						</form>
-					</div> :
-					<div className="">
-						<p className="">
-							<img className=""
-								// src={iconThere}
-								alt="иконка туда" />Туда</p>
-						<img className=""
-							// onClick={() => setCustomRangeCostFrom(true)}
+					</div> 
+					</details>
+
+          <hr className='hr-filter'></hr>
+{/* обратно */}
+          <details className="details-from">
+          <summary>
+						<span className={`${hideFrom ? 'there-title-hidden' : 'there-title_title'}`}>
+							<img className="there-title_img"
+                onClick={() => setHide(true)}
+								src={iconFrom}
+								alt="иконка туда" />Обратно</span>
+						<img className={`${hideFrom ? 'there-title-hidden' : 'iconMinusPlus'}`}    
+							onClick={() => setHideFrom(true)}
 							// src={iconPlus} 
               alt="иконка плюс" />
-					</div>
+              </summary>
+
+              <div className={`${hideFrom ? 'there-title_title' : 'there-title-hidden'}`}>
+						    <div className="there-group">
+							  <div><img className="there-title_img" src={iconFrom} alt="" /><span className="there-title">Обратно</span></div>
+								
+							  <img className="iconMinusPlus"
+								onClick={() => setHideFrom(false)}
+								// src={iconMinus}
+                //  alt="иконка плюс"
+                 />
+						</div>
+
+						<form className="departure-time">
+							<label htmlFor="">Время отбытия</label>
+							<ReactSliderDouble onChange={(e)=>console.log("C",e)}/>
+						</form>
+
+						<form className="arrival-time">
+							
+							<label htmlFor="c">Время прибытия</label>
+							<ReactSliderDouble onChange={(e)=>console.log("C",e)}/>
+						</form>
+					</div> 
+					</details>
           
           
 
@@ -153,7 +204,13 @@ function SideBarSearch (progress) {
 
 
         </div>
+        
+        {/* <CardLastTicket/> */}
+      
+       
       </div>
+
+      
     )
   }
   

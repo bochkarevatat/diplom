@@ -1,212 +1,265 @@
 .load-line {
-    height: 12px;
-    width: 100%;
-  }
-  .load-line__progress {
-    height: 100%;
-    background: #FFA800;
-  }
-  .sidebar-left{
-    margin: 95px 85px;
-    font-family: Roboto;
-    font-size: 30px;
-  }
-  .sidebar-date {
-    background-color: #3e3c41;
-    color: #fff;
-    margin-bottom: 95px;
-    padding-bottom: 0.1px;
-    padding-top: 0.1px;
-    width: 360px;
-  }
-  .sidebar-date-from{
-    margin: 45px auto 25px;
-    position: relative;
-    width: 295px;
-    font-size: 30px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 45px;
-  }
-  .treep-from{
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAXCAYAAAALHW+jAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADiSURBVHgB7ZXNDYJAEIVnNxbAlYQDJdCB2ImdEDqwA7USsAJbWMPfUc4cWN8YjIQomnUuJnzJAvsy+0JmMrNEI+q6zqqqslgJfYBjOLYsy/1Y1ySMapom7Ps+UUqF1toImofVYt/OHUSsN8QaxBrsTdd1qcJvnyFGJACMcza0JIh4DsUNV6NvQ+48CvQ01Fpvfd8/kQNFUcQ4n919SJj/Ksos3OdTDR12CILg6GSI1oqnGnfGVFuK8h7kMH8hX5wNUc3NN3HyExvz8EpDYwvQauQmJTl2ip+4V9Z4hfQbhqfVDZznWYMWpKWdAAAAAElFTkSuQmCC);
-    background-position: center right 17px;
-    background-repeat: no-repeat;
-    border: none;
-    border-radius: 3px;
-    color: #292929;
-    font-family: Roboto;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    height: 44px;
-    line-height: 21px;
-    padding-left: 8px;
-    width: 295px;
-  }
-
-  .hr-filter{
-    background-color: #E5E5E5;
-    height: 1px;
-    margin-top: 40px;
-    /* width: 100%; */
+  height: 12px;
+  width: 100%;
 }
-  
-  .filter-group{
-      margin: 25px 35px 20px 60px;
-      width: 265px;
-  }
-  .check-router{
-    display: flex;
-    margin-bottom: 30px;
-   align-items: center;
-  }
-  .router-img-coupe{
-    background-image: url(./img/Union.png);
-    width: 22px;
-    height: 22px;
-    margin-right: 35px;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-  .router-img_reserved-seat{
-    background-image: url(./img/plas.png);
-    width: 22px;
-    height: 22px;
-    margin-right: 35px;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-  .router-img_seat{
-    background-image: url(./img/seat.png);
-    width: 22px;
-    height: 22px;
-    margin-right: 35px;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-  .router-img_star{
-    background-image: url(./img/star.png);
-    width: 22px;
-    height: 22px;
-    margin-right: 35px;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-  .router-img_wifi{
-    background-image: url(./img/wi-fi.png);
-    width: 22px;
-    height: 22px;
-    margin-right: 35px;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-  .router-img_express{
-    background-image: url(./img/export.png);
-    width: 22px;
-    height: 22px;
-    margin-right: 35px;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-  .router-text{
-    font-family: Roboto;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 25px;
-    margin-right: auto;
-    /* vertical-align: top; */
-  }
-  .check-item{
-    position: relative;
-    cursor: pointer;
-    margin-right: 37px;
-    margin-top: -12px;
-    
-  }
-  .check-input{
-    position: absolute;
-    clip: rect(0 0 0 0);
-  }
-  .check-true::after {
-    content: '';
-    position: absolute;
-    width: 28px;
-    height: 28px;
-    top: -4px;
-    left: -10px;
-    background-color: #FFA800;
-    border-radius: 50%;
-    transition: left 400ms ease-in-out;
-  }
-  
-  .check-true::before {
-    content: '';
-    position: absolute;
-    width: 72px;
-    height: 20px;
-    top: 0px;
-    left: -55px;
-    background-color: #FCDC9D;
-    border-radius: 15px;
-    transition: background-color 400ms ease;
-  }
-  .check-false::after {
-    content: '';
-    position: absolute;
-    width: 28px;
-    height: 28px;
-    top: -4px;
-    left: -56px;
-    background-color: #C4C4C4;
-    border-radius: 50%;
-    transition: left 400ms ease-in-out;
-  }
-  
-  .check-false::before {
-    content: '';
-    position: absolute;
-    width: 72px;
-    height: 20px;
-    top: 0px;
-    left: -55px;
-    background-color: #FFFFFF;;
-    border-radius: 15px;
-    transition: background-color 400ms ease;
-  }  
-  .price-text{
-    font-size: 30px;
-    margin-left: 30px; 
-  }
-  .price-router{
-    margin: 0 30px; 
-    height: 100px;
-  }
-  .range-input-in{
-    display: flex;
-    justify-content:space-between;
-    margin-bottom: 25px;
-  }
-  .range-input-in span{
-    /* margin-left: 30px; */
-    font-size: 18px;
-  }
-  .there-group{
-    display: flex;
-    justify-content:space-between;
-    margin: 30px; 
+.load-line__progress {
+  height: 100%;
+  background: #FFA800;
+}
+.sidebar-left{
+  margin: 95px 85px;
+  font-family: Roboto;
+  font-size: 30px;
+}
+.sidebar-date {
+  background-color: #3e3c41;
+  color: #fff;
+  margin-bottom: 95px;
+  padding-bottom: 0.1px;
+  padding-top: 0.1px;
+  width: 360px;
+}
+.sidebar-date-from{
+  margin: 45px auto 25px;
+  position: relative;
+  width: 295px;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 45px;
+}
+.treep-from{
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAXCAYAAAALHW+jAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADiSURBVHgB7ZXNDYJAEIVnNxbAlYQDJdCB2ImdEDqwA7USsAJbWMPfUc4cWN8YjIQomnUuJnzJAvsy+0JmMrNEI+q6zqqqslgJfYBjOLYsy/1Y1ySMapom7Ps+UUqF1toImofVYt/OHUSsN8QaxBrsTdd1qcJvnyFGJACMcza0JIh4DsUNV6NvQ+48CvQ01Fpvfd8/kQNFUcQ4n919SJj/Ksos3OdTDR12CILg6GSI1oqnGnfGVFuK8h7kMH8hX5wNUc3NN3HyExvz8EpDYwvQauQmJTl2ip+4V9Z4hfQbhqfVDZznWYMWpKWdAAAAAElFTkSuQmCC);
+  background-position: center right 17px;
+  background-repeat: no-repeat;
+  border: none;
+  border-radius: 3px;
+  color: #292929;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  height: 44px;
+  line-height: 21px;
+  padding-left: 8px;
+  width: 295px;
+}
 
-  }
-  .subctract{
-    width: 32px;
-    height: 26px; 
-    align-self: self-end;
-  }
-  .iconMinus{
-    width: 20px;
-    height: 20px;
+.hr-filter{
+  background-color: #E5E5E5;
+  height: 1px;
+  margin-top: 40px;
+  /* width: 100%; */
+}
 
-  }
-  .there-title{
-   margin-left: 15px;
-  }
+.filter-group{
+    margin: 25px 35px 20px 60px;
+    width: 265px;
+}
+.check-router{
+  display: flex;
+  margin-bottom: 30px;
+ align-items: center;
+}
+.router-img-coupe{
+  background-image: url(./img/Union.png);
+  width: 22px;
+  height: 22px;
+  margin-right: 35px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.router-img_reserved-seat{
+  background-image: url(./img/plas.png);
+  width: 22px;
+  height: 22px;
+  margin-right: 35px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.router-img_seat{
+  background-image: url(./img/seat.png);
+  width: 22px;
+  height: 22px;
+  margin-right: 35px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.router-img_star{
+  background-image: url(./img/star.png);
+  width: 22px;
+  height: 22px;
+  margin-right: 35px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.router-img_wifi{
+  background-image: url(./img/wi-fi.png);
+  width: 22px;
+  height: 22px;
+  margin-right: 35px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.router-img_express{
+  background-image: url(./img/export.png);
+  width: 22px;
+  height: 22px;
+  margin-right: 35px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.router-text{
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 25px;
+  margin-right: auto;
+  /* vertical-align: top; */
+}
+.check-item{
+  position: relative;
+  cursor: pointer;
+  margin-right: 37px;
+  margin-top: -12px;
+  
+}
+.check-input{
+  position: absolute;
+  clip: rect(0 0 0 0);
+}
+.check-true::after {
+  content: '';
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  top: -4px;
+  left: -10px;
+  background-color: #FFA800;
+  border-radius: 50%;
+  transition: left 400ms ease-in-out;
+}
+
+.check-true::before {
+  content: '';
+  position: absolute;
+  width: 72px;
+  height: 20px;
+  top: 0px;
+  left: -55px;
+  background-color: #FCDC9D;
+  border-radius: 15px;
+  transition: background-color 400ms ease;
+}
+.check-false::after {
+  content: '';
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  top: -4px;
+  left: -56px;
+  background-color: #C4C4C4;
+  border-radius: 50%;
+  transition: left 400ms ease-in-out;
+}
+
+.check-false::before {
+  content: '';
+  position: absolute;
+  width: 72px;
+  height: 20px;
+  top: 0px;
+  left: -55px;
+  background-color: #FFFFFF;;
+  border-radius: 15px;
+  transition: background-color 400ms ease;
+}  
+.price-text{
+  font-size: 30px;
+  margin-left: 30px; 
+}
+.price-router{
+  margin: 0 30px; 
+  height: 100px;
+}
+.range-input-in{
+  display: flex;
+  justify-content:space-between;
+  margin-bottom: 25px;
+}
+.range-input-in span{
+  /* margin-left: 30px; */
+  font-size: 18px;
+}
+.there-group{
+  display: flex;
+  justify-content:space-between;
+  margin: 30px; 
+  align-items: center;
+}
+.subctract{
+  width: 32px;
+  height: 26px; 
+  align-self: self-end;
+}
+.iconMinusPlus{
+  width: 20px;
+  height: 20px;
+
+}
+.there-title{
+ margin-left: 15px;
+}
+summary {
+  display: block;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 30px;
+  align-items: center;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+
+/* summary::before {
+  content: "\25B6";
+  padding-right: 0.5em;
+} */
+.details-there{
+  
+}
+.there-title_img{
+  margin-right: 25px;
+  width: 32px;
+  height: 26px;
+}
+.subctract{
+  width: 20px;
+  height: 20px;
+}
+.there-title-hidden{
+  display: none;
+}
+.details-from{
+  margin: 20px 0;
+}
+.departure-time{
+  margin: 15px 30px;
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+}
+.departure-time label{
+justify-self: flex-start;
+margin: 20px 0;
+}
+.arrival-time{
+  margin: 50px 30px;
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+}
+.arrival-time label{
+  align-self: flex-end;
+  margin: 20px 0;
+}
