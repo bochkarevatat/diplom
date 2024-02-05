@@ -178,6 +178,17 @@ main a:hover {
   font-weight: 700;
   margin-bottom: 0;
 }
+.reserchItems{
+  margin-top: 350px;
+  display: flex;
+  justify-content: space-between;
+}
 .loadLine{
-  margin-top: 150px;
+  
+}
+.riht-sitebar{
+  /* border: 1px solid #FFA800; */
+    margin: 95px 85px;
+    font-family: Roboto;
+    font-size: 30px;
 }

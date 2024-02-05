@@ -1,5 +1,5 @@
 .header__bg:before{
-    background: url("../src/img/bg/image.png");
+    background: url("img/bg/image.png");
     background-repeat: no-repeat;
     background-size: cover;
     content: "";
@@ -14,7 +14,7 @@
 
   }
   .main-background:before{
-    background: url("../src/img/bg/image-bg22.png");
+    background: url("img/bg/image-bg22.png");
     background-repeat: no-repeat;
     background-size: cover;
     content: "";

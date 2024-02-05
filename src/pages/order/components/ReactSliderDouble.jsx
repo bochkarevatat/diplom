@@ -2,7 +2,7 @@ import { Slider, Rail, Handles, Tracks, Ticks } from 'react-compound-slider';
 import {  Handle, Track, Tick } from './componentsDouble';
 import React, {useEffect} from "react";
 import moment from "moment";
-import '../OrderSort.css';
+import '../SideBarSearch.css';
 
 const sliderStyle = {
     margin: '0%',

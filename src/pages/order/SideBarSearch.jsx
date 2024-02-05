@@ -2,10 +2,10 @@ import React from 'react';
 import ReactCompoundSlider from './components/ReactCompoundSlider';
 import ReactSliderDouble from './components/ReactSliderDouble';
 import './SideBarSearch.css';
-import iconFrom from '../order/img/from.png';
-import iconMinus from '../order/img/minus.png';
-import iconThere from '../order/img/there.png';
-import iconPlus from '../order/img/plus.png'
+import iconFrom from '../../assets/img/from.png';
+import iconMinus from '../../assets/img/minus.png';
+import iconThere from '../../assets/img/there.png';
+import iconPlus from '../../assets/img/plus.png'
 import CardLastTicket from './CardLastTicket'
 
 function SideBarSearch (progress) {
