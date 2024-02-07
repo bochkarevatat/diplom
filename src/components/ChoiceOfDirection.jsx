@@ -42,7 +42,7 @@ const ChoiceOfDirection = () => {
 
 
             <div className="search-form__row">
-              <span className="search-form__hint">Дата</span>
+              <span className="search-form__hint date">Дата</span>
               <div className="search-form__inputs">
                 <input type="date" className="search-form__input2" name="lacation-from" placeholder="ДД/ММ/ГГ"/>
                 <span className="search-span"></span>

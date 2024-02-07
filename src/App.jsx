@@ -6,7 +6,7 @@ import { Blogpage } from './pages/Blogpage';
 import { Createpost } from './pages/Createpost';
 import { Editpost } from './pages/Editpost';
 import { Singlepage } from './pages/Singlepage';
-import { Notfoundpage } from './pages/Notfoundpage';
+import { NotFoundPage } from './pages/NotFoundPage';
 import { LoginPage } from './pages/Loginpage';
 
 import { Layout } from './components/Layout'
@@ -34,7 +34,7 @@ function App() {
             </RequireAuth>
           } />
           <Route path="login" element={<LoginPage />} />
-          <Route path="*" element={<Notfoundpage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </AuthProvider>

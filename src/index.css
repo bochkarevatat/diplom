@@ -181,7 +181,8 @@ main a:hover {
 .reserchItems{
   margin-top: 350px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  max-width: 100%;
 }
 .loadLine{
   
@@ -191,4 +192,9 @@ main a:hover {
     margin: 95px 85px;
     font-family: Roboto;
     font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%;
+    flex-shrink: 50%;
+    flex-grow: 1;
 }
