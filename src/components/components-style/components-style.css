@@ -105,7 +105,7 @@
     font-size: 22px;
   }
   .date{
-    margin-left: 40px;
+    /* margin-left: 40px; */
   }
   header > a {
     position: relative;
@@ -142,7 +142,8 @@
   }
   .search-form__row{
     color: #fff;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
+    margin-left: 30px;
     display: flex;
     flex-direction: column;
     /* align-items: flex-end; */
@@ -178,7 +179,7 @@
   
   }
   .search-form__input2{
-    margin-left: 35px;
+    /* margin-left: 35px; */
     margin-top: 15px;
     background-color: #fff;
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAiCAYAAABIiGl0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAE+SURBVHgB7ZfNjYMwEIXHFgeO3EHa0EFKYDvY7SCpYEvYtLAVrNLBdhBKSAmW+Lv6CgjY5wgiJ4pQSGIiBb6L8YzFM3hszzC6QJIkTffcNM3K87wtDSCKooBzvuv6ruuy8zGcnsTThA+/IMuyRVVVX4yxRWv/0MbsYZc0ACyPg2apmf7wDqeu631Zlj++7wsWx/ESRrUeDo2DxAQ+WZqmO8wwoBHBh4ZMj+AxmV5UT0/Y0juINoFQF2QAtY9J29snwhDdDD2XrwXnxQriv11/Dq5Z2BgW3QHO+e8+f1EUW3UF0qOFwabPadt2iEZc8s3BNQu/nvBd2wlJYtjnRzUhjQjjCn2nG5lgCXOWV8uh5cq1tGXNsVqxVFavVRJOO8AoKig5hNcqyaPxECjc1nq1GGACb2QQtYx5nqurUv4Db2518t5TSfoAAAAASUVORK5CYII=);
@@ -197,7 +198,7 @@
     opacity: 0;
   }
   .search-span{
-    /* width: 30px; */
+    width: 30px;
   }
   h1 {
     text-align: center;
@@ -229,17 +230,17 @@
     /* position: absolute;
         left: 0;
         top: 0; */
-        z-index: 1;
+        z-index: 10;
         padding: 20px 25px 0 25px;
         display: flex;
         box-sizing: border-box;
-        width: 627px;
+        width: 900px;
         flex-direction: column;
         justify-content: flex-start; 
         /* flex-wrap: wrap; */
         background: rgba(41,41,41,.8);
         border: 0;
-        margin: 25px auto;
+        margin: 15px auto 0 auto;
         color:white;
         text-transform: uppercase;
   }
@@ -260,7 +261,7 @@
     padding: 0 5px;
     display: flex;
     margin-top: 150px;
-    margin-left: -395px;
+    margin-left: -375px;
     /* flex-grow: 4;
     align-self: flex-end;
     flex-wrap: wrap; */
@@ -272,3 +273,22 @@
   a{
     text-decoration-line: none;
   }
+  option{
+    text-transform: capitalize;
+  }
+  .search-form__direction-change{
+    position: relative;
+     background: url('./img/img1.png') center/cover no-repeat;
+     width: 24px;
+     height: 24px;
+     /* top: -35px; */
+     display: inline-block;
+   }
+  .search-form__direction{
+    position: relative;
+     background: url('./img/img1.png') center/cover no-repeat;
+     width: 24px;
+     height: 24px;
+     top: -35px;
+     display: inline-block;
+   }

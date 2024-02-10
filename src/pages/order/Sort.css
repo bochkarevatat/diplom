@@ -1,0 +1,43 @@
+.sort__label {
+    align-items: center;
+    display: flex;
+}
+.sort__label b {
+    margin-right: 8px;
+}
+.sort__label span {
+    border-bottom: 1px dashed #fe5f1e;
+    color: #fe5f1e;
+    cursor: pointer;
+}
+.sort__popup {
+    position: absolute;
+    right: 12%;
+    margin-top: 15px;
+    background: #ffffff;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 10px 0;
+    /* left:25%; */
+}
+    ul {
+      overflow: hidden;
+      list-style: none;
+    }
+      li {
+        padding: 12px 20px;
+        cursor: pointer;
+        list-style: none;
+
+      }
+        .active,
+        .active:hover {
+          background: rgba(254, 95, 30, 0.05);
+        }
+
+        .active {
+          font-weight: bold;
+          color: orange;
+        }
+      

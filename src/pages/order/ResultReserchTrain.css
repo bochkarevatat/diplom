@@ -310,3 +310,18 @@
     background-color: transparent;
     color: #FFA800;
   }
+
+  .train-route-header{
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    margin-bottom: 30px;
+
+  }
+  .train-route-header_right{
+    display: flex;
+    justify-content: space-between;
+  }
+  .train-route-header_right span{
+    margin-left: 15px;
+  }

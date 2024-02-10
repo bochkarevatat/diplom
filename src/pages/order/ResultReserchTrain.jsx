@@ -1,5 +1,6 @@
 import React from 'react';
 import './ResultReserchTrain.css'
+import Sort from './Sort'
 
 
 function conversionDate(time) {
@@ -17,24 +18,40 @@ const ResultReserchTrain = () =>{
 
     const [itemsResultReserchTrain, setResultReserchTrain] = React.useState([]);
     
-
+    const [sortType, setsortType] = React.useState({
+        name: 'времени', sortProperty: 'departure.from.datetime' 
+    });
 
   React.useEffect(() =>{
-    fetch("https://students.netoservices.ru/fe-diplom/routes/last").then((res) => {return res.json()}).
+    fetch(`https://students.netoservices.ru/fe-diplom/routes/last? 
+    &sortBy=${sortType.sortProperty}&order=desc`)
+    .then((res) => {return res.json()}).
     then(arr => {
       setResultReserchTrain(arr)
+      console.log("click", arr, sortType.sortProperty)
     })
+    window.scrollTo(0, 0);
   }, [])
   
     return (
         <div className='train-route'>
+            <div className='train-route-header'>
+                <div className='train-route-header_left'>
+                   <span>найдено 20</span>
+                </div>
+                <div className='train-route-header_right'>
+                <Sort value={sortType} oneChangeSort = {(i) => setsortType(i)}/>
+                <span>показывать по 5 10 20</span>
+                </div>
+            
+            </div>
         
           {itemsResultReserchTrain.map((el) =>
            <div className='train-name-items'>
           <div className='train-name'>
           <span className='train-name-image'></span>
           
-          {console.log(el)}
+          {/* {console.log("элемент", el)} */}
          
           <h5 className='train-name-text'>{el.departure.duration}</h5>
           <div className='train-name-direction'>

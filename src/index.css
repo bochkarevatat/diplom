@@ -127,14 +127,7 @@ h1 {
     border: 0;
     cursor: pointer;
 }
-.search-form__direction-change{
- 
-  background: url('./img/img1.png') center/cover no-repeat;
-  width: 24px;
-  height: 24px;
-  
-  display: inline-block;
-}
+
 main {
   min-height: calc(100vh - 85px - 22px);
   padding-top: 1.5rem;
