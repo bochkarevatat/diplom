@@ -8,8 +8,9 @@ import './components-style/components-style.css';
 import React from 'react';
 
 
-const Layout = () => {
+const Layout = ({searchValue, setSearchValue}) => {
     
+   
     return (
         <>
         <div className='main-header-top'>
@@ -25,7 +26,7 @@ const Layout = () => {
             <CustomLink to="/order">Контакты</CustomLink>
         </header>
         
-        <ChoiceOfDirection/>
+        <ChoiceOfDirection />
        
          </div> 
         <main className="container">

@@ -1,6 +1,20 @@
 import React from 'react';
-import './ResultReserchTrain.css'
-import Sort from './Sort'
+import { useSelector, useDispatch} from 'react-redux';
+import axios from 'axios';
+
+import './ResultReserchTrain.css';
+
+import filterTrain from '../../redux/slices/FilterTrainSlice';
+// import {setIndex, setTrains} from "../../redux/slices/trainSlice";
+import TicketSeats from './ResultReserchTrainItems/TicketSeats'
+import Sort from './components/Sort';
+import iconWifiRocketCup from '../../assets/img/group-icons.png'
+
+
+// const directions = {
+//   departure: 'departure',
+//   arrival: 'arrival',
+// };
 
 
 function conversionDate(time) {
@@ -13,25 +27,38 @@ function conversionDate(time) {
     return '';
   };
 
-
+ 
 const ResultReserchTrain = () =>{
 
-    const [itemsResultReserchTrain, setResultReserchTrain] = React.useState([]);
-    
-    const [sortType, setsortType] = React.useState({
-        name: 'времени', sortProperty: 'departure.from.datetime' 
-    });
+  
 
+  const filterTrain = useSelector( (state) => state.filter);
+ 
+  const  sortType = useSelector( (state) => state.filter.sort.sortProperty);
+  const [itemsResultReserchTrain, setResultReserchTrain] = React.useState([]);
+
+  console.log('sortType', sortType)
+  const dispatch = useDispatch();
+   
   React.useEffect(() =>{
-    fetch(`https://students.netoservices.ru/fe-diplom/routes/last? 
-    &sortBy=${sortType.sortProperty}&order=desc`)
-    .then((res) => {return res.json()}).
-    then(arr => {
-      setResultReserchTrain(arr)
-      console.log("click", arr, sortType.sortProperty)
-    })
-    window.scrollTo(0, 0);
+    // const sortBy = sort.sortProperty.replace('-', '');
+  //   fetch(`https://students.netoservices.ru/fe-diplom/routes/last?sortBy{sortType}`)
+  //   .then((res) => {return res.json()}).
+  //   then(arr => {
+  //     setResultReserchTrain(arr)
+  //     console.log("click", arr)
+  //   })
+  //   window.scrollTo(0, 0);
+  axios
+  .get(`https://students.netoservices.ru/fe-diplom/routes/last?sort{sortType}`)
+.then((res) =>{
+  setResultReserchTrain(res.data)
+      console.log("click",res.data)
+})
+
+
   }, [])
+
   
     return (
         <div className='train-route'>
@@ -40,13 +67,18 @@ const ResultReserchTrain = () =>{
                    <span>найдено 20</span>
                 </div>
                 <div className='train-route-header_right'>
-                <Sort value={sortType} oneChangeSort = {(i) => setsortType(i)}/>
+                <Sort value={sortType}/>
+                {/* <Sort value={sortType} oneChangeSort = {(i) => setsortType(i)}/> */}
                 <span>показывать по 5 10 20</span>
                 </div>
             
             </div>
         
-          {itemsResultReserchTrain.map((el) =>
+        
+           
+          
+      
+            {itemsResultReserchTrain.map((el) =>
            <div className='train-name-items'>
           <div className='train-name'>
           <span className='train-name-image'></span>
@@ -88,8 +120,15 @@ const ResultReserchTrain = () =>{
             </div>
           </div>
         </div>  
+        
+       
+
+        <div className="train-tickets">
+          
         </div>
-        )}
+        </div>
+
+)}
         {/* <div className='train-tickets'>
           <div className='train-tickets-options'>
             {train.map((el) =>
@@ -114,6 +153,10 @@ const ResultReserchTrain = () =>{
             <button type='button' className='order-route-btn' onClick={backOrder}>{btnText}</button>}
         </div> */}
       </div>
+
+
+
+       
 
 
     )

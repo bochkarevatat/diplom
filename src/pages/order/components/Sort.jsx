@@ -1,19 +1,23 @@
 import React from 'react';
+import { useSelector, useDispatch} from 'react-redux';
+
+import {setSort} from '../../../redux/slices/FilterTrainSlice'
 import './Sort.css'
 
 
-const Sort = ({value, oneChangeSort}) => {
-
+const Sort = () => {
+  const dispatch = useDispatch();
+  const sort = useSelector((state) => state.filter.sort)
     const [open, setOpen] = React.useState(false);
     const list = [
-        { name: 'времени', sortProperty: 'departure.from.datetime' },
+        { name: 'времени', sortProperty: 'datetime' },
         { name: 'стоимости', sortProperty: 'min_price' },
-        { name: 'длительности', sortProperty: 'departure.duration' },
+        { name: 'длительности', sortProperty: 'duration' },
       ];
         // const sortName = list[value].name;
 
-        const onClickListItem =(i) =>{
-            oneChangeSort(i);
+        const onClickListItem =(obj) =>{
+          dispatch(setSort(obj))
             setOpen(false);
         }
 
@@ -23,7 +27,7 @@ const Sort = ({value, oneChangeSort}) => {
       <div className="sort__label">
         
         <b>Сортировать по:</b>
-        <span onClick={() => setOpen(!open)}>{value.name}</span>
+        <span onClick={() => setOpen(!open)}>{sort.name}</span>
       </div>
       {open && (
         <div className="sort__popup">
@@ -33,9 +37,9 @@ const Sort = ({value, oneChangeSort}) => {
                 key={i}
                 onClick={() => onClickListItem(obj)}
                
-                className={value.sortProperty === obj.sortProperty ? 'active' : ''}>
+                className={sort.sortProperty === obj.sortProperty ? 'active' : ''}>
                 {obj.name}
-                {/* {console.log('из сортировки',value.name)} */}
+                {console.log('из сортировки', sort.sortProperty)}
               </li>
             ))}
           </ul>

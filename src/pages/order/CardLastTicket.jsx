@@ -15,7 +15,7 @@ const CardLastTicket = () => {
   React.useEffect(() =>{
     fetch("https://students.netoservices.ru/fe-diplom/routes/last").then((res) => {return res.json()}).
     then(arr => {
-      setitemslastRout(arr)
+      setitemslastRout(arr.slice(0,3))
     })
   }, [])
     
@@ -26,8 +26,8 @@ const CardLastTicket = () => {
 		
       <h4 className='last-title'>последние билеты</h4>
       <ul className='last-list'>
-        {itemslastRout.map( (el) =>
-          <li className='last-list-item' key={el.departure._id}>
+      {itemslastRout.map( (el) => (
+              <li className='last-list-item' key={el.departure._id}>
             <div className='route-from-to'>
               <div className='route-from'> 
                  <h5 className='route-city-text'>{el.departure.from.city.name}</h5>
@@ -49,7 +49,13 @@ const CardLastTicket = () => {
               </div>
             </div>
           </li>
-        )}
+            ))}
+
+       
+          
+
+
+        
       </ul>
     </section>
 	);

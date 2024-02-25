@@ -1,0 +1,43 @@
+.train-ticket{
+    align-items: baseline;
+    display: flex;
+    height: 29px;
+    margin-bottom: 29px;
+    width: 234px;
+}
+.ticket-class{
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    line-height: 19px;
+}
+.amount-seat{
+    color: #ffa800;
+    font-weight: 500;
+    margin-left: auto;
+    margin-right: 15px;
+    position: relative;
+}
+.ticket-start-text{
+    color: #928f94;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19px
+}
+.ticket-start-number{
+    color: #2d2b2f;
+    font-family: Roboto-bold;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
+    margin: 0 5px;
+    text-align: center;
+    width: 60px;
+}
+.sign-rub{
+    height: 25px;
+    width: 20px;
+}

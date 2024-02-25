@@ -147,13 +147,13 @@ function SideBarSearch (progress) {
 
 						<form className="departure-time">
 							<label htmlFor="">Время отбытия</label>
-							<ReactSliderDouble onChange={(e)=>console.log("C",e)}/>
+							<ReactSliderDouble onChange={(e)=>(e)}/>
 						</form>
 
 						<form className="arrival-time">
 							
 							<label htmlFor="c">Время прибытия</label>
-							<ReactSliderDouble onChange={(e)=>console.log("C",e)}/>
+							<ReactSliderDouble onChange={(e)=>(e)}/>
 						</form>
 					</div> 
 					</details>
@@ -186,13 +186,13 @@ function SideBarSearch (progress) {
 
 						<form className="departure-time">
 							<label htmlFor="">Время отбытия</label>
-							<ReactSliderDouble onChange={(e)=>console.log("C",e)}/>
+							<ReactSliderDouble onChange={(e)=>(e)}/>
 						</form>
 
 						<form className="arrival-time">
 							
 							<label htmlFor="c">Время прибытия</label>
-							<ReactSliderDouble onChange={(e)=>console.log("C",e)}/>
+							<ReactSliderDouble onChange={(e)=>(e)}/>
 						</form>
 					</div> 
 					</details>

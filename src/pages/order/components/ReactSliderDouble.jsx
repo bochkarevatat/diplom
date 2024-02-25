@@ -57,10 +57,10 @@ const checkValue = (a,b)=>{
   return f
 }
 const  removeSlide =(removeEl)=>{
-  console.log("GetTrackProps")
+  // console.log("GetTrackProps")
   const val = removeEl.value
   const twoPairs = splitArrayIntoChunksOfLen(state.arr,2)
-   console.log("twoPairs",twoPairs)
+  //  console.log("twoPairs",twoPairs)
    let newArr = twoPairs.filter((v)=>!v.includes(val)).flat()
 
    if(newArr.length!=0){
@@ -70,11 +70,11 @@ const  removeSlide =(removeEl)=>{
 
 const addSlide=(addEl)=>{
   const val = addEl.value
-  console.log("Add",val)
+  // console.log("Add",val)
    let nextLeft =0
    let nextRight =0
   const twoPairs = splitArrayIntoChunksOfLen(state.arr,2)
-  console.log("twoPairs",twoPairs)
+  // console.log("twoPairs",twoPairs)
   twoPairs.forEach((v)=>{
     if(v[0]===val){
       nextRight = val-1 
@@ -85,11 +85,11 @@ const addSlide=(addEl)=>{
     }
   })
   let newArr = twoPairs.filter((v)=>(v.includes(nextRight)||v.includes(nextLeft))).flat()
-  console.log('nextLeft, nextRight',nextLeft,nextRight)
-  console.log('newArr',newArr)
+  // console.log('nextLeft, nextRight',nextLeft,nextRight)
+  // console.log('newArr',newArr)
   if(newArr.length===0 && nextLeft > 0 && nextRight > 0 && nextLeft <= 23 && nextRight <= 24){
     let a = [...state.arr,nextLeft,nextRight].sort((a, b) => a - b)
-    console.log("a",a)
+    // console.log("a",a)
     setState((s)=>({...s,arr:a}))
   }
  }
@@ -144,11 +144,11 @@ const addSlide=(addEl)=>{
         </Handles>
         <Tracks onChange={(e)=>{console.log("Tracks")}} left={false} right={false}>
           {({ tracks, getTrackProps }) => {
-            console.log("tracks",tracks)
+            // console.log("tracks",tracks)
             return (
             <div className="">
               {tracks.map(({ id, source, target },i) => {
-                console.log("index",i)
+                // console.log("index",i)
                 return (
                   checkValue(source.value,target.value)?<Track
                   key={id}
