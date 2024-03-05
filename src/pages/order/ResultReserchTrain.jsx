@@ -4,131 +4,125 @@ import axios from 'axios';
 
 import './ResultReserchTrain.css';
 
-import filterTrain from '../../redux/slices/FilterTrainSlice';
+import {filterTrain, setSort, setSearchValue} from '../../redux/slices/FilterTrainSlice';
 // import {setIndex, setTrains} from "../../redux/slices/trainSlice";
-import TicketSeats from './ResultReserchTrainItems/TicketSeats'
+// import TicketSeats from './ResultReserchTrainItems/TicketSeats'
 import Sort from './components/Sort';
-import iconWifiRocketCup from '../../assets/img/group-icons.png'
+import CartsTest from './ResultReserchTrainItems/CartsTest'
 
 
-// const directions = {
-//   departure: 'departure',
-//   arrival: 'arrival',
-// };
+
+const filteredTowns = (searchText, listOfCarts) => {
+  // if (!searchText) {
+  //   return listOfCars;
+  // }
+  return listOfCarts.filter(({ departure }) =>
+  departure.from.city.name.toLowerCase().includes(searchText.toLowerCase())
+  );
+}
 
 
-function conversionDate(time) {
-    if (time) {
-      return new Date(time * 1000).toLocaleTimeString('ru', {
-        hour: '2-digit',
-        minute: '2-digit'
-      });
-    };
-    return '';
-  };
-
- 
 const ResultReserchTrain = () =>{
 
-  
-
-  const filterTrain = useSelector( (state) => state.filter);
+  const filterTrain = useSelector( (state) => state.filter.categoryCityTo);
  
   const  sortType = useSelector( (state) => state.filter.sort.sortProperty);
+
   const [itemsResultReserchTrain, setResultReserchTrain] = React.useState([]);
 
-  console.log('sortType', sortType)
+  console.log('sortType', sortType, filterTrain)
   const dispatch = useDispatch();
-   
-  React.useEffect(() =>{
-    // const sortBy = sort.sortProperty.replace('-', '');
-  //   fetch(`https://students.netoservices.ru/fe-diplom/routes/last?sortBy{sortType}`)
-  //   .then((res) => {return res.json()}).
-  //   then(arr => {
-  //     setResultReserchTrain(arr)
-  //     console.log("click", arr)
-  //   })
-  //   window.scrollTo(0, 0);
-  axios
-  .get(`https://students.netoservices.ru/fe-diplom/routes/last?sort{sortType}`)
-.then((res) =>{
-  setResultReserchTrain(res.data)
-      console.log("click",res.data)
-})
 
 
-  }, [])
 
+
+// Пробую наладить поиск по инпуту, тест, начало
+
+const getitemsResultReserchTrain = () =>{
+  fetch(`https://students.netoservices.ru/fe-diplom/routes/last`)
+    .then((res) => {return res.json()}).
+    then(data => {
+      setResultReserchTrain(data)
+    })
+}
+
+React.useEffect(() =>{
+  getitemsResultReserchTrain()
+}, [])
+
+
+
+const data = itemsResultReserchTrain;
+console.log(data)
+// const [valueReserchTrain, setValueReserchTrain] = React.useState(data);
+const [cityList, setCityList] = React.useState([]);
+
+React.useEffect(() => {
+  const Debounce = setTimeout(() => {
+    const filteredCity = filteredTowns(filterTrain, data);
+    console.log('filteredCity =>',filteredCity)
+    setCityList(filteredCity);
+  }, 300);
+
+  return () => clearTimeout(Debounce);
+}, [filterTrain]);
+
+
+// console.log(cityList, valueReserchTrain)
+  // Пробую наладить поиск по инпуту, тест, конец
   
+
+  const objectLength = Object.keys(cityList).length;
+
+  // const clicConsole = ()=>{
+  //   console.log("btn")
+  // }
+  const amounts = [5, 10, 20];
+
+
+ 
     return (
         <div className='train-route'>
+
+          
             <div className='train-route-header'>
                 <div className='train-route-header_left'>
-                   <span>найдено 20</span>
+
+                <span className='train-route-serch'>найдено <span>{objectLength}</span></span>
                 </div>
                 <div className='train-route-header_right'>
                 <Sort value={sortType}/>
-                {/* <Sort value={sortType} oneChangeSort = {(i) => setsortType(i)}/> */}
-                <span>показывать по 5 10 20</span>
+             
+                
+                 <div className='sort-amount'>
+                  <span className=''>показывать по:</span>
+
+                 {/* {amounts.map((amount) => (
+
+                  <button className='sort-amount-item'
+                
+                  onClick={clicConsole}>
+                    
+                         {amount}
+                  </button>
+                  
+                    
+                  ))}  */}
+
+
+                  </div> 
+
                 </div>
             
             </div>
-        
-        
+            
+        <CartsTest cityList={cityList}/>
            
           
       
-            {itemsResultReserchTrain.map((el) =>
-           <div className='train-name-items'>
-          <div className='train-name'>
-          <span className='train-name-image'></span>
-          
-          {/* {console.log("элемент", el)} */}
-         
-          <h5 className='train-name-text'>{el.departure.duration}</h5>
-          <div className='train-name-direction'>
-            <p className='train-name-city'>&#8594;{el.departure.from.city.name}</p>
-            <p className='train-name-city'>&#8594;{el.departure.to.city.name}</p>
-            <p className='train-name-city'>&#171;{el.departure.train.name}&#187;</p>
-          </div>
-          
-         
-          </div>
-          
-          
-       <div className='train-direction'>
-          <div className='train-direction-route'>
-            <div className='train-direction-from'>
-              <div className='direction-time'>{conversionDate(el.departure.from.datetime)}</div>
-              <div className='direction-from'>
-                <h5 className='direction-city'>{el.departure.from.city.name}</h5>
-                <p className='direction-station'>{el.departure.from.railway_station_name}</p>
-                <p className='direction-station'>вокзал</p>
-              </div>
-            </div>
-            <div className='train-direction-time'>
-              <p className='travel-time'>{conversionDate(el.departure.duration)}</p>
-              <span className='direction-arrow'></span>
-            </div>
-            <div className='train-direction-to'>
-              <div className='direction-time'>{conversionDate(el.departure.to.datetime)}</div>
-              <div className='direction-to'>
-                <h5 className='direction-city'>{el.departure.to.city.name}</h5>
-                <p className='direction-station'>{el.departure.to.railway_station_name}</p>
-                <p className='direction-station'>вокзал</p>
-              </div>
-            </div>
-          </div>
-        </div>  
-        
-       
 
-        <div className="train-tickets">
-          
-        </div>
-        </div>
 
-)}
+
         {/* <div className='train-tickets'>
           <div className='train-tickets-options'>
             {train.map((el) =>

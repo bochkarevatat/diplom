@@ -176,8 +176,20 @@
     position: relative;
     text-transform: capitalize;
     width: 225px;
-  
+    appearance: none;
   }
+  
+
+   input::-webkit-search-decoration,
+   input::-webkit-search-cancel-button,
+   input::-webkit-search-results-button,
+   input::-webkit-search-results-decoration {
+     display: none;
+     
+     }
+
+
+
   .search-form__input2{
     /* margin-left: 35px; */
     margin-top: 15px;

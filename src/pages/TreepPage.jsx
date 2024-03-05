@@ -1,14 +1,21 @@
 import { Outlet, Link } from 'react-router-dom';
+import React from 'react';
 // import {ChoiceOfDirection} from '../components/ChoiceOfDirection';
 // import OrderSort from '../pages/order/OrderSort';
 import SideBarSearch from './order/SideBarSearch';
 import ResultReserchTrain from './order/ResultReserchTrain'
+import { Typeahead } from 'react-bootstrap-typeahead';
 
-const TreepPage = () => {
+
+
+const TreepPage = (props) => {
+
+    
+
     return (
 
         <div className="reserchItems">
-       
+      
             {/* <ChoiceOfDirection/> */}
             {/* <OrderSort/> */}
             {/* <h1></h1>

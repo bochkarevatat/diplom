@@ -21,7 +21,7 @@ const Sort = () => {
             setOpen(false);
         }
 
-
+        console.log("sort=>", sort)
     return (
         <div className="sort">
       <div className="sort__label">

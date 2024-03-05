@@ -1,14 +1,38 @@
 import React from 'react';
 import { CustomLink } from './CustomLink';
+import { useSelector, useDispatch} from 'react-redux';
+
+
+import {setSearchValue} from '../redux/slices/FilterTrainSlice';
 
 import './components-style/components-style.css';
 import cityes from '../russia.json'
 
-const ChoiceOfDirection = ({searchValue, setSearchValue}) => {
+const ChoiceOfDirection = () => {
 
   const [ bg, setBg] = React.useState(false)
 
   const [itemslastRout, setitemslastRout] = React.useState([]);
+  
+  const inputRefSecond = React.useRef();
+  const inputRefDate = React.useRef();
+
+  const dispatch = useDispatch();
+  
+  const categoryCityTo = useSelector((state) => state.filter.categoryCityTo)
+  
+  const inputRef = React.useRef(null);
+
+  console.log('categoryCityTo==>', categoryCityTo)
+
+  const onClickClear = (obj) => {
+    dispatch(setSearchValue(obj));
+    inputRef.current?.focus();
+  };
+
+  
+
+  console.log('categoryCityTo==>', categoryCityTo)
 
   React.useEffect(() =>{
     fetch("https://students.netoservices.ru/fe-diplom/routes/last").then((res) => {return res.json()}).
@@ -18,7 +42,7 @@ const ChoiceOfDirection = ({searchValue, setSearchValue}) => {
     })
   }, [])
     
-    // const cityes = ;
+  
     
     return (
       <div className={`${bg ? 'container-reserch-hidden' : 'container-reserch'}`}>
@@ -42,15 +66,16 @@ const ChoiceOfDirection = ({searchValue, setSearchValue}) => {
 
               <div className="search-form__inputs">
                 <input 
-                value={searchValue}
-                onChange={ev => setSearchValue(ev.target.value)} type="search" list="cities"
+                ref={inputRef}
+                value={categoryCityTo}
+                onChange={(ev) => onClickClear(ev.target.value)} type="search" list="cities"
                  className="search-form__input1" name="lacation-from" placeholder="Откуда" />
                 
-                <button onClick={() => setSearchValue('')} type="button" className="search-form__btn">
+                <button onClick={() => onClickClear('')} type="button" className="search-form__btn">
                     <div className={`${bg ? 'search-form__direction' : 'search-form__direction-change'}`} ></div>
                 </button>
 
-                <input type="text" list="cities" className="search-form__input1" name="lacation-from"
+                <input ref={inputRefSecond}  type="text" list="cities" className="search-form__input1" name="lacation-from"
                  placeholder="Куда" />
 
                 <datalist id="cities">  
@@ -65,7 +90,7 @@ const ChoiceOfDirection = ({searchValue, setSearchValue}) => {
             <div className="search-form__row">
               <span className="search-form__hint date">Дата</span>
               <div className="search-form__inputs">
-                <input type="date" className="search-form__input2" name="lacation-from" placeholder="ДД/ММ/ГГ"/>
+                <input ref={inputRefDate}  type="date" className="search-form__input2" name="lacation-from" placeholder="ДД/ММ/ГГ"/>
                 <span className="search-span"></span>
                 <input type="date" className="search-form__input2" name="lacation-from" />
               </div>
@@ -74,13 +99,15 @@ const ChoiceOfDirection = ({searchValue, setSearchValue}) => {
             <div className="search-form__button">
             {/* <button onClick={() => setBg(true)} className="search-form__button-submit" type='button'>Найти билеты</button> */}
             <CustomLink to="/about">
-              <button onClick={() => setBg(true)} className="search-form__button-submit" type='button'>Найти билеты</button>
+              <button onClick={() => onClickClear()} className="search-form__button-submit" type='button'>Найти билеты</button>
               
               </CustomLink>
               
             </div>
           </form>
           </div>
+
+
         </div>
        
       
