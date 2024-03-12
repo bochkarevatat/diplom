@@ -7,7 +7,10 @@ const initialState = {
         name: 'времени',
         sortProperty: 'datetime' 
     },
-    categoryCityTo: ''
+    fromDate: '',
+    toDate: '',
+    categoryCityfrom: null,
+    categoryCityTo: null,
 }
 
 const filterSlice = createSlice({
@@ -18,8 +21,11 @@ reducers: {
             console.log(state)
             state.categoryId = action.payload;
         },
-        setSearchValue(state, action) {
+        setSearchValueTo(state, action) {
             state.categoryCityTo = action.payload;
+          },
+        setSearchValueFrom(state, action) {
+            state.categoryCityFrom = action.payload;
           },
         setSort(state, action){
            
@@ -27,6 +33,6 @@ reducers: {
         }
       }
 })
-export const { filterTrain, setSort, setSearchValue } = filterSlice.actions;
+export const { filterTrain, setSort, setSearchValueTo, setSearchValueFrom } = filterSlice.actions;
 
 export default filterSlice.reducer;

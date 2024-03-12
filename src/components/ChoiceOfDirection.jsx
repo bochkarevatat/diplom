@@ -3,7 +3,7 @@ import { CustomLink } from './CustomLink';
 import { useSelector, useDispatch} from 'react-redux';
 
 
-import {setSearchValue} from '../redux/slices/FilterTrainSlice';
+import {setSearchValueTo, setSearchValueFrom} from '../redux/slices/FilterTrainSlice';
 
 import './components-style/components-style.css';
 import cityes from '../russia.json'
@@ -14,25 +14,39 @@ const ChoiceOfDirection = () => {
 
   const [itemslastRout, setitemslastRout] = React.useState([]);
   
-  const inputRefSecond = React.useRef();
+  
   const inputRefDate = React.useRef();
 
   const dispatch = useDispatch();
   
   const categoryCityTo = useSelector((state) => state.filter.categoryCityTo)
-  
+  const categoryCityFrom = useSelector((state) => state.filter.categoryCityFrom)
+
   const inputRef = React.useRef(null);
+  const inputRefSecond = React.useRef(null);
 
-  console.log('categoryCityTo==>', categoryCityTo)
-
+  
   const onClickClear = (obj) => {
-    dispatch(setSearchValue(obj));
-    inputRef.current?.focus();
+    dispatch(setSearchValueFrom(obj));
+    inputRef.current?.focus();   
   };
 
-  
+  const onClickClearFrom = (obj) => {
+    dispatch(setSearchValueTo(obj));
+    inputRefSecond.current?.focus();   
+  };
 
-  console.log('categoryCityTo==>', categoryCityTo)
+  console.log('categoryCityTo==>', categoryCityTo, 'categoryCityFrom==>', categoryCityFrom);
+
+
+  // React.useEffect(()=> {
+  //   if(name === consts.depCity && departureCity){
+  //     setInputValue(departureCity.name);
+  //   }
+  //   if(name === consts.arrCity && arrivalCity){
+  //     setInputValue(arrivalCity.name);
+  //   }
+  // }, [arrivalCity, departureCity, name]);
 
   React.useEffect(() =>{
     fetch("https://students.netoservices.ru/fe-diplom/routes/last").then((res) => {return res.json()}).
@@ -67,7 +81,7 @@ const ChoiceOfDirection = () => {
               <div className="search-form__inputs">
                 <input 
                 ref={inputRef}
-                value={categoryCityTo}
+                value={categoryCityFrom}
                 onChange={(ev) => onClickClear(ev.target.value)} type="search" list="cities"
                  className="search-form__input1" name="lacation-from" placeholder="Откуда" />
                 
@@ -75,11 +89,18 @@ const ChoiceOfDirection = () => {
                     <div className={`${bg ? 'search-form__direction' : 'search-form__direction-change'}`} ></div>
                 </button>
 
-                <input ref={inputRefSecond}  type="text" list="cities" className="search-form__input1" name="lacation-from"
-                 placeholder="Куда" />
+                <input 
+                ref={inputRefSecond}
+                value={categoryCityTo}
+                onChange={(ev) => onClickClearFrom(ev.target.value)}
+                type="text" list="cities"
+                className="search-form__input1"
+                name="lacation-from"
+                placeholder="Куда" />
 
-                <datalist id="cities">  
-                  {itemslastRout.map((el) => <option key={el.departure.from.city.name}>{el.departure.from.city.name}</option>)}
+                <datalist id="cities"> 
+                {cityes.map((el) => <option key={el.city}>{el.city}</option>)} 
+                  {/* {itemslastRout.map((el) => <option key={el.departure.from.city.name}>{el.departure.from.city.name}</option>)} */}
                 </datalist>
               </div>
 

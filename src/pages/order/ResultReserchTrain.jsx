@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import './ResultReserchTrain.css';
 
-import {filterTrain, setSort, setSearchValue} from '../../redux/slices/FilterTrainSlice';
+import {filterTrain, setSort, setSearchValueTo,} from '../../redux/slices/FilterTrainSlice';
 // import {setIndex, setTrains} from "../../redux/slices/trainSlice";
 // import TicketSeats from './ResultReserchTrainItems/TicketSeats'
 import Sort from './components/Sort';
@@ -16,21 +16,33 @@ const filteredTowns = (searchText, listOfCarts) => {
   // if (!searchText) {
   //   return listOfCars;
   // }
+  
   return listOfCarts.filter(({ departure }) =>
   departure.from.city.name.toLowerCase().includes(searchText.toLowerCase())
+  
   );
+  
 }
 
+const filteredTownsTo = (searchText, listOfCartsTo) => {
+  
+  return listOfCartsTo.filter(({ departure }) =>
+  departure.to.city.name.toLowerCase().includes(searchText.toLowerCase())
+  
+  );
+  
+}
 
 const ResultReserchTrain = () =>{
-
-  const filterTrain = useSelector( (state) => state.filter.categoryCityTo);
+  const filterTrainFrom = useSelector( (state) => state.filter.categoryCityFrom);
+  const filterTrainTo = useSelector( (state) => state.filter.categoryCityTo);
+  
  
   const  sortType = useSelector( (state) => state.filter.sort.sortProperty);
 
   const [itemsResultReserchTrain, setResultReserchTrain] = React.useState([]);
 
-  console.log('sortType', sortType, filterTrain)
+  console.log('sortType', sortType, filterTrainFrom)
   const dispatch = useDispatch();
 
 
@@ -53,19 +65,31 @@ React.useEffect(() =>{
 
 
 const data = itemsResultReserchTrain;
-console.log(data)
+ 
+console.log(data, filterTrainFrom)
 // const [valueReserchTrain, setValueReserchTrain] = React.useState(data);
+const [cityListTo, setCityListTo] = React.useState([]);
 const [cityList, setCityList] = React.useState([]);
 
 React.useEffect(() => {
   const Debounce = setTimeout(() => {
-    const filteredCity = filteredTowns(filterTrain, data);
-    console.log('filteredCity =>',filteredCity)
-    setCityList(filteredCity);
+    const filteredCity = filteredTowns(filterTrainFrom, data);
+    console.log('filteredCity =>', filteredCity)
+    setCityListTo(filteredCity);
   }, 300);
 
   return () => clearTimeout(Debounce);
-}, [filterTrain]);
+}, [filterTrainFrom]);
+
+React.useEffect(() => {
+  const Debounce = setTimeout(() => {
+    const filteredCityTo = filteredTownsTo(filterTrainTo, cityListTo);
+    console.log('filteredCityTo =>',filteredCityTo)
+    setCityList(filteredCityTo);
+  }, 300);
+
+  return () => clearTimeout(Debounce);
+}, [filterTrainTo]);
 
 
 // console.log(cityList, valueReserchTrain)
@@ -117,6 +141,7 @@ React.useEffect(() => {
             </div>
             
         <CartsTest cityList={cityList}/>
+        {/* <CartsTest cityList={console.log('cityList')}/> */}
            
           
       
