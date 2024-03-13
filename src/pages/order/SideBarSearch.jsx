@@ -1,4 +1,6 @@
 import React from 'react';
+import { useSelector, useDispatch} from 'react-redux';
+
 import ReactCompoundSlider from './components/ReactCompoundSlider';
 import ReactSliderDouble from './components/ReactSliderDouble';
 import './SideBarSearch.css';
@@ -7,6 +9,7 @@ import iconMinus from '../../assets/img/minus.png';
 import iconThere from '../../assets/img/there.png';
 import iconPlus from '../../assets/img/plus.png'
 import CardLastTicket from './CardLastTicket'
+import {setDateFrom} from '../../redux/slices/FilterTrainSlice';
 
 function SideBarSearch (progress) {
 
@@ -16,8 +19,8 @@ function SideBarSearch (progress) {
   const [ hide, setHide] = React.useState(false)
   const [ hideFrom, setHideFrom] = React.useState(false)
 
-  
-
+  const whereFromDate = useSelector( (state) => state.filter.fromDate);
+  const whereToDate = useSelector( (state) => state.filter.toDate);
     return (
       <div className="sidebar-left">
         <div className="sidebar-date">
@@ -28,7 +31,7 @@ function SideBarSearch (progress) {
 							type="date"
               placeholder='ДД.ММ.ГГ'
 							// onChange={handleWhereFromDate}
-							// value={props.form.whereFromDate}
+							value={whereFromDate}
 						/>
 					</div>
 
@@ -38,7 +41,7 @@ function SideBarSearch (progress) {
 							type="date"
               placeholder='ДД.ММ.ГГ'
 							// onChange={}
-							// value={}
+							value={whereToDate}
 						/>
 					</div>
 

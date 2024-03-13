@@ -1,9 +1,13 @@
 import React from 'react';
+import { CustomLink } from '../../../components/CustomLink';
 import { useSelector, useDispatch} from 'react-redux';
 
 import {filterTrain} from '../../../redux/slices/FilterTrainSlice'
 import '../ResultReserchTrain.css';
+import iconRubleSmall from '../../../assets/img/rubleIcon.png';
+import groupIcons from '../../../assets/img/group-icons.png';
 
+import TicketSeats from './TicketSeats'
 
 function conversionDate(time) {
     if (time) {
@@ -68,7 +72,45 @@ return (
           </div>
         </div>  
         
+        <div className='train-seats-all'>
+        {el.departure.have_fourth_class &&
+                  <TicketSeats name="Сидячий"
+									seats={el.available_seats_info.fourth}
+									price={el.departure.price_info.fourth.top_price} /> 
+        }
+        {el.departure.have_third_class &&
+                 <TicketSeats name="Плацкарт"
+									seats={el.available_seats_info.third}
+									price={el.departure.price_info.third.top_price} />
+        }
+        {el.departure.have_second_class &&
+                  <TicketSeats name="Купе"
+									seats={el.available_seats_info.second}
+									price={el.departure.price_info.second.top_price} /> 
+            }
        
+       {el.departure.have_first_class &&
+								<TicketSeats name="Люкс"
+									seats={el.available_seats_info.first}
+									price={el.departure.price_info.first.top_price} />
+							}
+
+            <div className="train-choice">
+            <div className='train-facilities'>
+            <span className={`${el.departure.have_wifi ? 'facilities-wifi-have' : 'train-facilities-wifi'}`}></span>
+            <span className={`${el.departure.is_express ? 'facilities-express-have' : 'train-facilities-express'}`}></span>
+            <span className={`${el.departure.have_air_conditioning ? 'facilities-coffee-have' : 'train-facilities-coffee'}`}></span>
+          </div>
+							{/* <img className="groupIcons" src={groupIcons} alt="wifi-rocket-cup" /> */}
+
+              <CustomLink to="/choicelocation">
+							<button className="train-choice-btn"
+								type="button"
+								onClick={console.log("btn-click")}>Выбрать места
+              </button>
+              </CustomLink>
+						</div>
+        </div>
 
         
         </div>

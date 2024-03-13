@@ -1,5 +1,6 @@
 import React from 'react';
 import iconRubleSmall from '../../../assets/img/rubleIcon.png';
+import './TicketSeats.css'
 
 const numSpc = (value) => {
 	let toSpace;
@@ -13,15 +14,15 @@ const numSpc = (value) => {
 }
 
 
-const TicketSeats = (props) => {
+const TicketSeats = (cityList) => {
   return (
     <div className="train-ticket">
-      <p className="ticket-class">{props.name}</p>
-      <p className="amount-seat">{props.seats}</p>
-      <p className="ticket-start-text">от</p>
-      <h5 className="seat-ticket-start-number">{numSpc(props.price)}</h5>
-      <img className="sign-rub" src={iconRubleSmall} alt="..."/>
-    </div>
+    <p className="ticket-class">{cityList.name}</p>
+    <p className="amount-seat">{cityList.seats}</p>
+    <p className="ticket-start-text">от</p>
+    <h5 className="seat-ticket-start-number">{numSpc(cityList.price)}</h5>
+    <img className="sign-rub" src={iconRubleSmall} alt="..."/>
+  </div>
   );
 };
 

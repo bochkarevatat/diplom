@@ -6,7 +6,7 @@ import './ResultReserchTrain.css';
 
 import {filterTrain, setSort, setSearchValueTo,} from '../../redux/slices/FilterTrainSlice';
 // import {setIndex, setTrains} from "../../redux/slices/trainSlice";
-// import TicketSeats from './ResultReserchTrainItems/TicketSeats'
+import TicketSeats from './ResultReserchTrainItems/TicketSeats'
 import Sort from './components/Sort';
 import CartsTest from './ResultReserchTrainItems/CartsTest'
 
@@ -143,7 +143,7 @@ React.useEffect(() => {
         <CartsTest cityList={cityList}/>
         {/* <CartsTest cityList={console.log('cityList')}/> */}
            
-          
+      
       
 
 

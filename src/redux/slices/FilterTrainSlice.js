@@ -27,12 +27,18 @@ reducers: {
         setSearchValueFrom(state, action) {
             state.categoryCityFrom = action.payload;
           },
+          setDateFrom(state, action) {
+            state.fromDate = action.payload;
+          },
+          setDateTo(state, action) {
+            state.toDate = action.payload;
+          },
         setSort(state, action){
            
             state.sort = action.payload;
         }
       }
 })
-export const { filterTrain, setSort, setSearchValueTo, setSearchValueFrom } = filterSlice.actions;
+export const { filterTrain, setSort, setSearchValueTo, setSearchValueFrom, setDateFrom, setDateTo } = filterSlice.actions;
 
 export default filterSlice.reducer;

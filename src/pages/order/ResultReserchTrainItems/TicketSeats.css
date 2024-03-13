@@ -1,6 +1,8 @@
 .train-ticket{
-    align-items: baseline;
+    
     display: flex;
+    align-items: baseline;
+    justify-content: space-around;
     height: 29px;
     margin-bottom: 29px;
     width: 234px;
@@ -10,6 +12,7 @@
     font-size: 16px;
     font-style: normal;
     line-height: 19px;
+    width: 73px;
 }
 .amount-seat{
     color: #ffa800;
@@ -38,6 +41,74 @@
     width: 60px;
 }
 .sign-rub{
-    height: 25px;
+    height: 15px;
+    width: 15px;
+}
+.train-seats-all{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: auto;
+    /* margin: 0 auto; */
+}
+.train-choice{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.groupIcons{
+    align-self: flex-end;
+    padding-right: 6%;
+    
+}
+.train-choice-btn{
+    background-color: #ffa800;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-family: Roboto-bold;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    height: 39px;
+    line-height: 28px;
+    margin: 18px 20px 23px 35px;
+    text-align: center;
+    width: 228px;
+}
+.facilities-wifi-have {
+    background: url('../../../assets/img/wi-fi.png') center/cover no-repeat;
+    height: 20px;
     width: 20px;
+}
+.facilities-express-have{
+    background: url('../../../assets/img/ракета.png') center/cover no-repeat;
+    height: 20px;
+    width: 20px;
+}
+.facilities-coffee-have{
+    background: url('../../../assets/img/coffee.svg') center/cover no-repeat;
+    height: 20px;
+    width: 20px;
+}
+.train-facilities-wifi{
+    background: url('../../../assets/img/wi-fi.png') center/cover no-repeat;
+    height: 20px;
+    width: 20px;
+    opacity: 0.5; 
+}
+.train-facilities-express{
+    background: url('../../../assets/img/ракета.png') center/cover no-repeat;
+    height: 20px;
+    width: 20px;
+    opacity: 0.5; 
+}
+.train-facilities-coffee{
+    background: url('../../../assets/img/coffee.svg') center/cover no-repeat;
+    height: 20px;
+    width: 20px;
+    opacity: 0.5; 
 }

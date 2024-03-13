@@ -3,7 +3,7 @@ import { CustomLink } from './CustomLink';
 import { useSelector, useDispatch} from 'react-redux';
 
 
-import {setSearchValueTo, setSearchValueFrom} from '../redux/slices/FilterTrainSlice';
+import {setSearchValueTo, setSearchValueFrom, setDateFrom, setDateTo} from '../redux/slices/FilterTrainSlice';
 
 import './components-style/components-style.css';
 import cityes from '../russia.json'
@@ -15,27 +15,53 @@ const ChoiceOfDirection = () => {
   const [itemslastRout, setitemslastRout] = React.useState([]);
   
   
-  const inputRefDate = React.useRef();
+  
 
   const dispatch = useDispatch();
   
   const categoryCityTo = useSelector((state) => state.filter.categoryCityTo)
   const categoryCityFrom = useSelector((state) => state.filter.categoryCityFrom)
+  const fromDate = useSelector((state) => state.filter.fromDate)
+  const toDate = useSelector((state) => state.filter.toDate)
 
   const inputRef = React.useRef(null);
   const inputRefSecond = React.useRef(null);
+  const inputRefDateFrom = React.useRef(null);
+  const inputRefDateTo = React.useRef(null);
+  console.log('fromDate =>', fromDate)
 
-  
-  const onClickClear = (obj) => {
+
+
+  const onClickDate = (obj) => {
     dispatch(setSearchValueFrom(obj));
     inputRef.current?.focus();   
   };
 
-  const onClickClearFrom = (obj) => {
+  const onClickDateFrom = (obj) => {
     dispatch(setSearchValueTo(obj));
     inputRefSecond.current?.focus();   
   };
 
+  // const onClickReplacement = () =>{
+  //     if(inputRef == categoryCityFrom ){
+  //       value=categoryCityFrom
+  //     }
+  //     else{
+
+  //     }
+  // }
+
+
+  const onClickTimeFrom = (obj) => {
+    dispatch(setDateFrom(obj));
+    inputRefDateFrom.current?.focus();   
+  };
+  const onClickTimeTo = (obj) => {
+    dispatch(setDateTo(obj));
+    inputRefDateTo.current?.focus();   
+  };
+
+  
   console.log('categoryCityTo==>', categoryCityTo, 'categoryCityFrom==>', categoryCityFrom);
 
 
@@ -82,25 +108,29 @@ const ChoiceOfDirection = () => {
                 <input 
                 ref={inputRef}
                 value={categoryCityFrom}
-                onChange={(ev) => onClickClear(ev.target.value)} type="search" list="cities"
+                onChange={(ev) => onClickDate (ev.target.value)} type="search" list="cities"
                  className="search-form__input1" name="lacation-from" placeholder="Откуда" />
                 
-                <button onClick={() => onClickClear('')} type="button" className="search-form__btn">
+                <button onClick={() => console.log("replace")} type="button" className="search-form__btn">
                     <div className={`${bg ? 'search-form__direction' : 'search-form__direction-change'}`} ></div>
                 </button>
 
                 <input 
                 ref={inputRefSecond}
                 value={categoryCityTo}
-                onChange={(ev) => onClickClearFrom(ev.target.value)}
-                type="text" list="cities"
+                onChange={(ev) => onClickDateFrom(ev.target.value)}
+                type="text" list="citiesTo"
                 className="search-form__input1"
                 name="lacation-from"
                 placeholder="Куда" />
 
                 <datalist id="cities"> 
-                {cityes.map((el) => <option key={el.city}>{el.city}</option>)} 
-                  {/* {itemslastRout.map((el) => <option key={el.departure.from.city.name}>{el.departure.from.city.name}</option>)} */}
+                {/* {cityes.map((el) => <option key={el.city}>{el.city}</option>)}  */}
+                  {itemslastRout.map((el) => <option key={el.departure.from.city.name}>{el.departure.from.city.name}</option>)}
+                </datalist>
+                <datalist id="citiesTo"> 
+                {/* {cityes.map((el) => <option key={el.city}>{el.city}</option>)}  */}
+                  {itemslastRout.map((el) => <option key={el.departure.to.city.name}>{el.departure.to.city.name}</option>)}
                 </datalist>
               </div>
 
@@ -111,17 +141,24 @@ const ChoiceOfDirection = () => {
             <div className="search-form__row">
               <span className="search-form__hint date">Дата</span>
               <div className="search-form__inputs">
-                <input ref={inputRefDate}  type="date" className="search-form__input2" name="lacation-from" placeholder="ДД/ММ/ГГ"/>
+                <input ref={inputRefDateFrom}
+                value={fromDate}
+                onChange={(ev) => onClickTimeFrom(ev.target.value)}
+                type="date" className="search-form__input2" name="lacation-from" placeholder="ДД/ММ/ГГ"/>
                 <span className="search-span"></span>
-                <input type="date" className="search-form__input2" name="lacation-from" />
+                <input type="date" className="search-form__input2" name="lacation-from"
+                ref={inputRefDateTo}
+                value={toDate}
+                onChange={(ev) => onClickTimeTo(ev.target.value)}
+                />
               </div>
             </div>
 
             <div className="search-form__button">
             {/* <button onClick={() => setBg(true)} className="search-form__button-submit" type='button'>Найти билеты</button> */}
             <CustomLink to="/about">
-              <button onClick={() => onClickClear()} className="search-form__button-submit" type='button'>Найти билеты</button>
-              
+              {/* <button onClick={() => onClickClear()} className="search-form__button-submit" type='button'>Найти билеты</button> */}
+               <button onClick={() => setBg(true)} className="search-form__button-submit" type='button'>Найти билеты</button>
               </CustomLink>
               
             </div>
