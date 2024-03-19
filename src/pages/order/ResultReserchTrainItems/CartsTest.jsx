@@ -1,8 +1,8 @@
 import React from 'react';
 import { CustomLink } from '../../../components/CustomLink';
-import { useSelector, useDispatch} from 'react-redux';
+// import { useSelector, useDispatch} from 'react-redux';
 
-import {filterTrain} from '../../../redux/slices/FilterTrainSlice'
+// import {filterTrain} from '../../../redux/slices/FilterTrainSlice'
 import '../ResultReserchTrain.css';
 import iconRubleSmall from '../../../assets/img/rubleIcon.png';
 import groupIcons from '../../../assets/img/group-icons.png';
@@ -27,7 +27,7 @@ const CartsTest = ({cityList,searchText}) => {
 
 return (
 
-    <div className="">
+    <div className="train">
             {cityList.map((el) => {
                 return (
                     <div className='train-name-items'>

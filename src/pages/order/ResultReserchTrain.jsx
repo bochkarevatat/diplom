@@ -36,37 +36,49 @@ const filteredTownsTo = (searchText, listOfCartsTo) => {
 const ResultReserchTrain = () =>{
   const filterTrainFrom = useSelector( (state) => state.filter.categoryCityFrom);
   const filterTrainTo = useSelector( (state) => state.filter.categoryCityTo);
+  const idfilterTrainFrom = useSelector((state) => state.filter.idCityFrom)
+  const idfilterTrainTo = useSelector((state) => state.filter.idCityTo)
   
  
   const  sortType = useSelector( (state) => state.filter.sort.sortProperty);
 
   const [itemsResultReserchTrain, setResultReserchTrain] = React.useState([]);
+  const [data, setData] = React.useState([]);
 
   console.log('sortType', sortType, filterTrainFrom)
   const dispatch = useDispatch();
 
 
 
-
+console.log(idfilterTrainFrom, idfilterTrainTo, '<= idfilterTrainFrom')
 // Пробую наладить поиск по инпуту, тест, начало
 
-const getitemsResultReserchTrain = () =>{
-  fetch(`https://students.netoservices.ru/fe-diplom/routes/last`)
+React.useEffect(() =>{
+  fetch(`https://students.netoservices.ru/fe-diplom/routes?from_city_id=${idfilterTrainFrom}&to_city_id=${idfilterTrainTo}`)
     .then((res) => {return res.json()}).
     then(data => {
       setResultReserchTrain(data)
+      console.log(data, 'data')
     })
-}
+  }, [])
 
 React.useEffect(() =>{
-  getitemsResultReserchTrain()
-}, [])
+
+  const Debounce = setTimeout(() => {
+    setData(itemsResultReserchTrain.items);
+  }, 1000);
+
+  return () => clearTimeout(Debounce);
+  
+}, [itemsResultReserchTrain])
 
 
 
-const data = itemsResultReserchTrain;
+
  
-console.log(data, filterTrainFrom)
+console.log(data, 'data')
+
+
 // const [valueReserchTrain, setValueReserchTrain] = React.useState(data);
 const [cityListTo, setCityListTo] = React.useState([]);
 const [cityList, setCityList] = React.useState([]);
@@ -96,7 +108,7 @@ React.useEffect(() => {
   // Пробую наладить поиск по инпуту, тест, конец
   
 
-  const objectLength = Object.keys(cityList).length;
+  const objectLength = Object.keys(data).length;
 
   // const clicConsole = ()=>{
   //   console.log("btn")
@@ -140,7 +152,7 @@ React.useEffect(() => {
             
             </div>
             
-        <CartsTest cityList={cityList}/>
+        <CartsTest cityList={data}/>
         {/* <CartsTest cityList={console.log('cityList')}/> */}
            
       

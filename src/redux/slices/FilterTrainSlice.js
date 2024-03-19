@@ -11,6 +11,8 @@ const initialState = {
     toDate: '',
     categoryCityfrom: null,
     categoryCityTo: null,
+    idCityFrom: null,
+    idCityTo: null,
 }
 
 const filterSlice = createSlice({
@@ -33,12 +35,18 @@ reducers: {
           setDateTo(state, action) {
             state.toDate = action.payload;
           },
+          setIdFrom(state, action) {
+            state.idCityFrom = action.payload;
+          },
+          setIdTo(state, action) {
+            state.idCityTo = action.payload;
+          },
         setSort(state, action){
            
             state.sort = action.payload;
         }
       }
 })
-export const { filterTrain, setSort, setSearchValueTo, setSearchValueFrom, setDateFrom, setDateTo } = filterSlice.actions;
+export const { filterTrain, setSort, setSearchValueTo, setSearchValueFrom, setDateFrom, setDateTo, setIdFrom, setIdTo } = filterSlice.actions;
 
 export default filterSlice.reducer;
