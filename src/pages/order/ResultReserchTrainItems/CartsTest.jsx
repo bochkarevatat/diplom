@@ -36,7 +36,7 @@ return (
           
          
          
-          <h5 className='train-name-text'>{el.departure.duration}</h5>
+          <h5 className='train-name-text'>{el.departure.train.name}</h5>
           <div className='train-name-direction'>
             <p className='train-name-city'>&#8594;{el.departure.from.city.name}</p>
             <p className='train-name-city'>&#8594;{el.departure.to.city.name}</p>
@@ -69,7 +69,33 @@ return (
                 <p className='direction-station'>вокзал</p>
               </div>
             </div>
+            
           </div>
+
+          <div className='train-direction-route'>
+            <div className='train-direction-from'>
+              <div className='direction-time'>{conversionDate(el.arrival.from.datetime)}</div>
+              <div className='direction-from'>
+                <h5 className='direction-city'>{el.arrival.from.city.name}</h5>
+                <p className='direction-station'>{el.arrival.from.railway_station_name}</p>
+                <p className='direction-station'>вокзал</p>
+              </div>
+            </div>
+            <div className='train-direction-time'>
+              <p className='travel-time'>{conversionDate(el.arrival.duration)}</p>
+              <span className='direction-arrow-from'></span>
+            </div>
+            <div className='train-direction-to'>
+              <div className='direction-time'>{conversionDate(el.arrival.to.datetime)}</div>
+              <div className='direction-to'>
+                <h5 className='direction-city'>{el.arrival.to.city.name}</h5>
+                <p className='direction-station'>{el.arrival.to.railway_station_name}</p>
+                <p className='direction-station'>вокзал</p>
+              </div>
+            </div>
+            
+          </div>
+
         </div>  
         
         <div className='train-seats-all'>

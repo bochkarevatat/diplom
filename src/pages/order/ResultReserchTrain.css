@@ -127,6 +127,14 @@
   background-image: url('img/toVector.png');
 }
 
+.direction-arrow-from {
+  display: flex;
+  
+  margin: 10px auto;
+  width: 30px;
+  height: 20px;
+  background-image: url('img/fromVector.png');
+}
 /* tickets-seats */
 
 .train-tickets {

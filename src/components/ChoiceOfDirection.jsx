@@ -30,7 +30,7 @@ const ChoiceOfDirection = () => {
   const inputRefSecond = React.useRef(null);
   const inputRefDateFrom = React.useRef(null);
   const inputRefDateTo = React.useRef(null);
-  
+  const [isSent, setIsSent] = React.useState(false);
 
 
 
@@ -165,12 +165,13 @@ const ChoiceOfDirection = () => {
 
         <div className={`${bg ? 'main-background' : 'header__bg'}`}> 
           <div className={`${bg ? 'container-header-reserch' : 'container-header'}`}> 
-            <form className= {`${bg ? 'header__form' : 'search-form'}`}>
 
 
+
+            <form 
+            className= {`${bg ? 'header__form' : 'search-form'}`}>
               <div className="search-form__row">
               <span className="search-form__hint">Направление</span>
-
               <div className="search-form__inputs">
                 <input 
                 ref={inputRef}
@@ -225,7 +226,7 @@ const ChoiceOfDirection = () => {
             <div className="search-form__button">
             {/* <button onClick={() => setBg(true)} className="search-form__button-submit" type='button'>Найти билеты</button> */}
             <CustomLink to="/about">
-              <button onClick={() => setBg(true)} className="search-form__button-submit" type='button'>Найти билеты</button>
+              <button onClick={() => setBg(true)} className="search-form__button-submit" type='submit'>Найти билеты</button>
                {/* <button onClick={() => onClickDate()} className="search-form__button-submit" type='button'>Найти билеты</button> */}
               </CustomLink>
               
