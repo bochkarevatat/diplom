@@ -67,7 +67,8 @@ React.useEffect(() =>{
       setResultReserchTrain(data)
       // console.log(data, 'data')
     })
-  }, [])
+  }, [toDate]) // если я сюда ставлю data или как сейчас
+  // то все работает, но  вводить вначале нужно дату и идет постоянное обнавление
 
 React.useEffect(() =>{
 

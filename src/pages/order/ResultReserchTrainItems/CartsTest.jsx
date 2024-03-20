@@ -40,7 +40,7 @@ return (
           <div className='train-name-direction'>
             <p className='train-name-city'>&#8594;{el.departure.from.city.name}</p>
             <p className='train-name-city'>&#8594;{el.departure.to.city.name}</p>
-            <p className='train-name-city'>&#171;{el.departure.train.name}&#187;</p>
+            <p className='train-name-city'>&#171;{el.arrival.train.name}&#187;</p>
           </div>
           
          
