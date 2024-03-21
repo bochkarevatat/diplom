@@ -3,7 +3,7 @@ import { CustomLink } from './CustomLink';
 import { useSelector, useDispatch} from 'react-redux';
 
 
-import {setSearchValueTo, setSearchValueFrom, setDateFrom, setDateTo, setIdFrom, setIdTo} from '../redux/slices/FilterTrainSlice';
+import {setSearchValueTo, setSearchValueFrom, setDateFrom, setDateTo, setIdFrom, setIdTo,setBtn} from '../redux/slices/FilterTrainSlice';
 import './components-style/components-style.css';
 // import cityes from '../russia.json'
 
@@ -25,6 +25,8 @@ const ChoiceOfDirection = () => {
   const toDate = useSelector((state) => state.filter.toDate)
   const idCityFrom = useSelector((state) => state.filter.idCityFrom)
   const idCityTo = useSelector((state) => state.filter.idCityTo)
+
+  const callSetBtn = useSelector((state) => state.filter.callSetBtn)
 
   const inputRef = React.useRef(null);
   const inputRefSecond = React.useRef(null);
@@ -120,6 +122,15 @@ const ChoiceOfDirection = () => {
   // console.log('inputRefDateTo.current?', inputRef.current)
   
   
+  const onClickButton = ()=>{
+    setBg(true);
+    
+    dispatch(setBtn(true));
+    console.log('aga', callSetBtn) 
+    if(callSetBtn==true){
+      dispatch(setBtn(false));
+    }
+  }
 
 // console.log('arrCityes =>', arrCityes)
 // console.log('arrCityes =>', arrCityes[0])
@@ -226,7 +237,7 @@ const ChoiceOfDirection = () => {
             <div className="search-form__button">
             {/* <button onClick={() => setBg(true)} className="search-form__button-submit" type='button'>Найти билеты</button> */}
             <CustomLink to="/about">
-              <button onClick={() => setBg(true)} className="search-form__button-submit" type='submit'>Найти билеты</button>
+              <button onClick={() => onClickButton()} className="search-form__button-submit" type='submit'>Найти билеты</button>
                {/* <button onClick={() => onClickDate()} className="search-form__button-submit" type='button'>Найти билеты</button> */}
               </CustomLink>
               

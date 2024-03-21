@@ -132,7 +132,7 @@ return (
               <CustomLink to="/choicelocation">
 							<button className="train-choice-btn"
 								type="button"
-								onClick={console.log("btn-click")}>Выбрать места
+								onClick={() => console.log("btn-click")}>Выбрать места
               </button>
               </CustomLink>
 						</div>

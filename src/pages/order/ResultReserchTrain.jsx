@@ -41,20 +41,18 @@ const ResultReserchTrain = () =>{
   const fromDate = useSelector((state) => state.filter.fromDate)
   const toDate = useSelector((state) => state.filter.toDate)
  
-  const  sortType = useSelector( (state) => state.filter.sort.sortProperty);
+  const callSetBtn = useSelector((state) => state.filter.callSetBtn)
+  const sortType = useSelector( (state) => state.filter.sort.sortProperty);
 
   const [itemsResultReserchTrain, setResultReserchTrain] = React.useState([]);
   const [data, setData] = React.useState([]);
-  const inputFromDate = Date.parse(fromDate)/1000;
-  const inputToDate = Date.parse(toDate)/1000;
+  // const inputFromDate = Date.parse(fromDate)/1000;
+  // const inputToDate = Date.parse(toDate)/1000;
 
-  console.log( fromDate, inputFromDate, inputToDate)
-  const dispatch = useDispatch();
+  // console.log( fromDate, inputFromDate, inputToDate)
+  // const dispatch = useDispatch();
 
-  // function conversionDate(time){
-  //   t
-  // }
-
+console.log(sortType, '<= sortType')
 // console.log(idfilterTrainFrom, idfilterTrainTo, '<= idfilterTrainFrom')
 //&date_start=2024-03-20&start_departure_hour_from=0&start_departure_hour_to=24&start_arrival_hour_from=0&start_arrival_hour_to=24%20%20%20&price_from=0&sort=date&limit=5&offset=0&date_end=2024-03-28&end_departure_hour_from=0&end_departure_hour_to=24&end_arrival_hour_from=0&end_arrival_hour_to=24
 // &date_start=${inputFromDate}&date_end=${inputToDate}
@@ -67,8 +65,8 @@ React.useEffect(() =>{
       setResultReserchTrain(data)
       // console.log(data, 'data')
     })
-  }, [toDate]) // если я сюда ставлю data или как сейчас
-  // то все работает, но  вводить вначале нужно дату и идет постоянное обнавление
+  }, [callSetBtn]) // если я сюда ставлю data или как сейчас
+  // то все работает, но  вводить вначале нужно дату и идет постоянное обновление
 
 React.useEffect(() =>{
 
@@ -88,28 +86,28 @@ console.log(data, 'data')
 
 
 // const [valueReserchTrain, setValueReserchTrain] = React.useState(data);
-const [cityListTo, setCityListTo] = React.useState([]);
-const [cityList, setCityList] = React.useState([]);
+// const [cityListTo, setCityListTo] = React.useState([]);
+// const [cityList, setCityList] = React.useState([]);
 
-React.useEffect(() => {
-  const Debounce = setTimeout(() => {
-    const filteredCity = filteredTowns(filterTrainFrom, data);
-    console.log('filteredCity =>', filteredCity)
-    setCityListTo(filteredCity);
-  }, 300);
+// React.useEffect(() => {
+//   const Debounce = setTimeout(() => {
+//     const filteredCity = filteredTowns(filterTrainFrom, data);
+//     console.log('filteredCity =>', filteredCity)
+//     setCityListTo(filteredCity);
+//   }, 300);
 
-  return () => clearTimeout(Debounce);
-}, [filterTrainFrom]);
+//   return () => clearTimeout(Debounce);
+// }, [filterTrainFrom]);
 
-React.useEffect(() => {
-  const Debounce = setTimeout(() => {
-    const filteredCityTo = filteredTownsTo(filterTrainTo, cityListTo);
-    console.log('filteredCityTo =>',filteredCityTo)
-    setCityList(filteredCityTo);
-  }, 300);
+// React.useEffect(() => {
+//   const Debounce = setTimeout(() => {
+//     const filteredCityTo = filteredTownsTo(filterTrainTo, cityListTo);
+//     console.log('filteredCityTo =>',filteredCityTo)
+//     setCityList(filteredCityTo);
+//   }, 300);
 
-  return () => clearTimeout(Debounce);
-}, [filterTrainTo]);
+//   return () => clearTimeout(Debounce);
+// }, [filterTrainTo]);
 
 
 // console.log(cityList, valueReserchTrain)
@@ -134,7 +132,7 @@ React.useEffect(() => {
                 <div className='train-route-header_right'>
                 <Sort value={sortType}/>
                  <div className='sort-amount'>
-                  <span className=''>показывать по:</span>
+                  <span className=''>показывать по:<span>{amounts}</span></span>
                   </div> 
                 </div>
             </div>
