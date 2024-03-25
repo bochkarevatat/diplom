@@ -8,7 +8,7 @@ import iconRubleSmall from '../../../assets/img/rubleIcon.png';
 import groupIcons from '../../../assets/img/group-icons.png';
 
 import TicketSeats from './TicketSeats'
-
+import TrainPopoverItem from './TicketSeats'
 function conversionDate(time) {
     if (time) {
       return new Date(time * 1000).toLocaleTimeString('ru', {
@@ -23,7 +23,7 @@ function conversionDate(time) {
 const CartsTest = ({cityList,searchText}) => {
 
 
-    
+  const [train, setTrain] = React.useState([]); 
 
 return (
 
@@ -102,25 +102,43 @@ return (
         {el.departure.have_fourth_class &&
                   <TicketSeats name="Сидячий"
 									seats={el.available_seats_info.fourth}
-									price={el.departure.price_info.fourth.top_price} /> 
+									price={el.departure.price_info.fourth.top_price}
+                  priceDep={el.departure.price_info.fourth}
+                  /> 
+                  
         }
         {el.departure.have_third_class &&
                  <TicketSeats name="Плацкарт"
 									seats={el.available_seats_info.third}
-									price={el.departure.price_info.third.top_price} />
+									price={el.departure.price_info.third.top_price}
+                  priceDep={el.departure.price_info.third}
+                 
+                   />
+                  
         }
         {el.departure.have_second_class &&
                   <TicketSeats name="Купе"
 									seats={el.available_seats_info.second}
-									price={el.departure.price_info.second.top_price} /> 
+									price={el.departure.price_info.second.top_price} 
+                  priceDep={el.departure.price_info.second}/> 
             }
        
        {el.departure.have_first_class &&
 								<TicketSeats name="Люкс"
 									seats={el.available_seats_info.first}
-									price={el.departure.price_info.first.top_price} />
+									price={el.departure.price_info.first.top_price} 
+                  priceDep={el.departure.price_info.third}/>
 							}
 
+        <div className='train-tickets'>
+            <div className='train-tickets-options'>
+        
+           {/* <TrainPopoverItem
+               /> 
+             */}
+
+          </div>
+        </div>
             <div className="train-choice">
             <div className='train-facilities'>
             <span className={`${el.departure.have_wifi ? 'facilities-wifi-have' : 'train-facilities-wifi'}`}></span>

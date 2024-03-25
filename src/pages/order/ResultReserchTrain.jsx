@@ -3,7 +3,7 @@ import { useSelector, useDispatch} from 'react-redux';
 import axios from 'axios';
 
 import './ResultReserchTrain.css';
-
+import dataTest from '../../russia.json'
 import {filterTrain, setSort, setSearchValueTo,} from '../../redux/slices/FilterTrainSlice';
 // import {setIndex, setTrains} from "../../redux/slices/trainSlice";
 import TicketSeats from './ResultReserchTrainItems/TicketSeats'
@@ -59,24 +59,26 @@ console.log(sortType, '<= sortType')
 // Пробую наладить поиск по инпуту, тест, начало
 
 React.useEffect(() =>{
-  fetch(`https://students.netoservices.ru/fe-diplom/routes?from_city_id=${idfilterTrainFrom}&to_city_id=${idfilterTrainTo}&date_start=${fromDate}&date_end=${toDate}`)
+  fetch(`https://students.netoservices.ru/fe-diplom/routes?from_city_id=${idfilterTrainFrom}&to_city_id=${idfilterTrainTo}&date_start=${fromDate}&sort=${sortType}&date_end=${toDate}`)
     .then((res) => {return res.json()}).
     then(data => {
       setResultReserchTrain(data)
-      // console.log(data, 'data')
+      
     })
-  }, [callSetBtn]) // если я сюда ставлю data или как сейчас
+  }, [callSetBtn]) 
+  // если я сюда ставлю data или как сейчас
   // то все работает, но  вводить вначале нужно дату и идет постоянное обновление
 
 React.useEffect(() =>{
 
   const Debounce = setTimeout(() => {
     setData(itemsResultReserchTrain.items);
+    // setData(dataTest.items);
   }, 1000);
 
   return () => clearTimeout(Debounce);
   
-}, [itemsResultReserchTrain])
+}, [itemsResultReserchTrain]) //itemsResultReserchTrain
 
 
 

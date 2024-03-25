@@ -1,11 +1,20 @@
 .train-ticket{
-    
     display: flex;
     align-items: baseline;
     justify-content: space-around;
     height: 29px;
     margin-bottom: 29px;
     width: 234px;
+}
+.train-ticket:hover .train-ticket-hidden{
+    display: inherit;
+}
+.train-ticket-hidden{
+    /* width: 100px;
+    height: 100px;
+    background-color: #ffa800;
+    display: none; */
+   
 }
 .ticket-class{
     font-family: Roboto;
@@ -40,7 +49,7 @@
     text-align: center;
     width: 60px;
 }
-.sign-rub{
+.sign-rub-sm{
     height: 15px;
     width: 15px;
 }

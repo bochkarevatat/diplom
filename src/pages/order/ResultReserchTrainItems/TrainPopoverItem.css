@@ -1,0 +1,28 @@
+.popover-inf{
+  width: 200px;
+  /* background-color: rgb(236, 238, 239); */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.popover-name{
+  /* margin-left: 35px; */
+  flex-grow: 1;
+}
+.popover-part-right{
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  flex-grow: 1;
+  align-items: center;
+}
+.popover-right-price{
+  margin-left: 35px; 
+  font-size: 22px;
+  font-weight: 900;
+}
+.iconRubleSmall{
+  height: 20px;
+  width: 20px;
+  margin-left: 15px;
+}
