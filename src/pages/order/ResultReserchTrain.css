@@ -328,7 +328,7 @@
 }
 .train-route-header_right{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 .train-route-header_right span{
   margin-left: 15px;

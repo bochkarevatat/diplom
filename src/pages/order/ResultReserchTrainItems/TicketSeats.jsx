@@ -23,7 +23,7 @@ const TicketSeats = (cityList) => {
     <TrainPopoverItem type={cityList.name} priceDep={cityList.priceDep} />
   );
 
-    console.log(popoverContent)
+    // console.log(popoverContent)
   return (
     <Popover
       // overlayClassName="left-part"

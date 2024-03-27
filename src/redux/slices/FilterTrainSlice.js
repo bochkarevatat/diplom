@@ -14,6 +14,7 @@ const initialState = {
     idCityFrom: null,
     idCityTo: null,
     callSetBtn: false,
+    filterN:'',
 }
 
 const filterSlice = createSlice({
@@ -48,9 +49,12 @@ reducers: {
         setSort(state, action){
            
             state.sort = action.payload;
-        }
+        },
+        setFilterN(state, action){  
+          state.filterN = action.payload;
+      }
       }
 })
-export const { filterTrain, setSort, setSearchValueTo, setSearchValueFrom, setDateFrom, setDateTo, setIdFrom, setIdTo, setBtn } = filterSlice.actions;
+export const { filterTrain, setSort, setFilterN, setSearchValueTo, setSearchValueFrom, setDateFrom, setDateTo, setIdFrom, setIdTo, setBtn } = filterSlice.actions;
 
 export default filterSlice.reducer;

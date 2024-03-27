@@ -10,7 +10,7 @@ const Sort = () => {
   const sort = useSelector((state) => state.filter.sort)
     const [open, setOpen] = React.useState(false);
     const list = [
-        { name: 'времени', sortProperty: 'datetime' },
+        { name: 'времени', sortProperty: 'date' },
         { name: 'стоимости', sortProperty: 'min_price' },
         { name: 'длительности', sortProperty: 'duration' },
       ];
@@ -26,7 +26,7 @@ const Sort = () => {
         <div className="sort">
       <div className="sort__label">
         
-        <b>Сортировать по:</b>
+        <b>сортировать по:</b>
         <span onClick={() => setOpen(!open)}>{sort.name}</span>
       </div>
       {open && (

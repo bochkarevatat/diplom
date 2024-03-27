@@ -8,6 +8,7 @@ import {filterTrain, setSort, setSearchValueTo,} from '../../redux/slices/Filter
 // import {setIndex, setTrains} from "../../redux/slices/trainSlice";
 import TicketSeats from './ResultReserchTrainItems/TicketSeats'
 import Sort from './components/Sort';
+import Filter from './components/Filter'
 import CartsTest from './ResultReserchTrainItems/CartsTest'
 
 
@@ -43,7 +44,7 @@ const ResultReserchTrain = () =>{
  
   const callSetBtn = useSelector((state) => state.filter.callSetBtn)
   const sortType = useSelector( (state) => state.filter.sort.sortProperty);
-
+  const filter = useSelector((state) => state.filter.filterN);
   const [itemsResultReserchTrain, setResultReserchTrain] = React.useState([]);
   const [data, setData] = React.useState([]);
   // const inputFromDate = Date.parse(fromDate)/1000;
@@ -59,13 +60,13 @@ console.log(sortType, '<= sortType')
 // Пробую наладить поиск по инпуту, тест, начало
 
 React.useEffect(() =>{
-  fetch(`https://students.netoservices.ru/fe-diplom/routes?from_city_id=${idfilterTrainFrom}&to_city_id=${idfilterTrainTo}&date_start=${fromDate}&sort=${sortType}&date_end=${toDate}`)
-    .then((res) => {return res.json()}).
-    then(data => {
+  fetch(`https://students.netoservices.ru/fe-diplom/routes?from_city_id=${idfilterTrainFrom}&to_city_id=${idfilterTrainTo}&date_start=${fromDate}&date_end=${toDate}&sort=${sortType}&limit=${filter}`)
+    .then((res) => {return res.json()})
+    .then(data => {
       setResultReserchTrain(data)
       
     })
-  }, [callSetBtn]) 
+  }, [callSetBtn, sortType, filter]) 
   // если я сюда ставлю data или как сейчас
   // то все работает, но  вводить вначале нужно дату и идет постоянное обновление
 
@@ -87,34 +88,7 @@ React.useEffect(() =>{
 console.log(data, 'data')
 
 
-// const [valueReserchTrain, setValueReserchTrain] = React.useState(data);
-// const [cityListTo, setCityListTo] = React.useState([]);
-// const [cityList, setCityList] = React.useState([]);
 
-// React.useEffect(() => {
-//   const Debounce = setTimeout(() => {
-//     const filteredCity = filteredTowns(filterTrainFrom, data);
-//     console.log('filteredCity =>', filteredCity)
-//     setCityListTo(filteredCity);
-//   }, 300);
-
-//   return () => clearTimeout(Debounce);
-// }, [filterTrainFrom]);
-
-// React.useEffect(() => {
-//   const Debounce = setTimeout(() => {
-//     const filteredCityTo = filteredTownsTo(filterTrainTo, cityListTo);
-//     console.log('filteredCityTo =>',filteredCityTo)
-//     setCityList(filteredCityTo);
-//   }, 300);
-
-//   return () => clearTimeout(Debounce);
-// }, [filterTrainTo]);
-
-
-// console.log(cityList, valueReserchTrain)
-  // Пробую наладить поиск по инпуту, тест, конец
-  
 
   const objectLength = Object.keys(data).length;
 
@@ -133,9 +107,7 @@ console.log(data, 'data')
                 </div>
                 <div className='train-route-header_right'>
                 <Sort value={sortType}/>
-                 <div className='sort-amount'>
-                  <span className=''>показывать по:<span>{amounts}</span></span>
-                  </div> 
+                <Filter/>
                 </div>
             </div>
             

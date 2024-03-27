@@ -1,0 +1,26 @@
+.filter_label {
+    margin-left: 10px;
+    
+  }
+
+  .filter-choice{
+    display: flex;
+   
+  }
+  .activeF{
+   font-weight: 900;
+  }
+  .filter__popup{
+    display: flex;
+    align-items: flex-start;
+    margin-left: 10px;
+  }
+  .filter-choice a{
+    margin-left: 5px;
+    text-decoration: none;
+  }
+  .filter-choice:hover a{
+    margin-left: 5px;
+    text-decoration: none;
+    cursor: pointer;
+  }
