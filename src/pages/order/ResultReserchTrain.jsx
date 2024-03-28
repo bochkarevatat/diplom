@@ -1,42 +1,43 @@
 import React from 'react';
 import { useSelector, useDispatch} from 'react-redux';
-import axios from 'axios';
+// import axios from 'axios';
 
 import './ResultReserchTrain.css';
 import dataTest from '../../russia.json'
-import {filterTrain, setSort, setSearchValueTo,} from '../../redux/slices/FilterTrainSlice';
+import {filterTrain, setSort, setSearchValueTo, setCurrentPage} from '../../redux/slices/FilterTrainSlice';
 // import {setIndex, setTrains} from "../../redux/slices/trainSlice";
 import TicketSeats from './ResultReserchTrainItems/TicketSeats'
 import Sort from './components/Sort';
-import Filter from './components/Filter'
-import CartsTest from './ResultReserchTrainItems/CartsTest'
+import Filter from './components/Filter';
+import CartsTest from './ResultReserchTrainItems/CartsTest';
+import Pagination from './components/Pagination';
+import { clearStepAll, currentStepOne } from '../../redux/sliceProgressLine';
 
 
+// const filteredTowns = (searchText, listOfCarts) => {
+//   // if (!searchText) {
+//   //   return listOfCars;
+//   // }
+  
+//   return listOfCarts.filter(({ departure }) =>
+//   departure.from.city.name.toLowerCase().includes(searchText.toLowerCase())
+  
+//   );
+  
+// }
 
-const filteredTowns = (searchText, listOfCarts) => {
-  // if (!searchText) {
-  //   return listOfCars;
-  // }
+// const filteredTownsTo = (searchText, listOfCartsTo) => {
   
-  return listOfCarts.filter(({ departure }) =>
-  departure.from.city.name.toLowerCase().includes(searchText.toLowerCase())
+//   return listOfCartsTo.filter(({ departure }) =>
+//   departure.to.city.name.toLowerCase().includes(searchText.toLowerCase())
   
-  );
+//   );
   
-}
-
-const filteredTownsTo = (searchText, listOfCartsTo) => {
-  
-  return listOfCartsTo.filter(({ departure }) =>
-  departure.to.city.name.toLowerCase().includes(searchText.toLowerCase())
-  
-  );
-  
-}
+// }
 
 const ResultReserchTrain = () =>{
-  const filterTrainFrom = useSelector( (state) => state.filter.categoryCityFrom);
-  const filterTrainTo = useSelector( (state) => state.filter.categoryCityTo);
+  // const filterTrainFrom = useSelector( (state) => state.filter.categoryCityFrom);
+  // const filterTrainTo = useSelector( (state) => state.filter.categoryCityTo);
   const idfilterTrainFrom = useSelector((state) => state.filter.idCityFrom)
   const idfilterTrainTo = useSelector((state) => state.filter.idCityTo)
   const fromDate = useSelector((state) => state.filter.fromDate)
@@ -44,20 +45,15 @@ const ResultReserchTrain = () =>{
  
   const callSetBtn = useSelector((state) => state.filter.callSetBtn)
   const sortType = useSelector( (state) => state.filter.sort.sortProperty);
+  // const currentPage = useSelector( (state) => state.filter.currentPage);
   const filter = useSelector((state) => state.filter.filterN);
   const [itemsResultReserchTrain, setResultReserchTrain] = React.useState([]);
   const [data, setData] = React.useState([]);
-  // const inputFromDate = Date.parse(fromDate)/1000;
-  // const inputToDate = Date.parse(toDate)/1000;
+  const [objectLength, setObjectLength] = React.useState(0);
+  const dispatch = useDispatch();
 
-  // console.log( fromDate, inputFromDate, inputToDate)
-  // const dispatch = useDispatch();
+  
 
-console.log(sortType, '<= sortType')
-// console.log(idfilterTrainFrom, idfilterTrainTo, '<= idfilterTrainFrom')
-//&date_start=2024-03-20&start_departure_hour_from=0&start_departure_hour_to=24&start_arrival_hour_from=0&start_arrival_hour_to=24%20%20%20&price_from=0&sort=date&limit=5&offset=0&date_end=2024-03-28&end_departure_hour_from=0&end_departure_hour_to=24&end_arrival_hour_from=0&end_arrival_hour_to=24
-// &date_start=${inputFromDate}&date_end=${inputToDate}
-// Пробую наладить поиск по инпуту, тест, начало
 
 React.useEffect(() =>{
   fetch(`https://students.netoservices.ru/fe-diplom/routes?from_city_id=${idfilterTrainFrom}&to_city_id=${idfilterTrainTo}&date_start=${fromDate}&date_end=${toDate}&sort=${sortType}&limit=${filter}`)
@@ -67,8 +63,7 @@ React.useEffect(() =>{
       
     })
   }, [callSetBtn, sortType, filter]) 
-  // если я сюда ставлю data или как сейчас
-  // то все работает, но  вводить вначале нужно дату и идет постоянное обновление
+  
 
 React.useEffect(() =>{
 
@@ -82,28 +77,51 @@ React.useEffect(() =>{
 }, [itemsResultReserchTrain]) //itemsResultReserchTrain
 
 
+React.useEffect(() =>{
 
+  const Debounce = setTimeout(() => {
+    setObjectLength(data.length);
+  }, 1000);
+
+  return () => clearTimeout(Debounce);
+  
+}, [data]) 
 
  
-console.log(data, 'data')
+// const onChangePage = (page) => {
+  //   dispatch(setCurrentPage(page));
+  // };
+
+  // React.useEffect(() => {
+  //   if (!data) {
+  //     dispatch(currentStepOne());
+  //   }  
+  // }, [dispatch, data]);
 
 
 
 
-  const objectLength = Object.keys(data).length;
+  // const objectLength = Object.keys(data).length;
 
  
-  const amounts = [5, 10, 20];
+
 
 
  
     return (
         <div className='train-route'>
-
+              {(!data || data?.length < 1)  && (
+                      <div className="no-result">
+                        Поезда не найдены. Выберите другую дату или маршрут
+                      </div>
+              )}
           
             <div className='train-route-header'>
+           
+      
                 <div className='train-route-header_left'>
                 <span className='train-route-serch'>найдено <span>{objectLength}</span></span>
+                
                 </div>
                 <div className='train-route-header_right'>
                 <Sort value={sortType}/>
@@ -112,6 +130,10 @@ console.log(data, 'data')
             </div>
             
         <CartsTest cityList={data}/>
+      
+       {/* <Pagination currentPage={1} onChangePage={() =>console.log("pagination")} /> */}
+      
+       
       </div>
 
 

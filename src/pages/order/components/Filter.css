@@ -7,6 +7,9 @@
     display: flex;
    
   }
+  .filter-title{
+    color: gray;
+  }
   .activeF{
    font-weight: 900;
   }

@@ -5,7 +5,7 @@
 .sort__label b {
     margin-right: 8px;
 }
-.sort__label span {
+.sort-title-active {
     border-bottom: 1px dashed #fe5f1e;
     color: #fe5f1e;
     cursor: pointer;
@@ -40,4 +40,6 @@
           font-weight: bold;
           color: orange;
         }
-      
+      .sort-title{
+        color: gray;
+      }

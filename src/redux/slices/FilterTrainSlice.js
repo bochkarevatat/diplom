@@ -7,6 +7,7 @@ const initialState = {
         name: 'времени',
         sortProperty: 'datetime' 
     },
+    currentPage: 1,
     fromDate: '',
     toDate: '',
     categoryCityfrom: null,
@@ -14,7 +15,7 @@ const initialState = {
     idCityFrom: null,
     idCityTo: null,
     callSetBtn: false,
-    filterN:'',
+    filterN: 5,
 }
 
 const filterSlice = createSlice({
@@ -52,9 +53,12 @@ reducers: {
         },
         setFilterN(state, action){  
           state.filterN = action.payload;
-      }
+      },
+      setCurrentPage(state, action){  
+        state.currentPage = action.payload;
+    }
       }
 })
-export const { filterTrain, setSort, setFilterN, setSearchValueTo, setSearchValueFrom, setDateFrom, setDateTo, setIdFrom, setIdTo, setBtn } = filterSlice.actions;
+export const { filterTrain, setSort, setFilterN, setCurrentPage, setSearchValueTo, setSearchValueFrom, setDateFrom, setDateTo, setIdFrom, setIdTo, setBtn } = filterSlice.actions;
 
 export default filterSlice.reducer;

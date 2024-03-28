@@ -127,7 +127,7 @@ return (
 								<TicketSeats name="Люкс"
 									seats={el.available_seats_info.first}
 									price={el.departure.price_info.first.top_price} 
-                  priceDep={el.departure.price_info.second}/>
+                  priceDep={el.departure.price_info.first}/>
 							}
 
         <div className='train-tickets'>

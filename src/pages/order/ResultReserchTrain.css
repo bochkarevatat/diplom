@@ -266,7 +266,7 @@
 .train-facilities-express {
   width: 20px;
   height: 20px;
-  background-image: url(../../media/images/express.png);
+  background-image: url(img/raketaExpress.png);
 }
 
 .train-facilities-coffee {
@@ -283,8 +283,9 @@
 .facilities-express-have {
   width: 22px;
   height: 20px;
-  background-image: url(../../media/images/have-express.png);
+  background-image: url(img/raketaExpress.png);
 }
+/* (../../media/images/have-express.png); */
 .facilities-coffee-have {
   width: 20px;
   height: 20px;
@@ -353,4 +354,7 @@
 }
 .train-route-serch{
   color: #928F94;
+}
+.no-result{
+  color: gray;
 }

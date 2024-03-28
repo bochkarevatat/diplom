@@ -3,7 +3,7 @@ import filter from './slices/FilterTrainSlice';
 
 
 
-console.log(filter)
+
 
 export const store = configureStore({
     reducer: {

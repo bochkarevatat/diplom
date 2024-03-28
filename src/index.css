@@ -172,7 +172,7 @@ main a:hover {
   margin-bottom: 0;
 }
 .reserchItems{
-  margin-top: 350px;
+  /* margin-top: 350px; */
   display: flex;
   justify-content: space-around;
   max-width: 100%;
@@ -190,4 +190,7 @@ main a:hover {
     flex-basis: 50%;
     flex-shrink: 50%;
     flex-grow: 1;
+}
+.reserch-progress{
+  margin-top: 20%;
 }

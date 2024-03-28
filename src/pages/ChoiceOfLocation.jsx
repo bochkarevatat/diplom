@@ -14,7 +14,7 @@ const ChoiceOfLocation = () =>{
       
            
 
-            <div className='loadLine'><SideBarSearch /></div>
+        <div className='loadLine'><SideBarSearch /></div>
             
        
         </div>
