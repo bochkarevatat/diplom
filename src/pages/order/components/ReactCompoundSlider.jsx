@@ -233,7 +233,7 @@ const addSlide=(addEl)=>{
         </Handles>
         <Tracks onChange={(e)=>{console.log("Tracks")}} left={false} right={false}>
           {({ tracks, getTrackProps }) => {
-            // console.log("tracks",tracks)
+            console.log("tracks",tracks)
             return (
             <div className="">
               {tracks.map(({ id, source, target },i) => {

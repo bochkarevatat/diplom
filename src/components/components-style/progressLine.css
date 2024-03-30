@@ -9,13 +9,14 @@
   
   .line-step-one, .line-step-two, .line-step-three, .line-step-four {
     position: relative;
-    width: 324px;
+    width: 330px;
     display: flex;
     align-items: center;
+    
   }
   
   .line-step-two, .line-step-three, .line-step-four {
-    margin-left: 100px;
+    margin-left: 90px;
   }
   
   .step-number {
@@ -52,7 +53,7 @@
   
   .step-arrow {
     position: absolute;
-    left: 290px;
+    left: 225px;
     z-index: 1;
   }
   
@@ -79,7 +80,7 @@
   
   .steps-start, .steps-end {
     height: 100%;
-    width: 13.1%;
+    width: 10.1%;
   }
   
   .current-step {

@@ -1,10 +1,10 @@
 import React from 'react';
 import './components-style/progressLine.css';
-import { sliceProgressLineState } from '../redux/sliceProgressLine';
+import { sliceProgressLine } from '../redux/sliceProgressLine';
 import { useSelector, useDispatch} from 'react-redux';
 
 const ProgressLine = (props) => {
-    const { stepOne, stepTwo, stepThree, stepFour } = useSelector((state) => sliceProgressLineState);
+    const { stepOne, stepTwo, stepThree, stepFour } = useSelector( (state) => state.sliceProgressLine);
     const [step, setStep] = React.useState({
       one: '',
       two: '',
@@ -45,7 +45,7 @@ const ProgressLine = (props) => {
     }, [stepFour, stepOne, stepThree, stepTwo])
   
   
-  console.log("step.one=>", step.one)
+  console.log("step.one=>", step)
     return (
       <div className='progress-line'>
         <div className={'steps-start ' + step.one}></div>
@@ -55,7 +55,7 @@ const ProgressLine = (props) => {
             <p>1</p>
           </div>
           <div className={'step-text ' + step.one}>Билеты</div>
-          <div className='step-arrow'>
+          <div className={'step-arrow'}>
             <div className={'arrow-top ' + step.one}></div>
             <div className={'arrow-bottom ' + step.one}></div>
           </div>
