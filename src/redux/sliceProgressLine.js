@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 const initialState = {
-  stepOne: false,
+  stepOne: true,
   stepTwo: false,
   stepThree: false,
   stepFour: false

@@ -1,0 +1,66 @@
+
+.paginations {
+  display: flex;
+  justify-content: flex-end;
+  /* border: 1px solid #fe5f1e;
+  width: 345px;
+  height: 145px; */
+}
+
+
+/* .pagination li {
+      display: inline-block;
+    } */
+    .pagination-items{
+      display: flex;
+    }
+    .pagination-item{
+        text-align: center;
+        width: 55px;
+          height: 55px;
+        border: 1px solid #C4C4C4;
+        border-radius: 5px;
+        margin-right: 10px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* color: #fe5f1e; */
+      }
+      .pagination-item:hover a{
+          background-color: #FFA800;
+          color: #fff;
+          text-decoration: none;
+        }
+        .pagination-item:hover{
+          background-color: #FFA800;
+          color: #fff;
+          text-decoration: none;
+        }
+      .page-link{
+        text-decoration: none;
+      }
+        .list-routes-pages-previous{
+        border-radius: 5px;
+        width: 55px;
+          height: 55px;
+        border: 1px solid#C4C4C4;
+          margin-right: 1%;
+        background: url('img/previos.png') center no-repeat;  
+        }
+        .list-routes-pages-previous:hover {
+          background-color: #FFA800;
+          color: #fff;
+        }
+
+        .list-routes-pages-next:hover{
+          background-color: #FFA800;
+          color: #fff;
+        }
+        .list-routes-pages-next{
+          border-radius: 5px;
+          background: url('img/last.png') center no-repeat;
+          width: 55px;
+          height: 55px;
+          border: 1px solid #C4C4C4;
+        }

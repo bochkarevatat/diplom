@@ -45,7 +45,7 @@ const ProgressLine = (props) => {
     }, [stepFour, stepOne, stepThree, stepTwo])
   
   
-  
+  console.log("step.one=>", step.one)
     return (
       <div className='progress-line'>
         <div className={'steps-start ' + step.one}></div>

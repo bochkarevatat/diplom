@@ -5,14 +5,14 @@ import { useSelector, useDispatch} from 'react-redux';
 import './ResultReserchTrain.css';
 import dataTest from '../../russia.json'
 import {filterTrain, setSort, setSearchValueTo, setCurrentPage} from '../../redux/slices/FilterTrainSlice';
+// import {setResultReserchTrain} from '../../redux/slices/TrainSlice';
+
 // import {setIndex, setTrains} from "../../redux/slices/trainSlice";
 import TicketSeats from './ResultReserchTrainItems/TicketSeats'
 import Sort from './components/Sort';
 import Filter from './components/Filter';
 import CartsTest from './ResultReserchTrainItems/CartsTest';
-import Pagination from './components/Pagination';
 import { clearStepAll, currentStepOne } from '../../redux/sliceProgressLine';
-
 
 // const filteredTowns = (searchText, listOfCarts) => {
 //   // if (!searchText) {
@@ -42,25 +42,29 @@ const ResultReserchTrain = () =>{
   const idfilterTrainTo = useSelector((state) => state.filter.idCityTo)
   const fromDate = useSelector((state) => state.filter.fromDate)
   const toDate = useSelector((state) => state.filter.toDate)
+  // const itemsResultReserchTrain = useSelector((state) => state.trainSlice.itemsResultReserchTrain)
  
   const callSetBtn = useSelector((state) => state.filter.callSetBtn)
   const sortType = useSelector( (state) => state.filter.sort.sortProperty);
-  // const currentPage = useSelector( (state) => state.filter.currentPage);
+  const currentPage = useSelector( (state) => state.filter.currentPage);
   const filter = useSelector((state) => state.filter.filterN);
   const [itemsResultReserchTrain, setResultReserchTrain] = React.useState([]);
   const [data, setData] = React.useState([]);
   const [objectLength, setObjectLength] = React.useState(0);
+  const[loading, setLoading] = React.useState(false);
+  // const[currentPages, setCurrentPages] = React.useState(1);
   const dispatch = useDispatch();
 
   
 
 
 React.useEffect(() =>{
+  setLoading(true)
   fetch(`https://students.netoservices.ru/fe-diplom/routes?from_city_id=${idfilterTrainFrom}&to_city_id=${idfilterTrainTo}&date_start=${fromDate}&date_end=${toDate}&sort=${sortType}&limit=${filter}`)
     .then((res) => {return res.json()})
     .then(data => {
       setResultReserchTrain(data)
-      
+      setLoading(false)
     })
   }, [callSetBtn, sortType, filter]) 
   
@@ -130,8 +134,10 @@ React.useEffect(() =>{
             </div>
             
         <CartsTest cityList={data}/>
+
       
-       {/* <Pagination currentPage={1} onChangePage={() =>console.log("pagination")} /> */}
+      
+       
       
        
       </div>

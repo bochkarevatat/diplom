@@ -171,26 +171,7 @@ main a:hover {
   font-weight: 700;
   margin-bottom: 0;
 }
-.reserchItems{
-  /* margin-top: 350px; */
-  display: flex;
-  justify-content: space-around;
-  max-width: 100%;
-}
+
 .loadLine{
   
-}
-.riht-sitebar{
-  /* border: 1px solid #FFA800; */
-    margin: 95px 85px;
-    font-family: Roboto;
-    font-size: 30px;
-    display: flex;
-    flex-direction: column;
-    flex-basis: 50%;
-    flex-shrink: 50%;
-    flex-grow: 1;
-}
-.reserch-progress{
-  margin-top: 20%;
 }

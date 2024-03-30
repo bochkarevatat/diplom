@@ -11,7 +11,7 @@ import iconPlus from '../../assets/img/plus.png'
 import CardLastTicket from './CardLastTicket'
 import {setDateFrom} from '../../redux/slices/FilterTrainSlice';
 
-function SideBarSearch (progress) {
+function SideBarSearch () {
 
   const [check, setCheck] = React.useState({coupe: false, reservedSeat: false, seat: false, star: false, wifi:false, express:false
   });
@@ -112,7 +112,9 @@ function SideBarSearch (progress) {
           <p className="price-text">Стоимость</p>
           <div className='price-router'>
             <div className="range-input-in"><span>от</span><span className='from'>до</span></div>
-            <ReactCompoundSlider />   {/* вставиать данные, как? идет перезагрузка, не должна*/}
+            <ReactCompoundSlider onChange={(e)=>(e)}/> 
+            
+              {/* вставиать данные, как? идет перезагрузка, не должна*/}
           
             </div>
           </div>

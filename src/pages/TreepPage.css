@@ -1,0 +1,31 @@
+.reserchItems{
+    /* margin-right: 100px; */
+    display: flex;
+    justify-content: space-around;
+    max-width: 100%;
+    flex-wrap: wrap;
+  }
+  .loadLine{
+    width: 38%;
+    flex-grow: 1;
+  }
+  .right-sitebar{
+    /* border: 1px solid #FFA800; */
+      margin: 95px 0px;
+      font-family: Roboto;
+      font-size: 30px;
+      display: flex;
+      flex-direction: column;
+      width: 62%;
+      flex-grow: 1;
+      
+  }
+  .reserch-progress{
+    margin-top: 20%;
+  }
+  
+  .pagination-elem{
+    /* border: 1px solid #FFA800; */
+    width: 90%;
+    /* margin-right: 150px;  */
+  }
