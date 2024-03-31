@@ -42,7 +42,7 @@ const ProgressLine = (props) => {
         });
       };
   
-    }, [stepFour, stepOne, stepThree, stepTwo])
+    }, [stepOne, stepTwo, stepThree, stepFour ])
   
   
   console.log("step.one=>", step)
@@ -67,7 +67,7 @@ const ProgressLine = (props) => {
             <p>2</p>
           </div>
           <div className={'step-text ' + step.two}>Пассажиры</div>
-          <div className='step-arrow'>
+          <div className='step-arrow2'>
             <div className={'arrow-top ' + step.two}></div>
             <div className={'arrow-bottom ' + step.two}></div>
           </div>

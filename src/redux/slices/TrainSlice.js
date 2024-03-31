@@ -1,10 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+
 const initialState = {
 
     itemsResultReserchTrain:[],
     trainPerPage: 1,
     totalTrain: 1,
+    trainSelection: [],
 }
 
 const trainSlice = createSlice({
@@ -19,9 +21,12 @@ const trainSlice = createSlice({
         },
         setTotalTrain(state, action) {
             state.totalTrain = action.payload;
+        },
+        setTrainSelection(state, action) {
+            state.trainSelection = action.payload;
         }
     }
     })
 
-    export const {setResultReserchTrain, setTrainPerPage, setTotalTrain} = trainSlice.actions;
+    export const {setResultReserchTrain, setTrainPerPage, setTotalTrain, setTrainSelection} = trainSlice.actions;
     export default trainSlice.reducer;

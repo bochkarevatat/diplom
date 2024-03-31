@@ -1,14 +1,16 @@
 import React from 'react';
 import { CustomLink } from '../../../components/CustomLink';
-// import { useSelector, useDispatch} from 'react-redux';
+import { useSelector, useDispatch} from 'react-redux';
 
 // import {filterTrain} from '../../../redux/slices/FilterTrainSlice'
 import '../ResultReserchTrain.css';
 import iconRubleSmall from '../../../assets/img/rubleIcon.png';
 import groupIcons from '../../../assets/img/group-icons.png';
+import {setTrainSelection} from '../../../redux/slices/TrainSlice';
 
 import TicketSeats from './TicketSeats'
 import TrainPopoverItem from './TicketSeats'
+
 function conversionDate(time) {
     if (time) {
       return new Date(time * 1000).toLocaleTimeString('ru', {
@@ -22,9 +24,11 @@ function conversionDate(time) {
 
 const CartsTest = ({cityList,searchText}) => {
 
-
+  const trainSelection = useSelector( (state) => state.trainSlice.trainSelection);
   const [train, setTrain] = React.useState([]); 
 
+  
+  const dispatch = useDispatch();
 return (
 
     <div className="train">
@@ -150,7 +154,7 @@ return (
               <CustomLink to="/choicelocation">
 							<button className="train-choice-btn"
 								type="button"
-								onClick={() => console.log("btn-click")}>Выбрать места
+								onClick={(e) => dispatch(setTrainSelection(el))}>Выбрать места
               </button>
               </CustomLink>
 						</div>

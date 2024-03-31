@@ -1,17 +1,54 @@
+.selection-of-seats{
+
+        border: 1px solid #c4c4c4;  
+}
 .select-seat{
         background-color: #fff;
-        border: 1px solid #c4c4c4;
-        box-shadow: 0 2px 2px rgba(0,0,0,.25);
-        margin-bottom: 30px;
-        width: 960px;
+    border: 1px solid #c4c4c4;
+    box-shadow: 0 2px 2px rgba(0,0,0,.25);
+    margin-bottom: 30px;
+    width: 960px
 }
-.select-train{
-
+.select-train-route{
+        display: flex;
+        align-items: center;
+        width: 40%;
 }
-.select-train-img{
-        
+.selection-of-seats-train-another{
+        display: flex;
+        align-items: center;
+    margin: 36px auto 32px 19px;
+   
 }
-.select-train-btn{
+.selection-of-seats-train-img{
+     background: url('../../assets/img/Subtract-row.png');
+     margin-right: 10px;
+     width: 76px;
+     height: 60px;
+}
+.selection-of-seats_select-train{
+        background: #f7f6f6;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        min-height: 125px;
+        width: 100%;
+}
+.selection-of-seats_items{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    width: 100%;
+}
+.select-train-img-train{
+        background: url('../../assets/img/train-round.png');
+     margin-right: 10px;
+        display: flex;
+        height: 30px;
+        margin: auto 27px auto 35px;
+        width: 30px;   
+}
+.selection-of-seats-train-btn{
         font-family: 'Roboto-bold';
         font-style: normal;
         font-weight: 700;
@@ -26,3 +63,256 @@
         background-color: transparent;
         cursor: pointer;
 }
+
+/* .train-name-items{
+        margin-bottom: auto;
+    margin-top: auto;
+} */
+.select-train-desc{
+        /* width: 50%; */
+        margin-top: auto;
+  margin-bottom: auto;
+}
+.train-desc-name{
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  color: #3E3C41;
+  margin-bottom: 5px;
+}
+.train-desc-city{
+        font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #292929;
+}
+.select-direction-time{
+        display: flex;
+  width: 480px;
+  border-left: 1px solid #FFFFFF;
+  border-right: 1px solid #FFFFFF;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.select-direction-city{
+        margin-left: auto;
+  margin-right: auto;
+}
+.select-time{
+        font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  color: #000000;
+}
+.select-direction-name{
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 23px;
+        color: #292929;
+        text-transform: capitalize;
+}
+.select-direction-station{
+        font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #928F94;
+}
+.direction-arrow{
+        background: url('../../assets/img/vector-there.png');
+        width: 30px;
+        height: 20px;
+}
+.selection-of-seats_duration{
+        width: 20%;
+        display: flex;
+        align-items: center;
+        font-size: 18px;
+        justify-content: space-around;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+}
+.selection-of-seats_duration-img{
+        display: inline-block;
+        background: url('../../assets/img/clock.png');
+        width: 30px;
+        height: 30px;
+}
+.selection-of-seats_duration-text{
+        display: flex;
+        flex-direction: column;
+}
+.amount-tickets {
+        margin-top: 40px;
+        height: 337px;
+        border-bottom: 1px dashed #C4C4C4;
+        background-color: #FFFFFF;
+      }
+      
+      .amount-tickets-title {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 35px;
+        color: #292929;
+        margin: 40px auto 15px 20px;
+      }
+      
+      .tickets-age {
+        display: flex;
+        background: #dcd3d3;
+      }
+      
+      .tickets-age-inputs {
+        width: 320px;
+        height: 192px;
+        padding-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #f9f5f5;
+      }
+      .tickets-age_gray{
+        background-color: #eae4e4;
+      }
+      .tickets-age-input {
+        width: 240px;
+        height: 50px;
+        padding-left: 15px;
+        background: #FFFFFF;
+        border: 1px solid #928F94;
+        border-radius: 5px;
+        caret-color: transparent;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 21px;
+        color: #C4C4C4;
+      }
+      
+      .tickets-age-input::placeholder {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 21px;
+        color: #292929;
+      }
+      
+      .tickets-adults-desc {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        color: #928F94;
+        margin-top: 23px;
+        width: 240px;
+      }
+      
+      .tickets-age-inputs:hover {
+        border: 1px solid rgba(255, 168, 0, 0.79);
+      }
+      
+      .tickets-age-input:focus-within {
+        outline: none;
+      }
+      
+      .tickets-age-inputs:focus-within {
+        background-color: #F7F6F6;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+        border: none;
+      }
+      
+      .coach-type-title {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 35px;
+        color: #292929;
+        margin: 27px auto 35px 20px;
+      }
+      
+      .coach-types {
+        display: flex;
+      }
+      
+      .coach-type {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 240px;
+        height: 140px;
+      }
+      
+      .type-text, .type-text-active {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 28px;
+        color: #292929;
+        margin-top: 20px;
+      }
+      
+      .coach-type > span {
+        display: flex;
+        height: 50px;
+      }
+      
+      .type-text-active {
+        color: #FFA800;
+      }
+      
+      .type-fourth-img {
+        width: 31px;
+        background-image: url(../../assets/img/seat-sets.png);
+      }
+      
+      .type-third-img {
+        width: 50px;
+        background-image: url(../../assets/img/union-seats.png);
+      }
+      
+      .type-second-img {
+        width: 50px;
+        background-image: url(../../assets/img/unioncupe-seats.png);
+      }
+      
+      .type-first-img {
+        width: 57px;
+        background-image: url(../../assets/img/star-seats.png);
+      }
+      
+      .type-fourth-img-active {
+        width: 31px;
+        background-image: url(../../media/images/fourth-take.png);
+      }
+      
+      .type-third-img-active {
+        width: 50px;
+        background-image: url(../../media/images/third-take.png);
+      }
+      
+      .type-second-img-active {
+        width: 50px;
+        background-image: url(../../media/images/second-take.png);
+      }
+      
+      .type-first-img-active {
+        width: 57px;
+        background-image: url(../../media/images/first-take.png);
+      }
