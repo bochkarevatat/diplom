@@ -289,7 +289,7 @@
       
       .type-second-img {
         width: 50px;
-        background-image: url(../../assets/img/unioncupe-seats.png);
+        background-image: url(../../assets/img/unioncupe-seats-gray.png);
       }
       
       .type-first-img {
@@ -299,20 +299,25 @@
       
       .type-fourth-img-active {
         width: 31px;
-        background-image: url(../../media/images/fourth-take.png);
+        background-image: url(../../assets/img/seat-seat-active.png);
       }
       
       .type-third-img-active {
         width: 50px;
-        background-image: url(../../media/images/third-take.png);
+        background-image: url(../../assets/img/union-active.png);
       }
       
       .type-second-img-active {
         width: 50px;
-        background-image: url(../../media/images/second-take.png);
+        background-image: url(../../assets/img/unioncupe-seats.png);
       }
       
       .type-first-img-active {
         width: 57px;
-        background-image: url(../../media/images/first-take.png);
+        background-image: url(../../assets/img/star-seats-active.png);
+      }
+
+      .coach-description {
+        border-bottom: 1px dashed #C4C4C4;
+        margin-bottom: 33px;
       }

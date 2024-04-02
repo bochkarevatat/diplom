@@ -1,0 +1,15 @@
+.carriageNumber{
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 700;
+    background-color: #2D2B2F;
+   
+}
+.carriageNumber:hover{
+    color: #FFA800;
+    cursor: pointer;
+}
+.carriageNumber:disabled {
+    color: #FFFFFF;
+    cursor: default;
+  }

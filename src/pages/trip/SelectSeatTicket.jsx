@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch} from 'react-redux';
+import TrainCoach from './TrainCoach'
 import './SelectSeatTicket.css'
 
 function dateFromAndTo(time) {
@@ -19,12 +20,15 @@ const SelectSeatTicket = () => {
     const [valueChild, setValueChild] = React.useState(1);
     const [valueChildWithout, setValueChildWithout] = React.useState(0)
     
-    const [type, setType] = React.useState({
-      first: false,
-      second: false,
-      third: false,
-      fourth: false
-    });
+    // const [type, setType] = React.useState({
+    //   first: false,
+    //   second: false,
+    //   third: false,
+    //   fourth: false
+    // });
+
+    
+
     const hh = time.split(':');
     const hh1 = hh.splice(1, 2)
     console.log(hh1)
@@ -77,9 +81,10 @@ const SelectSeatTicket = () => {
         <h4 className='amount-tickets-title'>Количество билетов</h4>
         <div className='tickets-age'>
           <div className='tickets-age-inputs tickets-age_gray'>
-            <input className='tickets-age-input' type="text" placeholder={`Взрослых - ${valueAges}`}
+            <input className='tickets-age-input' type="number" placeholder={`Взрослых - ${valueAges}`}
               value={''}
-              onChange={1} />
+              onChange={1}
+               />
             <p className='tickets-adults-desc'>Можно добавить еще {5 - valueAges} пассажиров</p>
           </div>
 
@@ -105,23 +110,29 @@ const SelectSeatTicket = () => {
         <h4 className='coach-type-title'>Тип вагона</h4>
         <div className='coach-types'>
           <div className='coach-type'>
-            <span className={!type.fourth ? 'type-fourth-img' : 'type-fourth-img-active'}></span>
-            <p className={!type.fourth ? 'type-text' : 'type-text-active'}>Сидячий</p>
+            <span className={`${trainList.departure.have_fourth_class ? 'type-fourth-img-active' : 'type-fourth-img'}`}></span>
+            <p className={`${trainList.departure.have_fourth_class ? 'type-text-active' : 'type-text'}`}>Сидячий</p>
           </div>
           <div className='coach-type'>
-            <span className={!type.third ? 'type-third-img' : 'type-third-img-active'}></span>
-            <p className={!type.third ? 'type-text' : 'type-text-active'}>Плацкарт</p>
+          <span className={`${trainList.departure.have_third_class ? 'type-third-img-active' : 'type-third-img'}`}></span>
+            <p className={`${trainList.departure.have_third_class ? 'type-text-active' : 'type-text'}`}>Плацкарт</p>
           </div>
           <div className='coach-type'>
-            <span className={!type.second ? 'type-second-img' : 'type-second-img-active'}></span>
-            <p className={!type.second ? 'type-text' : 'type-text-active'}>Купе</p>
+          <span className={`${trainList.departure.have_second_class ? 'type-second-img-active' : 'type-second-img'}`}></span>
+            <p className={`${trainList.departure.have_second_class ? 'type-text-active' : 'type-text'}`}>Купе</p>
           </div>
           <div className='coach-type'>
-            <span className={!type.first ? 'type-first-img' : 'type-first-img-active'}></span>
-            <p className={!type.first ? 'type-text' : 'type-text-active'}>Люкс</p>
+          <span className={`${trainList.departure.have_first_class ? 'type-first-img-active' : 'type-first-img'}`}></span>
+            <p className={`${trainList.departure.have_first_class ? 'type-text-active' : 'type-text'}`}>Люкс</p>
           </div>
         </div>
         </div>
+
+        <TrainCoach 
+        classStyle={'coach-description'}
+         
+         
+          />
 </div>
   
     )
