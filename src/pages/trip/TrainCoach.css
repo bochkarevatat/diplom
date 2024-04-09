@@ -1,4 +1,166 @@
-.coaches-title {
+.coach {
+  width: 100%;
+  height: 150px;
+  background-color: #FFFFFF;
+  border: 1px solid #C4C4C4;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  margin-bottom: 30px;
+  background: url('../../assets/img/vagonFirst.png') top no-repeat;
+}
+.coach3{
+  width: 100%;
+  height: 150px;
+  background-color: #FFFFFF;
+  border: 1px solid #C4C4C4;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  margin-bottom: 30px;
+  background: url('../../assets/img/vagon3.png') top no-repeat;
+}
+.coach4 {
+  width: 100%;
+  height: 150px;
+  background-color: #FFFFFF;
+  border: 1px solid #C4C4C4;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  margin-bottom: 30px;
+  background: url('../../assets/img/vagon4.png') top no-repeat;
+}
+.select_coach{
+  margin: auto;
+  width: 100%;
+}
+
+.forth-select_coach{
+  margin-top: 30px;
+  width: 100%;
+}
+.top-select_coach{
+  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.top-row-select_coach{
+    margin-top: 28px;
+    margin-left: 57px;
+    display: flex;
+    justify-content: center;
+}
+.top-row-select{
+    margin-top: 4px;
+    margin-left: 145px;
+    border: 1px solid white;
+    display: flex;
+    justify-content: space-between;
+    width: 75%;
+}
+.top-row-select-top{
+    margin-top: 2px;
+    margin-left: 200px;
+    border: 1px solid white;
+    display: flex;
+    justify-content: space-between;
+    width: 63.5%;
+}
+.top-row-select-bottom{
+  margin-top: 2px;
+    margin-left: 156px;
+    border: 1px solid white;
+    display: flex;
+    justify-content: space-between;
+    width: 73%;
+}
+.select_coach-seat-item{
+  align-items: flex-end;
+  background-color: rgb(249, 245, 245);
+  box-sizing: initial;
+  color: rgb(12, 12, 12);
+  display: flex;
+  width: 27px;
+  height: 30px;
+  font-size: 16px;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 16px;
+  border: 1px solid rgb(227, 216, 216);
+  /* border-right: 1px solid rgb(227, 216, 216); */
+}
+.select_coach-seat-item:nth-of-type(2n + 1){
+  margin-right: 32px;
+  border-right: 1px solid rgb(227, 216, 216);
+  border-left: 1px solid rgb(154, 150, 150);
+}
+/* .select_coach-seat-item:nth-of-type(2n + 1){
+  
+  border-left: 3px solid rgb(227, 216, 216);
+  border-right: 1px solid rgb(86, 82, 82);
+} */
+    
+.bottom-row-select_coach{
+  /* border-bottom: .4rem solid grey; */
+    display: flex;
+    margin-left: 57px;
+    justify-content: center;
+}
+.bottom-select_coach{
+  margin-top: 20px;
+  flex-direction: column;
+  display: flex;
+    justify-content: center;
+}
+.select_coach-seat-item_aisle{
+  align-items: flex-end;
+  background-color: rgb(227, 216, 216);
+  box-sizing: initial;
+  color: black;
+  display: flex;
+  width: 40px;
+  height: 43px;
+  font-size: 16px;
+  font-weight: 700;
+  justify-content: center;
+ 
+}
+.bottom-row-select_coach_aisle{
+  margin-top: 40px;
+  border-bottom: .4rem solid rgb(146, 141, 141);
+  display: flex;
+  justify-content: center;
+  
+}
+.select_coach-seat-item_aisle:nth-of-type(2n){
+  border-right: 1px solid rgb(109, 102, 102);
+  border-left: none
+}
+.select_coach-seat-item_aisle{
+  border-top: 1px solid rgb(227, 216, 216);
+  border-right: none;
+  border-bottom: none;
+
+}
+
+.select_coach-seat-item_aisle:nth-of-type(2n + 1){
+  border-left: 1px solid rgb(227, 216, 216);
+  border-right: none;
+}
+.select_coach-seat-item_aisle:first-child{
+  border-left: .4rem solid rgb(146, 141, 141);
+}
+.select_coach-seat-item_aisle:last-child{
+  border-right: .4rem solid rgb(146, 141, 141);
+}
+
+.select_coach-seat-item:active{
+  background-color: #FDB935;
+}
+.select_coach-seat-item:focus{
+  background-color: #FDB935;
+}
+
+
+
+
+/* .coaches-title {
     font-family: 'Roboto-medium';
     font-style: normal;
     font-weight: 500;
@@ -9,13 +171,7 @@
     margin-bottom: 50px;
   }
   
-  .coach {
-    width: 960px;
-    background-color: #FFFFFF;
-    border: 1px solid #C4C4C4;
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
-    margin-bottom: 30px;
-  }
+  
   
   .choice-train-left {
     display: flex;
@@ -601,7 +757,7 @@
     display: flex;
     align-items: center;
     text-align: center;
-  }
+  } */
   
   .coach-description {
     border-bottom: 1px dashed #C4C4C4;
@@ -764,16 +920,54 @@
   
   /* fourth class */
   
-  .seat-win-top, .seat-aisle-top, .seat-aisle-bot, .seat-win-bot {
-    width: 30px;
-    height: 20px;
-    left: 11px;
+  .seat-aisle-top, .seat-aisle-bot, .seat-win-bot {
+    /* background-color:#f1f1f1; */
+  /* box-sizing: initial; */
+  color: black;
+  display: flex;
+  width: 27px;
+  height: 32px;
+  font-size: 16px;
+  font-weight: 700;
+  justify-content: center;
+  align-items: flex-end;
+  line-height: 16px;
+  /* border: 1px solid gray; */
+  height: 20px;
+  left: 11px;
+  margin-left: 10px;
   }
   
   .seat-win-top {
-    top: 5px;
+    color: rgb(253, 250, 250);
+  display: flex;
+  width: 27px;
+  height: 18px;
+  font-size: 14px;
+  font-weight: 700;
+  background-color: #C4C4C4;
+  justify-content: center;
+  align-items: flex-end;
+  line-height: 16px;
+  border: 1px solid gray;
+  /* margin-right: 5px; */
+  /* margin-left: 5px; */
+  /* padding: 3px; */
   }
   
+  .seat-win-bottom{
+    color: rgb(253, 250, 250);
+    display: flex;
+    width: 25px;
+    height: 18px;
+    font-size: 14px;
+    font-weight: 700;
+    background-color: #C4C4C4;
+    justify-content: center;
+    align-items: flex-end;
+    line-height: 16px;
+    border: 1px solid gray;
+  }
   .seat-aisle-top {
     top: 27px;
   }

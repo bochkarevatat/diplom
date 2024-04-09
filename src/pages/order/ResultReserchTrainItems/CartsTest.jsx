@@ -22,10 +22,10 @@ function conversionDate(time) {
   };
 
 
-const CartsTest = ({cityList,searchText}) => {
+const CartsTest = ({cityList}) => {
 
-  const trainSelection = useSelector( (state) => state.trainSlice.trainSelection);
-  const [train, setTrain] = React.useState([]); 
+  // const trainSelection = useSelector( (state) => state.trainSlice.trainSelection);
+  // const [train, setTrain] = React.useState([]); 
 
   
   const dispatch = useDispatch();
@@ -33,6 +33,7 @@ return (
 
     <div className="train">
             {cityList.map((el) => {
+              //  console.log("элемент:", index)
                 return (
                     <div className='train-name-items'>
           <div className='train-name'>

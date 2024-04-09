@@ -127,12 +127,10 @@ const SelectSeatTicket = () => {
           </div>
         </div>
         </div>
-
-        <TrainCoach 
-        classStyle={'coach-description'}
+           <TrainCoach /> 
+       
          
-         
-          />
+       
 </div>
   
     )
