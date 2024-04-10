@@ -2,9 +2,9 @@ import React from 'react';
 import { useSelector, useDispatch} from 'react-redux';
 import './TrainCoach.css';
 
-import {TrainButtonSecond, TrainButtonThird, TrainButtonForth}  from './ButtonTreep/TrainButton'
-import { setSeatsType } from '../../redux/slices/SlicePrice';
-
+import {TrainButtonSecond, TrainButtonThird, TrainButtonForth}  from './SelectedSeatsTrain/TrainButton'
+import { setSeatsType, setTrainCoach } from '../../redux/slices/SlicePrice';
+import SectionInformTicket from './SelectedSeatsTrain/SectionInformTicket'
 
 
 
@@ -32,7 +32,7 @@ const TrainCoach = () => {
   const dispatch = useDispatch();
   const ticket = useSelector( (state) => state.slicePrice.ticket);
 
-  console.log(ticket, 'ticket')
+  console.log(itemsTrain, 'itemsTrain')
 
   React.useEffect(() =>{
   
@@ -44,15 +44,14 @@ const TrainCoach = () => {
       })
     }, [idTrain]) 
 
-    console.log(itemsTrain, '<=itemsTrain')
-
-    // console.log(haveSeatsOrNot(ticket, itemsTrain[0]))
-
+   
     React.useEffect(() =>{
 
       const Debounce = setTimeout(() => {
         setClassType(itemsTrain[0].coach.class_type);
         dispatch(setSeatsType(itemsTrain[0].seats))
+        dispatch(setTrainCoach(itemsTrain[0].coach))
+        
       }, 1000);
     
       return () => clearTimeout(Debounce);
@@ -61,8 +60,8 @@ const TrainCoach = () => {
   
   
 return (
-   
-  
+   <section>
+    <SectionInformTicket/>
     <div >
         {classType === 'first' ?
        
@@ -83,9 +82,7 @@ return (
          </div>: null
         } 
     </div>
-
-      
-         
+    </section>
     
 )
                     }

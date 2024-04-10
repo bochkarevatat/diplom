@@ -96,12 +96,7 @@
   border-right: 1px solid rgb(86, 82, 82);
 } */
     
-.bottom-row-select_coach{
-  /* border-bottom: .4rem solid grey; */
-    display: flex;
-    margin-left: 57px;
-    justify-content: center;
-}
+
 .bottom-select_coach{
   margin-top: 20px;
   flex-direction: column;
@@ -121,13 +116,13 @@
   justify-content: center;
  
 }
-.bottom-row-select_coach_aisle{
-  margin-top: 40px;
+/* .bottom-row-select_coach_aisle{
+ 
   border-bottom: .4rem solid rgb(146, 141, 141);
   display: flex;
   justify-content: center;
   
-}
+} */
 .select_coach-seat-item_aisle:nth-of-type(2n){
   border-right: 1px solid rgb(109, 102, 102);
   border-left: none

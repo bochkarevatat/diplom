@@ -6,15 +6,6 @@ import { setTicket} from '../../../redux/slices/SlicePrice';
 
 
 
-  
-
-
-
-const TrainButtonThird = (( {arrSelectThird}) => {
-  const dispatch = useDispatch();
-  const ticketTrue = useSelector( (state) => state.slicePrice.ticketTrue);
-  const seatsType = useSelector( (state) => state.slicePrice.seatsType);
-  console.log(seatsType)
 function haveSeatsOrNot(numScheme, coach){
   let result = 'seat-not-have';
   coach.map((e) => {
@@ -27,7 +18,14 @@ function haveSeatsOrNot(numScheme, coach){
   });
   return result;
 }
-console.log(1, seatsType)
+
+
+
+const TrainButtonThird = (( {arrSelectThird}) => {
+  const dispatch = useDispatch();
+  const ticketTrue = useSelector( (state) => state.slicePrice.ticketTrue);
+  const seatsType = useSelector( (state) => state.slicePrice.seatsType);
+  
 
   // console.log(ticket, 'ticket')
   return(
@@ -35,9 +33,8 @@ console.log(1, seatsType)
         <div className='top-select_coach'>
             <div className='top-row-select_coach'>
               {arrSelectThird.topWindow.map((el) => {
-               console.log(ticketTrue, '<=ticketTrue2')
                 return (
-                <button value={el} onClick={(e) => dispatch(setTicket(e.target.value))} className={`${ticketTrue ? 'select_coach-seat-item' : 'select_coach-seat-item_aisle'}`}>{el}</button>
+                <button value={el} onClick={(e) => dispatch(setTicket(e.target.value))} className={`select_coach-seat-item ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
                 )
               })}
             </div>
@@ -45,18 +42,16 @@ console.log(1, seatsType)
   
         <div className='bottom-row-select_coach'>
             {arrSelectThird.topAisle.map((el) => {
-              console.log(ticketTrue, '<=ticketTrue2')
               return (
-              <button value={el} onClick={(e) => dispatch(setTicket(e.target.value))} className='select_coach-seat-item'>{el}</button>
+              <button value={el} onClick={(e) => dispatch(setTicket(e.target.value))} className={`select_coach-seat-item ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
               )
             })}
         </div>
 
     <div className='bottom-row-select_coach_aisle'>
     {arrSelectThird.botSeatAisle.map((el) => {
-       console.log(ticketTrue, '<=ticketTrue3')
       return (
-       <button value={el} onClick={(e) => dispatch(setTicket(e.target.value))} className={`select_coach-seat-item ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
+       <button value={el} onClick={(e) => dispatch(setTicket(e.target.value))} className={`select_coach-seat-item_aside ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
       )
     })}
   </div>

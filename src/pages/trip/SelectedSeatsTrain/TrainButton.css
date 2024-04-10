@@ -1,0 +1,91 @@
+.carriageNumber{
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 700;
+    background-color: #2D2B2F;
+   
+}
+.carriageNumber:hover{
+    color: #FFA800;
+    cursor: pointer;
+}
+.carriageNumber:disabled {
+    color: #FFFFFF;
+    cursor: default;
+  }
+  .select_coach-seat-item_aisle-noactive{
+    background-color: rgb(88, 85, 85);
+    align-items: flex-end;
+  background-color: rgb(185, 185, 185);
+  box-sizing: initial;
+  color: rgb(247, 240, 240);
+  display: flex;
+  width: 27px;
+  height: 30px;
+  font-size: 16px;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 16px;
+  border: 1px solid rgb(227, 216, 216);
+  }
+  .select_coach-seat-item_aisle-noactive:nth-of-type(2n + 1){
+    margin-right: 32px;
+    border-right: 1px solid rgb(227, 216, 216);
+    border-left: 1px solid rgb(154, 150, 150);
+  }
+
+  /* third */
+.bottom-row-select_coach{
+  display: flex;
+    margin-left: 57px;
+    justify-content: center;
+}
+.top-row-select_coach{
+  display: flex;
+    margin-left: 57px;
+    justify-content: center;
+}
+
+  .bottom-row-select_coach_aisle{
+    margin-top: 18px;
+    margin-left: 28px;
+    display: flex;
+    height: 20px;
+    justify-content: center;
+    width: 100%;
+  }
+  .select_coach-seat-item_aside{
+  align-items: flex-end;
+  /* background-color: rgb(227, 216, 216); */
+  /* color: black; */
+  display: flex;
+  border: none;
+  width: 45px;
+  height: 30px;
+  font-size: 16px;
+  font-weight: 700;
+  border-bottom: .2rem solid rgb(146, 141, 141);
+  /* justify-content: center; */
+  }
+  .select_coach-seat-item_aside:nth-of-type(2n + 1){
+    border-left: .2rem solid rgb(146, 141, 141);
+  }
+  .select_coach-seat-item_aside:last-child{
+    border-right: .4rem solid rgb(146, 141, 141);
+  }
+  .select_coach-seat-item_aside:nth-of-type(2n){
+    border-left: .1rem solid rgb(214, 207, 207);
+    justify-content: end;
+  }
+  .select_coach-seat-item_aside:active{
+    background-color: #FDB935;
+  }
+  .select_coach-seat-item_aside:focus{
+    background-color: #FDB935;
+  }
+  .select_coach-seat-item_aside:visited{
+    background-color: #FDB935;
+  }
+  .select-active-ticket{
+    background-color: #FDB935;
+  }

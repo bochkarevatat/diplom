@@ -16,10 +16,22 @@ function dateFromAndTo(time) {
 const SelectSeatTicket = () => {
     const trainList = useSelector( (state) => state.trainSlice.trainSelection);
     const time = dateFromAndTo(trainList.departure.duration);
-    const [valueAges, setValueAges] = React.useState(2);
+    const [valueAges, setValueAges] = React.useState(1);
     const [valueChild, setValueChild] = React.useState(1);
     const [valueChildWithout, setValueChildWithout] = React.useState(0)
     
+    
+    const dispatch = useDispatch();
+
+    // const inputChild = (ev) => {
+    //   if (/^[0-5]$/.test(ev.target.value)) {
+    //     dispatch(changeChildTickets({
+    //       classType: coaches[0].coach.class_type,
+    //       seatsChild: Number(ev.target.value)
+    //     }));
+    //     setValueChild(Number(ev.target.value));
+    //   }
+    // }
     // const [type, setType] = React.useState({
     //   first: false,
     //   second: false,
@@ -27,11 +39,11 @@ const SelectSeatTicket = () => {
     //   fourth: false
     // });
 
-    
+    // console.log(trainList, 'trainList')
 
     const hh = time.split(':');
     const hh1 = hh.splice(1, 2)
-    console.log(hh1)
+    // console.log(hh1)
     return (
         
 <div className='selection-of-seats'>
@@ -89,7 +101,7 @@ const SelectSeatTicket = () => {
           </div>
 
           <div className='tickets-age-inputs'>
-            <input className='tickets-age-input' type="text" placeholder={`Детских - ${valueChild}`}
+            <input className='tickets-age-input' type="number" placeholder={`Детских - ${valueChild}`}
               value={''}
               onChange={1} />
             <p className='tickets-adults-desc'>Можно добавить еще {5 - valueChild} детей до 10 лет. Свое место в вагоне, как у взрослых, но дешевле

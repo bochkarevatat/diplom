@@ -1,0 +1,136 @@
+.section-inform-ticket{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-bottom: 2rem;
+}
+.inform-ticket_name{
+    background-color: var(--color-tickets);
+    display: flex;
+    flex-direction: column;
+    padding-top: 3rem;
+    text-align: center;
+    width: 19rem;
+}
+.inform-ticket_name_coach{
+    color: black;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 35px;
+}
+.inform-ticket-coach{
+    color: black;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 28px;
+}
+.number-seats{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.number-seats-items{
+    color: grey;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21px;
+    padding-bottom: 20px;
+    padding-top: 30px;
+    text-transform: capitalize;
+}
+.number-seats-item{
+    font-size: 24px;
+}
+.number-seats-total{
+    color: black;
+    margin-left: 10px;
+}
+.inform-ticket_top-seats{
+    margin-bottom: 25px;
+    font-size: 24px;
+}
+.top-seats_price-name{
+    text-transform: capitalize;
+    font-size: 24px;
+}
+.top-seats_price{
+    font-weight: 700;
+    margin-left: 10px;
+}
+.inform-ticket-price{
+
+}
+.inform-ticket-header{
+    color: grey;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 21px;
+    padding-bottom: 20px;
+    padding-top: 30px;
+    text-transform: capitalize;
+}
+.inform-ticket-price{
+
+}
+.inform-ticket-price-top{
+    color:black;
+    display: flex;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 21px;
+    margin-top: 5px;
+}
+.ticket-price-top{
+    /* vertical-align: top; */
+}
+.inform-ticket-price-top_ruble{
+    width: 14px;
+    height: 17px;
+    margin-left: 5px;
+    vertical-align: bottom;
+}
+.inform-ticket-price-bottom{
+    color:black;
+    display: flex;
+    font-size: 24px;
+    font-weight: 700;
+    line-height:21px;
+    margin-top: 33px;
+}
+.inform-ticket-price-side{
+    color:black;
+    display: flex;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 21px;
+    margin-top: 35px;
+}
+
+.inform-ticket-icon_items{
+    display: flex;
+}
+.ticket-icon_items{
+    width: 36px;
+    height: 34.11px;
+    border: 1px solid rgb(14, 14, 14);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5px;
+}
+.ticket-icon_items-active{
+    width: 36px;
+    height: 34.11px;
+    border: 1px solid #FFA800;
+    ;
+    border-radius: 5px;
+    background-color: #FFA800;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5px;
+}
+.have_air_conditioning{
+    width: 20px;
+    height: 20px;
+}
