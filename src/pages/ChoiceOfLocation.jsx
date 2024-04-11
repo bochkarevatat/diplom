@@ -45,7 +45,7 @@ console.log("trainSelection", trainSelection)
 
                         </div>
                         
-                       
+                       <button className='location-button'>далее</button>
                     </div>
              
                    

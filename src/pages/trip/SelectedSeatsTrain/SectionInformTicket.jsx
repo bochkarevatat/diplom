@@ -140,7 +140,7 @@ const SectionInformTicket = ()=>{
                         <img className="have_air_conditioning" src={`${trainCoach.is_linens_included ? 'img/sheetsYes.png' : 'img/sheetsNo.png'}`} alt="" />
                     </div>
                     <div className={`${trainCoach.have_coffee? 'ticket-icon_items-active' : 'ticket-icon_items'}`}>
-                        <img className="have_air_conditioning" src={`${trainCoach.have_coffee ? 'img/capNo.png' : 'img/capNo.png'}`} alt="" />
+                        <img className="have_air_conditioning" src={`${trainCoach.have_coffee ? 'img/capYes.png' : 'img/capNo.png'}`} alt="" />
                     </div>
                     {/* <div className="inform-ticket-icon_item"></div> */}
                     {/* <div className="inform-ticket-icon_item"></div> */}

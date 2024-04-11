@@ -74,7 +74,7 @@ const TrainButtonSecond = (( {arrSelectSecond}, haveSeatsOrNot) => {
               {arrSelectSecond.topWindow.map((el) => {
                 // console.log(ticketTrue, el, '<=ticketTrue1')
                 return ( 
-                <button value={el} onClick={(e) => dispatch(setTicket(e.target.value))} className={`select_coach-seat-item ${haveSeatsOrNot(el, coach)}`}>{el}</button>
+                <button value={el} onClick={(e) => dispatch(setTicket(e.target.value))} className={`select_coach-seat-item ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
                 )
               })}
             </div>
@@ -82,9 +82,9 @@ const TrainButtonSecond = (( {arrSelectSecond}, haveSeatsOrNot) => {
   
         <div className='bottom-row-select_coach'>
             {arrSelectSecond.topAisle.map((el) => {
-             console.log(ticketTrue, '<=ticketTrue2')
+            //  console.log(ticketTrue, '<=ticketTrue2')select_coach-seat-item_aisle-noactive
               return (
-              <button value={el} onClick={(e) => dispatch(setTicket(e.target.value))} className={`${ticketTrue ? 'select_coach-seat-item' : 'select_coach-seat-item_aisle-noactive'}`}>{el}</button>
+              <button value={el} onClick={(e) => dispatch(setTicket(e.target.value))} className={`select_coach-seat-item_aisle-noactive ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
               )
             })}
         </div>
@@ -101,7 +101,8 @@ const TrainButtonSecond = (( {arrSelectSecond}, haveSeatsOrNot) => {
 
 const TrainButtonForth = (({ arrSelectThird}) => {
   const dispatch = useDispatch();
- 
+  const seatsType = useSelector( (state) => state.slicePrice.seatsType);
+  
   return(
     <div className='forth-select_coach'>
           <div className='top-select_coach'>
@@ -109,7 +110,7 @@ const TrainButtonForth = (({ arrSelectThird}) => {
               {arrSelectThird.topWindow.map((el) => {
                 // console.log(el, '<=el')
                 return (
-                <button value={el} onClick={(e) => console.log(e.target.value)} className='seat-win-top'>{el}</button>
+                <button value={el} onClick={(e) => dispatch(setTicket(e.target.value))} className={`seat-win-top ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
                 )
               })}
             </div>
@@ -117,7 +118,7 @@ const TrainButtonForth = (({ arrSelectThird}) => {
               {arrSelectThird.topAisle.map((el) => {
                 // console.log(el, '<=el')
                 return (
-                <button value={el} onClick={(e) => console.log(e.target.value)} className='seat-win-top'>{el}</button>
+                <button value={el} onClick={(e) => dispatch(setTicket(e.target.value))} className={`seat-win-top ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
                 )
               })}
             </div>
@@ -128,7 +129,7 @@ const TrainButtonForth = (({ arrSelectThird}) => {
               {arrSelectThird.botAisle.map((el) => {
                 // console.log(el, '<=el')
                 return (
-                <button value={el} onClick={(e) => console.log(e.target.value)} className='seat-win-bottom'>{el}</button>
+                <button value={el} onClick={(e) => dispatch(setTicket(e.target.value))} className={`seat-win-bottom ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
                 )
               })}
             </div>
@@ -136,7 +137,7 @@ const TrainButtonForth = (({ arrSelectThird}) => {
               {arrSelectThird.botWindow.map((el) => {
                 // console.log(el, '<=el')
                 return (
-                <button value={el} onClick={(e) => console.log(e.target.value)} className='seat-win-top'>{el}</button>
+                <button value={el} onClick={(e) => dispatch(setTicket(e.target.value))} className={`seat-win-top ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
                 )
               })}
             </div>

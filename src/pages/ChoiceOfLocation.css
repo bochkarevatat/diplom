@@ -1,3 +1,18 @@
 .llocation-title{
     color: darkgrey;
 }
+.location-button{
+    background-color: #FFA800;
+    color: white;
+    border: none;
+    border-radius: .5rem;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 28px;
+    padding: 17px 65px;
+    text-transform: uppercase;
+    width: 222px;
+    display: flex;
+    align-self: flex-end;
+    margin-top: 50px;
+}
