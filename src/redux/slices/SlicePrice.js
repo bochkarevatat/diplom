@@ -2,42 +2,42 @@ import { createSlice} from "@reduxjs/toolkit";
 
 
 const initialState = {
-    // firstClass: {
-    //   seatsAge: 0,
-    //   seatsChild: 0,
-    //   seatsNumber: [],
-    //   amountTickets: 0, // seatsAge + seatsChild
-    //   seatsPriceAge: 0,
-    //   seatsPriceChild: 0,
-    //   totalPrice: 0 // seatsPrice + serviceWifi + serviceLinens
-    // },
-    // secondClass: {
-    //   seatsAge: 0,
-    //   seatsChild: 0,
-    //   seatsNumber: [],
-    //   amountTickets: 0, // seatsAge + seatsChild
-    //   seatsPriceAge: 0,
-    //   seatsPriceChild: 0,
-    //   totalPrice: 0 // seatsPrice + serviceWifi + serviceLinens
-    // },
-    // thirdClass: {
-    //   seatsAge: 0,
-    //   seatsChild: 0,
-    //   seatsNumber: [],
-    //   amountTickets: 0, // seatsAge + seatsChild
-    //   seatsPriceAge: 0,
-    //   seatsPriceChild: 0,
-    //   totalPrice: 0 // seatsPrice + serviceWifi + serviceLinens
-    // },
-    // fourthClass: {
-    //   seatsAge: 0,
-    //   seatsChild: 0,
-    //   seatsNumber: [],
-    //   amountTickets: 0, // seatsAge + seatsChild
-    //   seatsPriceAge: 0,
-    //   seatsPriceChild: 0,
-    //   totalPrice: 0 // seatsPrice + serviceWifi + serviceLinens
-    // },
+    firstClass: {
+      seatsAge: 0,
+      seatsChild: 0,
+      seatsNumber: [],
+      amountTickets: 0, // seatsAge + seatsChild
+      seatsPriceAge: 0,
+      seatsPriceChild: 0,
+      totalPrice: 0 // seatsPrice + serviceWifi + serviceLinens
+    },
+    secondClass: {
+      seatsAge: 0,
+      seatsChild: 0,
+      seatsNumber: [],
+      amountTickets: 0, // seatsAge + seatsChild
+      seatsPriceAge: 0,
+      seatsPriceChild: 0,
+      totalPrice: 0 // seatsPrice + serviceWifi + serviceLinens
+    },
+    thirdClass: {
+      seatsAge: 0,
+      seatsChild: 0,
+      seatsNumber: [],
+      amountTickets: 0, // seatsAge + seatsChild
+      seatsPriceAge: 0,
+      seatsPriceChild: 0,
+      totalPrice: 0 // seatsPrice + serviceWifi + serviceLinens
+    },
+    fourthClass: {
+      seatsAge: 0,
+      seatsChild: 0,
+      seatsNumber: [],
+      amountTickets: 0, // seatsAge + seatsChild
+      seatsPriceAge: 0,
+      seatsPriceChild: 0,
+      totalPrice: 0 // seatsPrice + serviceWifi + serviceLinens
+    },
     // seatsChildWithout: 0,
     // totalSeatsAge: 0,
     // totalSeatsChild: 0,
@@ -51,33 +51,35 @@ const initialState = {
     result: '',
     seatsType: [],
     trainCoach: [],
+    classType:'',
+    topPrice: 0,
   };
   
   export const slicePrice = createSlice({
     name: 'slicePrice',
     initialState,
     reducers: {
-      // changeAgeTickets: (state, action) => {
-      //   if (action.payload.classType === 'first') {
-      //     state.firstClass.seatsAge = action.payload.seatsAge;
-      //     state.firstClass.amountTickets = state.firstClass.seatsChild + action.payload.seatsAge;
-      //   }
-      //   if (action.payload.classType === 'second') {
-      //     state.secondClass.seatsAge = action.payload.seatsAge;
-      //     state.secondClass.amountTickets = state.secondClass.seatsChild + action.payload.seatsAge;
-      //   }
-      //   if (action.payload.classType === 'third') {
-      //     state.thirdClass.seatsAge = action.payload.seatsAge;
-      //     state.thirdClass.amountTickets = state.thirdClass.seatsChild + action.payload.seatsAge;
-      //   }
-      //   if (action.payload.classType === 'fourth') {
-      //     state.fourthClass.seatsAge = action.payload.seatsAge;
-      //     state.fourthClass.amountTickets = state.fourthClass.seatsChild + action.payload.seatsAge;
-      //   }
-      //   const amountTickets = state.firstClass.seatsAge + state.secondClass.seatsAge + state.thirdClass.seatsAge + state.fourthClass.seatsAge;
-      //   state.totalSeatsAge = amountTickets;
-      //   state.totalAmountTickets = state.totalSeatsAge + state.totalSeatsChild;
-      // },
+      changeAgeTickets: (state, action) => {
+        if (action.payload.classType === 'first') {
+          state.firstClass.seatsAge = action.payload.seatsAge;
+          state.firstClass.amountTickets = state.firstClass.seatsChild + action.payload.seatsAge;
+        }
+        if (action.payload.classType === 'second') {
+          state.secondClass.seatsAge = action.payload.seatsAge;
+          state.secondClass.amountTickets = state.secondClass.seatsChild + action.payload.seatsAge;
+        }
+        if (action.payload.classType === 'third') {
+          state.thirdClass.seatsAge = action.payload.seatsAge;
+          state.thirdClass.amountTickets = state.thirdClass.seatsChild + action.payload.seatsAge;
+        }
+        if (action.payload.classType === 'fourth') {
+          state.fourthClass.seatsAge = action.payload.seatsAge;
+          state.fourthClass.amountTickets = state.fourthClass.seatsChild + action.payload.seatsAge;
+        }
+        const amountTickets = state.firstClass.seatsAge + state.secondClass.seatsAge + state.thirdClass.seatsAge + state.fourthClass.seatsAge;
+        state.totalSeatsAge = amountTickets;
+        state.totalAmountTickets = state.totalSeatsAge + state.totalSeatsChild;
+      },
       // changeChildTickets: (state, action) => {
       //   if (action.payload.classType === 'first') {
       //     state.firstClass.seatsChild = action.payload.seatsChild;
@@ -288,11 +290,17 @@ const initialState = {
       setTrainCoach(state, action) {
         state.trainCoach = action.payload;
       },
+      setClassType(state, action) {
+        state.classType = action.payload;
+      },
+      setTopPrice(state, action) {
+        state.topPrice = action.payload;
+      },
     }
   });
   
   export const {
-    // changeAgeTickets,
+    changeAgeTickets,
     // changeChildTickets,
     // changeChildWithoutTickets,
     // changeNumberSeats,
@@ -308,6 +316,8 @@ const initialState = {
     setResult,
     setSeatsType,
     setTrainCoach,
+    setClassType,
+    setTopPrice
   } = slicePrice.actions;
   
   export const slicePriceState = (state) => state.slicePrice;

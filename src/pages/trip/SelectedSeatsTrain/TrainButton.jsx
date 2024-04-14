@@ -26,6 +26,7 @@ const TrainButtonThird = (( {arrSelectThird}) => {
   const ticketTrue = useSelector( (state) => state.slicePrice.ticketTrue);
   const seatsType = useSelector( (state) => state.slicePrice.seatsType);
   
+  
 
   // console.log(ticket, 'ticket')
   return(
@@ -63,10 +64,23 @@ const TrainButtonThird = (( {arrSelectThird}) => {
   )
 })
 
-const TrainButtonSecond = (( {arrSelectSecond}, haveSeatsOrNot) => {
-  const [ticket, setTicket]= React.useState();
+const TrainButtonSecond = (( {arrSelectSecond}) => {
+  // const [ticket, setTicket]= React.useState();
   //  console.log(ticket, '<=ticket')
- 
+  const dispatch = useDispatch();
+  const seatsType = useSelector( (state) => state.slicePrice.seatsType);
+  const [activeTicket, setActiveTicket] = React.useState('seat-not-have');
+  const ticket = useSelector( (state) => state.slicePrice.ticket);
+//   React.useEffect(() =>{
+    
+//     if(setTicket){
+//       setActiveTicket('select-active-ticket')
+//     }
+
+//   },[ticket])
+// console.log(activeTicket)
+
+
   return(
     <div className='select_coach'>
         <div className='top-select_coach'>
@@ -98,11 +112,61 @@ const TrainButtonSecond = (( {arrSelectSecond}, haveSeatsOrNot) => {
   )
 })
 
+const TrainButtonFirst = (( {arrSelectSecond}) => {
+  // const [ticket, setTicket]= React.useState();
+  //  console.log(ticket, '<=ticket')
+  const dispatch = useDispatch();
+  const seatsType = useSelector( (state) => state.slicePrice.seatsType);
+  const [activeTicket, setActiveTicket] = React.useState('seat-not-have');
+  const ticket = useSelector( (state) => state.slicePrice.ticket);
+//   React.useEffect(() =>{
+    
+//     if(setTicket){
+//       setActiveTicket('select-active-ticket')
+//     }
+
+//   },[ticket])
+// console.log(activeTicket)
+
+
+  return(
+    <div className='select_coach'>
+        <div className='top-select_coach'>
+            <div className='lux-row-select_coach'>
+              {arrSelectSecond.luxSeats.map((el) => {
+                // console.log(ticketTrue, el, '<=ticketTrue1')
+                return ( 
+                <button value={el} onClick={(e) => dispatch(setTicket(e.target.value))} className={`select_coach-seat-item-lux ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
+                )
+              })}
+            </div>
+        </div>
+  
+      
+
+    
+
+ </div>
+
+          
+          
+  )
+})
 
 const TrainButtonForth = (({ arrSelectThird}) => {
   const dispatch = useDispatch();
   const seatsType = useSelector( (state) => state.slicePrice.seatsType);
-  
+  const [activeTicket, setActiveTicket] = React.useState('seat-not-have');
+  const ticket = useSelector( (state) => state.slicePrice.ticket);
+  React.useEffect(() =>{
+    
+    if(ticket > 0){
+      setActiveTicket('seat-have')
+    }
+
+  },[ticket])
+console.log(ticket)
+
   return(
     <div className='forth-select_coach'>
           <div className='top-select_coach'>
@@ -149,4 +213,4 @@ const TrainButtonForth = (({ arrSelectThird}) => {
   
   
 
-  export {TrainButtonSecond,TrainButtonThird, TrainButtonForth}
+  export {TrainButtonSecond,TrainButtonThird, TrainButtonForth, TrainButtonFirst}

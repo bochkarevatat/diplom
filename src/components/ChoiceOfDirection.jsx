@@ -224,9 +224,14 @@ const ChoiceOfDirection = () => {
                 <input ref={inputRefDateFrom}
                 value={fromDate}
                 onChange={(ev) => onClickTimeFrom(ev.target.value)}
-                type="date" className="search-form__input2" name="lacation-from" placeholder="ДД/ММ/ГГ"/>
+                type="date"
+                className="search-form__input2" name="lacation-from" placeholder="ДД/ММ/ГГ"/>
+
                 <span className="search-span"></span>
-                <input type="date" className="search-form__input2" name="lacation-from"
+
+                <input
+                type="date"
+                className="search-form__input2" name="lacation-from"
                 ref={inputRefDateTo}
                 value={toDate}
                 onChange={(ev) => onClickTimeTo(ev.target.value)}

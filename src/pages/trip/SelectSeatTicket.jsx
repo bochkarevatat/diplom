@@ -1,7 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch} from 'react-redux';
-import TrainCoach from './TrainCoach'
-import './SelectSeatTicket.css'
+import TrainCoach from './TrainCoach';
+import './SelectSeatTicket.css';
+import { changeAgeTickets} from '../../redux/slices/SlicePrice';
 
 function dateFromAndTo(time) {
   if (time) {
@@ -15,13 +16,34 @@ function dateFromAndTo(time) {
 
 const SelectSeatTicket = () => {
     const trainList = useSelector( (state) => state.trainSlice.trainSelection);
+    const classType = useSelector( (state) => state.trainSlice.classType);
     const time = dateFromAndTo(trainList.departure.duration);
     const [valueAges, setValueAges] = React.useState(1);
     const [valueChild, setValueChild] = React.useState(1);
     const [valueChildWithout, setValueChildWithout] = React.useState(0)
-    
-    
+    const fourthClass = useSelector( (state) => state.trainSlice.fourthClass);
+    const [summ, setSumm]= React.useState(0)
     const dispatch = useDispatch();
+    const topPrice = useSelector( (state) => state.slicePrice.topPrice);
+    const rafValueAges = React.useRef(null);
+    // console.log(inputValueAges)
+
+    function inputAges(ev) {
+    //  console.log(, 'hhhhhh')
+      if (/^[0-5]$/.test(ev.target.value)) {
+        dispatch(changeAgeTickets({
+          classType: classType,
+          seatsAge: Number(ev.target.value) 
+        }));
+        setValueAges(Number(ev.target.value));
+      }
+    if(ev.target.classList.contains('tickets-age-input')){
+      setSumm(ev.target.value )
+        console.log(summ)
+    }
+    }
+    console.log()
+    
 
     // const inputChild = (ev) => {
     //   if (/^[0-5]$/.test(ev.target.value)) {
@@ -92,10 +114,11 @@ const SelectSeatTicket = () => {
   <div className='amount-tickets'>
         <h4 className='amount-tickets-title'>Количество билетов</h4>
         <div className='tickets-age'>
-          <div className='tickets-age-inputs tickets-age_gray'>
-            <input className='tickets-age-input' type="number" placeholder={`Взрослых - ${valueAges}`}
+          <div   className='tickets-age-inputs tickets-age_gray'>
+            <input className='tickets-age-input'  type="text" placeholder={`Взрослых - ${valueAges}`}
               value={''}
-              onChange={1}
+              ref={rafValueAges}
+              onChange={(ev) => inputAges(ev)}
                />
             <p className='tickets-adults-desc'>Можно добавить еще {5 - valueAges} пассажиров</p>
           </div>
@@ -140,11 +163,12 @@ const SelectSeatTicket = () => {
         </div>
         </div>
            <TrainCoach /> 
-       
-         
-       
-</div>
-  
+           <section className="price-right">
+           <div className="">{topPrice*valueAges}<span><img src='img/rubleIcon.png'></img></span></div>
+           </section>
+           
+        </div>
+        
     )
 }
 
