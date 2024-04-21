@@ -4,7 +4,7 @@ import './OrderTickets.css';
 import SidebarOrderTicket from './orderTickets/SidebarOrderTicket';
 import ProgressLine from '../components/ProgressLine'
 import {currentStepTwo} from '../redux/sliceProgressLine';
-
+import ItemOrderTicket from './orderTickets/ItemOrderTicket';
 
 const OrderTickets = (e) =>{
 console.log(e)
@@ -24,6 +24,10 @@ return(
     <section className="reserch-progress"><ProgressLine/></section>
         <div className='select-order-ticket'>
         <SidebarOrderTicket />
+        <ItemOrderTicket num={1} agesPassengers={2}/>
+        </div>
+        <div>
+       
         </div>
         </>
 )

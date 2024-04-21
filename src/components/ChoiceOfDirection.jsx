@@ -216,7 +216,7 @@ const ChoiceOfDirection = () => {
 
             </div>
 
-
+{/* инпут выбор даты */}
 
             <div className="search-form__row">
               <span className="search-form__hint date">Дата</span>
@@ -234,6 +234,8 @@ const ChoiceOfDirection = () => {
                 className="search-form__input2" name="lacation-from"
                 ref={inputRefDateTo}
                 value={toDate}
+                format="DD/MM/YY"
+               
                 onChange={(ev) => onClickTimeTo(ev.target.value)}
                 />
               </div>

@@ -14,9 +14,9 @@ function conversionDate(time) {
         hour: '2-digit',
         minute: '2-digit'
       });
-    };
+    }
     return '';
-  };
+  }
 
 const SidebarOrderTicket = () =>{
     const [ hide, setHide] = React.useState(false);

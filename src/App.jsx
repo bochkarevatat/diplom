@@ -8,6 +8,7 @@ import { ChoiceOfLocation} from './pages/ChoiceOfLocation';
 import { NotFoundPage } from './pages/NotFoundPage';
 import {OrderTickets}  from './pages/OrderTickets';
 
+import {PayTickets}  from './pages/PayTickets';
 import { Layout } from './components/Layout'
 
 
@@ -21,7 +22,8 @@ function App() {
       <Route index element={<Homepage />} />
       <Route path="about" element={<TreepPage />}/>
       <Route path="choicelocation" element={<ChoiceOfLocation />} /> 
-      <Route path="ordertickets" element={<OrderTickets />}> 
+      <Route path="ordertickets" element={<OrderTickets />} /> 
+      <Route path="pay" element={<PayTickets />}> 
       </Route>
       <Route path="*" element={<NotFoundPage />} />
     </Route>
