@@ -1,5 +1,6 @@
 import { Outlet, Link } from 'react-router-dom';
 import React from 'react';
+import { CustomLink } from '../components/CustomLink';
 import { useSelector, useDispatch} from 'react-redux';
 import SideBarSearch from './order/SideBarSearch';
 // import ResultReserchTrain from './order/ResultReserchTrain'
@@ -44,8 +45,9 @@ console.log("trainSelection", trainSelection)
                         <SelectSeatTicket />
 
                         </div>
-                        
-                       <button className='location-button'>далее</button>
+                        <CustomLink className='location-button' to="/ordertickets">
+                            <button className=''>далее</button>
+                          </CustomLink>
                     </div>
              
                    

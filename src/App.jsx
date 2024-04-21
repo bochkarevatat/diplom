@@ -6,7 +6,7 @@ import { TreepPage } from './pages/TreepPage';
 import { ChoiceOfLocation} from './pages/ChoiceOfLocation';
 
 import { NotFoundPage } from './pages/NotFoundPage';
-
+import {OrderTickets}  from './pages/OrderTickets';
 
 import { Layout } from './components/Layout'
 
@@ -20,7 +20,8 @@ function App() {
     <Route path="/" element={<Layout />}>
       <Route index element={<Homepage />} />
       <Route path="about" element={<TreepPage />}/>
-      <Route path="choicelocation" element={<ChoiceOfLocation />}> 
+      <Route path="choicelocation" element={<ChoiceOfLocation />} /> 
+      <Route path="ordertickets" element={<OrderTickets />}> 
       </Route>
       <Route path="*" element={<NotFoundPage />} />
     </Route>

@@ -38,14 +38,22 @@ const initialState = {
       seatsPriceChild: 0,
       totalPrice: 0 // seatsPrice + serviceWifi + serviceLinens
     },
+    objTicket: {
+      numberOld: 0,
+      numberChild: 0,
+      priceChild: 0,
+      sumOld: 0,
+      sumChild: 0,
+      totalPriceAll: 0
+     },
     // seatsChildWithout: 0,
-    // totalSeatsAge: 0,
+    totalSeatsAge: 0,
     // totalSeatsChild: 0,
     // totalSeatsNumber: [],
     // totalAmountTickets: 0,
     // totalPriceAge: 0,
     // totalPriceChild: 0,
-    // totalPriceAll: 0,
+    totalPriceAll: 0,
     ticket: 0,
     ticketTrue: false,
     result: '',
@@ -80,27 +88,27 @@ const initialState = {
         state.totalSeatsAge = amountTickets;
         state.totalAmountTickets = state.totalSeatsAge + state.totalSeatsChild;
       },
-      // changeChildTickets: (state, action) => {
-      //   if (action.payload.classType === 'first') {
-      //     state.firstClass.seatsChild = action.payload.seatsChild;
-      //     state.firstClass.amountTickets = state.firstClass.seatsAge + action.payload.seatsChild;
-      //   }
-      //   if (action.payload.classType === 'second') {
-      //     state.secondClass.seatsChild = action.payload.seatsChild;
-      //     state.secondClass.amountTickets = state.secondClass.seatsAge + action.payload.seatsChild;
-      //   }
-      //   if (action.payload.classType === 'third') {
-      //     state.thirdClass.seatsChild = action.payload.seatsChild;
-      //     state.thirdClass.amountTickets = state.thirdClass.seatsAge + action.payload.seatsChild;
-      //   }
-      //   if (action.payload.classType === 'fourth') {
-      //     state.fourthClass.seatsChild = action.payload.seatsChild;
-      //     state.fourthClass.amountTickets = state.fourthClass.seatsAge + action.payload.seatsChild;
-      //   }
-      //   const amountTickets = state.firstClass.seatsChild + state.secondClass.seatsChild + state.thirdClass.seatsChild + state.fourthClass.seatsChild;
-      //   state.totalSeatsChild = amountTickets;
-      //   state.totalAmountTickets = state.totalSeatsAge + state.totalSeatsChild;
-      // },
+      changeChildTickets: (state, action) => {
+        if (action.payload.classType === 'first') {
+          state.firstClass.seatsChild = action.payload.seatsChild;
+          state.firstClass.amountTickets = state.firstClass.seatsAge + action.payload.seatsChild;
+        }
+        if (action.payload.classType === 'second') {
+          state.secondClass.seatsChild = action.payload.seatsChild;
+          state.secondClass.amountTickets = state.secondClass.seatsAge + action.payload.seatsChild;
+        }
+        if (action.payload.classType === 'third') {
+          state.thirdClass.seatsChild = action.payload.seatsChild;
+          state.thirdClass.amountTickets = state.thirdClass.seatsAge + action.payload.seatsChild;
+        }
+        if (action.payload.classType === 'fourth') {
+          state.fourthClass.seatsChild = action.payload.seatsChild;
+          state.fourthClass.amountTickets = state.fourthClass.seatsAge + action.payload.seatsChild;
+        }
+        const amountTickets = state.firstClass.seatsChild + state.secondClass.seatsChild + state.thirdClass.seatsChild + state.fourthClass.seatsChild;
+        state.totalSeatsChild = amountTickets;
+        state.totalAmountTickets = state.totalSeatsAge + state.totalSeatsChild;
+      },
       // changeChildWithoutTickets: (state, action) => {
       //   state.seatsChildWithout = action.payload;
       // },
@@ -296,12 +304,18 @@ const initialState = {
       setTopPrice(state, action) {
         state.topPrice = action.payload;
       },
+      setTotalPriceAll(state, action) {
+        state.totalPriceAll = action.payload;
+      },
+      setObjTicket(state, action) {
+        state.objTicket = action.payload;
+      },
     }
   });
   
   export const {
     changeAgeTickets,
-    // changeChildTickets,
+    changeChildTickets,
     // changeChildWithoutTickets,
     // changeNumberSeats,
     // changePriceSeats,
@@ -317,7 +331,9 @@ const initialState = {
     setSeatsType,
     setTrainCoach,
     setClassType,
-    setTopPrice
+    setTopPrice,
+    setObjTicket,
+    setTotalPriceAll
   } = slicePrice.actions;
   
   export const slicePriceState = (state) => state.slicePrice;

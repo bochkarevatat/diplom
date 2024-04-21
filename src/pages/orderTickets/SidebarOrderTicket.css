@@ -1,0 +1,144 @@
+
+
+.sidebar-datе-title{
+    text-transform: uppercase;
+    text-align: center;
+   margin-top: 10px;
+}
+.details-there-order{
+    margin-top: 10px;
+}
+.there-head-date-order{
+    color: #fff;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21px;
+    margin-left: 20px;
+    margin-right: auto;
+}
+
+.there-train-order{
+    display: flex;
+    font-size: 22px;
+   margin: 30px;
+    justify-content: space-between;
+}
+.there-train-name{
+    display: flex;
+    font-size: 22px;
+    margin: 30px;
+    justify-content: space-between;
+}
+.there-train-text-order{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    text-transform: capitalize; 
+}
+.there-order{
+    margin: 30px;
+    display: flex;
+    font-size: 22px;
+    justify-content: space-between;
+}
+.there-direction-arrow{
+    display: inline-block;
+    background: url('../../assets/img/vector-there.png') center/cover no-repeat;
+    width: 30px;
+    height: 20px;
+}
+.there-route-from{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+.there-route-to{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+.there-city{
+    text-transform: capitalize; 
+}
+.there-arrow-time{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.there-date{
+    font-size: 18px;
+    color: darkgrey;
+}
+.there-station{
+    font-size: 18px;
+    color: darkgrey;
+}
+.there-to{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+.train-all-price{
+    /* width: 100%; */
+    display: flex;
+    justify-content: space-between;
+    margin: 30px;
+}
+.train-price-yell{
+    color: #ffa800;
+}
+.train-all-price p{
+    text-transform: uppercase;
+}
+
+.there-title-order{
+    font-size: 22px;
+}
+/*  */
+.details-passengers{
+    margin: 30px;
+}
+.details-passengers-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.pass-head-title{
+   
+   
+}
+.pass-head-title::before{
+    content: url('../../assets/img/man.png');
+    margin-right: 10px;
+}
+.pass-head-open-down{
+    background-image: url('../../assets/img/minus.png');
+    width: 20px;
+    height: 20px;
+}
+.pass-head-open-up{
+    background-image: url('../../assets/img/plus.png');
+    width: 20px;
+    height: 20px;
+}
+.pass-amount-price{
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.pass-ages{
+    font-size: 22px;
+}
+.pass-amount{
+    display: flex;
+    align-items: center;
+}
+.amount{
+    margin-right: 10px;
+}
+.none{
+    display: none;
+}

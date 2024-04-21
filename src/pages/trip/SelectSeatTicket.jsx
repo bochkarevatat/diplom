@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch} from 'react-redux';
 import TrainCoach from './TrainCoach';
 import './SelectSeatTicket.css';
-import { changeAgeTickets} from '../../redux/slices/SlicePrice';
+import { changeAgeTickets, setTotalPriceAll, changeChildTickets, setObjTicket} from '../../redux/slices/SlicePrice';
 
 function dateFromAndTo(time) {
   if (time) {
@@ -17,6 +17,9 @@ function dateFromAndTo(time) {
 const SelectSeatTicket = () => {
     const trainList = useSelector( (state) => state.trainSlice.trainSelection);
     const classType = useSelector( (state) => state.trainSlice.classType);
+    const totalPriceAll = useSelector( (state) => state.slicePrice.totalPriceAll);
+    const objTicket = useSelector( (state) => state.slicePrice.objTicket);
+    
     const time = dateFromAndTo(trainList.departure.duration);
     const [valueAges, setValueAges] = React.useState(1);
     const [valueChild, setValueChild] = React.useState(1);
@@ -28,13 +31,38 @@ const SelectSeatTicket = () => {
     const rafValueAges = React.useRef(null);
     // console.log(inputValueAges)
 
+    React.useEffect(() =>{
+
+        dispatch(setObjTicket({
+          numberOld: Number(valueAges),
+          numberChild: Number(valueChild),
+          priceChild: topPrice*0.65,
+          sumOld: Number(valueAges)*topPrice,
+          sumChild: Number(valueChild)*topPrice*0.65,
+          totalPriceAll: Number(valueAges)*topPrice+Number(valueChild)*topPrice*0.65
+        }
+
+        
+        )) 
+
+    },[valueAges, valueChild])
+    
+  
+     console.log(objTicket)
+
+
     function inputAges(ev) {
+
+      
     //  console.log(, 'hhhhhh')
       if (/^[0-5]$/.test(ev.target.value)) {
+        
         dispatch(changeAgeTickets({
           classType: classType,
           seatsAge: Number(ev.target.value) 
+          
         }));
+        console.log(classType, "test")
         setValueAges(Number(ev.target.value));
       }
     if(ev.target.classList.contains('tickets-age-input')){
@@ -42,26 +70,25 @@ const SelectSeatTicket = () => {
         console.log(summ)
     }
     }
-    console.log()
+
+    function inputAgesCh(ev) {
+      //  console.log(, 'hhhhhh')
+        if (/^[0-3]$/.test(ev.target.value)) {
+          dispatch(changeChildTickets({
+            classType: classType,
+            seatsChild: Number(ev.target.value) 
+          }));
+          setValueChild(Number(ev.target.value));
+        }
+      if(ev.target.classList.contains('tickets-age-input')){
+        setSumm(ev.target.value )
+          console.log(summ)
+      }
+      }
+   
+    dispatch(setTotalPriceAll(topPrice*valueAges))
+
     
-
-    // const inputChild = (ev) => {
-    //   if (/^[0-5]$/.test(ev.target.value)) {
-    //     dispatch(changeChildTickets({
-    //       classType: coaches[0].coach.class_type,
-    //       seatsChild: Number(ev.target.value)
-    //     }));
-    //     setValueChild(Number(ev.target.value));
-    //   }
-    // }
-    // const [type, setType] = React.useState({
-    //   first: false,
-    //   second: false,
-    //   third: false,
-    //   fourth: false
-    // });
-
-    // console.log(trainList, 'trainList')
 
     const hh = time.split(':');
     const hh1 = hh.splice(1, 2)
@@ -124,16 +151,16 @@ const SelectSeatTicket = () => {
           </div>
 
           <div className='tickets-age-inputs'>
-            <input className='tickets-age-input' type="number" placeholder={`Детских - ${valueChild}`}
+            <input className='tickets-age-input' type="text" placeholder={`Детских - ${valueChild}`}
               value={''}
-              onChange={1} />
+              onChange={(ev) => inputAgesCh(ev)} />
             <p className='tickets-adults-desc'>Можно добавить еще {5 - valueChild} детей до 10 лет. Свое место в вагоне, как у взрослых, но дешевле
               в среднем на 50-65%</p>
           </div>
           <div className='tickets-age-inputs'>
             <input className='tickets-age-input' type="text" placeholder={`Детских \u00ABбез места\u00BB - ${valueChildWithout}`}
               value={''}
-              onChange={3} />
+              onChange={(ev) => inputAgesCh(ev)} />
             <p className='tickets-adults-desc'>Доступно только для взрослого места. Можно добавить еще {valueAges - valueChildWithout} детей.</p>
           </div>
         </div>
@@ -164,7 +191,7 @@ const SelectSeatTicket = () => {
         </div>
            <TrainCoach /> 
            <section className="price-right">
-           <div className="">{topPrice*valueAges}<span><img src='img/rubleIcon.png'></img></span></div>
+           <div className="">{objTicket.totalPriceAll}<span><img src='img/rubleIcon.png'></img></span></div>
            </section>
            
         </div>
