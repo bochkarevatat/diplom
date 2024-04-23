@@ -1,9 +1,12 @@
 import React from 'react';
 import { CustomLink } from './CustomLink';
 import { useSelector, useDispatch} from 'react-redux';
-
-
+import DatePicker from 'react-datepicker';
+import ru from 'date-fns/locale/ru';
+import 'react-datepicker/dist/react-datepicker.css';
 import {setSearchValueTo, setSearchValueFrom, setDateFrom, setDateTo, setIdFrom, setIdTo,setBtn} from '../redux/slices/FilterTrainSlice';
+import InputDate from './InputDate/InputDate';
+import Reactdatepicker from './InputDate/InputDatepicker'
 import './components-style/components-style.css';
 // import cityes from '../russia.json'
 
@@ -25,7 +28,7 @@ const ChoiceOfDirection = () => {
   const toDate = useSelector((state) => state.filter.toDate)
   const idCityFrom = useSelector((state) => state.filter.idCityFrom)
   const idCityTo = useSelector((state) => state.filter.idCityTo)
-
+  const [selectesDate, setSelectedDate]= React.useState('');
   const callSetBtn = useSelector((state) => state.filter.callSetBtn)
 
   const inputRef = React.useRef(null);
@@ -51,7 +54,9 @@ const ChoiceOfDirection = () => {
    
   };
  
+  // test
   
+ 
   
 
   React.useEffect(() =>{
@@ -108,12 +113,21 @@ const ChoiceOfDirection = () => {
 
   //     }
   // }
-
+console.log(selectesDate, "selectesDate")
 
   const onClickTimeFrom = (obj) => {
     dispatch(setDateFrom(obj));
-    inputRefDateFrom.current?.focus();   
+    inputRefDateFrom.current?.focus(); 
+    const event = new MouseEvent("dblclick", {
+      view: window,
+      bubbles: true,
+      cancelable: true
+   });
+   console.log(event)
+      inputRefDateFrom.current?.dispatchEvent(event);  
   };
+
+
   const onClickTimeTo = (obj) => {
     dispatch(setDateTo(obj));
     inputRefDateTo.current?.focus();   
@@ -185,32 +199,33 @@ const ChoiceOfDirection = () => {
               <span className="search-form__hint">Направление</span>
               <div className="search-form__inputs">
                 <input 
-                ref={inputRef}
-                value={categoryCityFrom}
-                onChange={(ev) => onClickDate (ev.target.value)} type="text" list="cities"
-                 className="search-form__input1" name="lacation-from" placeholder="Откуда" />
+                    ref={inputRef}
+                    value={categoryCityFrom}
+                    onChange={(ev) => onClickDate (ev.target.value)} type="text" list="cities"
+                    className="search-form__input1" name="lacation-from" placeholder="Откуда" />
                 
                 <button onClick={() => console.log("replace")} type="button" className="search-form__btn">
                     <div className={`${bg ? 'search-form__direction' : 'search-form__direction-change'}`} ></div>
                 </button>
 
                 <input 
-                ref={inputRefSecond}
-                value={categoryCityTo}
-                onChange={(ev) => onClickDateFrom(ev.target.value)}
-                type="text" list="citiesTo"
-                className="search-form__input1"
-                name="lacation-to"
-                placeholder="Куда" />
+                      ref={inputRefSecond}
+                      value={categoryCityTo}
+                      onChange={(ev) => onClickDateFrom(ev.target.value)}
+                      type="text" list="citiesTo"
+                      className="search-form__input1"
+                      name="lacation-to"
+                      placeholder="Куда" />
 
                 <datalist id="cities"> 
                  {/* {itemslastRout.map((el) => <option key={el.departure.to.city.name}>{el.departure.to.city.name}</option>)} */}
                 
-                {itemslastRout.map((el) => <option key={el.name}>{el.name}</option>)} 
+                    {itemslastRout.map((el) => <option key={el.name}>{el.name}</option>)} 
                 </datalist>
+
                 <datalist id="citiesTo"> 
-                {arrCityes.map((el) => <option key={el.name}>{el.name}</option>)} 
-                  {/* {itemslastRout.map((el) => <option key={el.departure.to.city.name}>{el.departure.to.city.name}</option>)} */}
+                    {arrCityes.map((el) => <option key={el.name}>{el.name}</option>)} 
+                      {/* {itemslastRout.map((el) => <option key={el.departure.to.city.name}>{el.departure.to.city.name}</option>)} */}
                 </datalist>
               </div>
 
@@ -221,26 +236,47 @@ const ChoiceOfDirection = () => {
             <div className="search-form__row">
               <span className="search-form__hint date">Дата</span>
               <div className="search-form__inputs">
-                <input ref={inputRefDateFrom}
-                value={fromDate}
-                onChange={(ev) => onClickTimeFrom(ev.target.value)}
-                type="date"
-                className="search-form__input2" name="lacation-from" placeholder="ДД/ММ/ГГ"/>
+
+              <DatePicker selected={selectesDate}
+            //  inline locale={ru}
+            onChange={ date=>setSelectedDate(date)}
+            dateFormat="dd-MM-yyyy"
+            ref={inputRefDateFrom}
+            value={selectesDate}
+            // onChange={(ev) => onClickTimeFrom(ev.target.value)}
+            // minDate={ new Date()}
+            // maxDate={ new Date()}
+            filterDate={ date=>date.getDay()!=6 && date.getDay()!=0}
+            //  isClearable
+            showYearDropdown
+            placeholderText='ДД.ММ.ГГ'
+            className="search-form__inputDater"
+     
+            />                 
+           
+                {/* <input ref={inputRefDateFrom}
+                    value={fromDate}
+                    onChange={(ev) => onClickTimeFrom(ev.target.value)}
+                    type="date"
+                    className="search-form__input2" name="lacation-from" placeholder="ДД/ММ/ГГ"/> */}
 
                 <span className="search-span"></span>
 
                 <input
-                type="date"
-                className="search-form__input2" name="lacation-from"
-                ref={inputRefDateTo}
-                value={toDate}
-                format="DD/MM/YY"
-               
-                onChange={(ev) => onClickTimeTo(ev.target.value)}
+                    type="date"
+                    className="search-form__input2" name="lacation-from"
+                    ref={inputRefDateTo}
+                    value={toDate}
+                    format="DD/MM/YY"
+                  
+                    onChange={(ev) => onClickTimeTo(ev.target.value)}
                 />
+
+               
               </div>
             </div>
-
+            {/* <Reactdatepicker/> */}
+           
             <div className="search-form__button">
             {/* <button onClick={() => setBg(true)} className="search-form__button-submit" type='button'>Найти билеты</button> */}
             <CustomLink to="/about">

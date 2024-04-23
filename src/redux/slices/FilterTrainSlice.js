@@ -56,9 +56,13 @@ reducers: {
       },
       setCurrentPage(state, action){  
         state.currentPage = action.payload;
-    }
+    },
+    clearChoiceDate: (state) => {
+      state.toDate = '';
+      state.fromDate = '';
+    },
       }
 })
-export const { filterTrain, setSort, setFilterN, setCurrentPage, setSearchValueTo, setSearchValueFrom, setDateFrom, setDateTo, setIdFrom, setIdTo, setBtn } = filterSlice.actions;
+export const { filterTrain, clearChoiceDate, setSort, setFilterN, setCurrentPage, setSearchValueTo, setSearchValueFrom, setDateFrom, setDateTo, setIdFrom, setIdTo, setBtn } = filterSlice.actions;
 
 export default filterSlice.reducer;
