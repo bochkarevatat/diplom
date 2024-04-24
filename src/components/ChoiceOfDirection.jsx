@@ -238,6 +238,7 @@ const ChoiceOfDirection = () => {
               <div className="search-form__inputs">
 
               <DatePicker selected={fromDate}
+                locale={ru}
                 onChange={ date=> dispatch(setDateFrom(date))}
                 dateFormat="dd-MM-yyyy"
                 ref={inputRefDateFrom}
@@ -265,6 +266,7 @@ const ChoiceOfDirection = () => {
                     onChange={(ev) => onClickTimeTo(ev.target.value)}
                 /> */}
             <DatePicker selected={toDate}
+               locale={ru}
               onChange={ date=> dispatch(setDateTo(date))}
               dateFormat="dd-MM-yyyy"
               ref={inputRefDateTo}
