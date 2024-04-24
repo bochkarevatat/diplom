@@ -21,6 +21,21 @@ function SideBarSearch () {
 
   const whereFromDate = useSelector( (state) => state.filter.fromDate);
   const whereToDate = useSelector( (state) => state.filter.toDate);
+
+  const FromDate = whereFromDate.toLocaleDateString('ru-RU', {
+        year: "numeric",
+        month: "numeric",
+        day: "numeric"
+      })
+
+      const ToDate = whereToDate.toLocaleDateString('ru-RU', {
+        year: "numeric",
+        month: "numeric",
+        day: "numeric"
+      })
+
+  console.log(whereFromDate, whereToDate)
+
     return (
       <div className="sidebar-left">
         <div className="sidebar-date">
@@ -28,20 +43,22 @@ function SideBarSearch () {
 					<p>Дата поездки</p>
 					<div className="treep-from">
 						<input className="treep-from"
-							type="date"
+							type="text"
+              // dateFormat="dd-MM-yyyy"
+
               placeholder='ДД.ММ.ГГ'
 							// onChange={handleWhereFromDate}
-							value={whereFromDate}
+							value={FromDate}
 						/>
 					</div>
 
           <p>Дата возвращения</p>
 					<div className="treep-from">
 						<input className="treep-from"
-							type="date"
+							type="text"
               placeholder='ДД.ММ.ГГ'
 							// onChange={}
-							value={whereToDate}
+							value={ToDate}
 						/>
 					</div>
 

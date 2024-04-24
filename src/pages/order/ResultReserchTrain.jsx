@@ -56,6 +56,13 @@ const ResultReserchTrain = () =>{
   const dispatch = useDispatch();
 
   
+  const formatII = fromDate.toLocaleDateString('es', {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric"
+  })
+  console.log(fromDate, formatII, "767676")
+
 
 
 React.useEffect(() =>{

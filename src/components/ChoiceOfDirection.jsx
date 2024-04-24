@@ -105,33 +105,33 @@ const ChoiceOfDirection = () => {
     
   }, [itemslastRout, idCityFrom]);
   
-  // const onClickReplacement = () =>{
-  //     if(inputRef == categoryCityFrom ){
-  //       value=categoryCityFrom
-  //     }
-  //     else{
+  // React.useEffect(() =>{
+  //   dispatch(setDateFrom(fromDate));
+  // },[fromDate])
 
-  //     }
-  // }
-console.log(selectesDate, "selectesDate")
+//   const onClickTimeFrom = (obj) => {
+   
+//     // inputRefDateFrom.current?.focus(); 
+//  const formatII = obj.toLocaleDateString('es', {
+//     year: "numeric",
+//     month: "numeric",
+//     day: "numeric"
+//   })
+//   dispatch(setDateFrom(formatII));
+//   // console.log(obj.toLocaleDateString('ru-RU', {
+//   //   year: "numeric",
+//   //   month: "numeric",
+//   //   day: "numeric"
+//   // }))
+//    console.log(fromDate, '=<fromDate')
+//       // inputRefDateFrom.current?.dispatchEvent(event);  
+//   };
 
-  const onClickTimeFrom = (obj) => {
-    dispatch(setDateFrom(obj));
-    inputRefDateFrom.current?.focus(); 
-    const event = new MouseEvent("dblclick", {
-      view: window,
-      bubbles: true,
-      cancelable: true
-   });
-   console.log(event)
-      inputRefDateFrom.current?.dispatchEvent(event);  
-  };
 
-
-  const onClickTimeTo = (obj) => {
-    dispatch(setDateTo(obj));
-    inputRefDateTo.current?.focus();   
-  };
+  // const onClickTimeTo = (obj) => {
+  //   dispatch(setDateTo(obj));
+  //   inputRefDateTo.current?.focus();   
+  // };
   
   // console.log('inputRefDateTo.current?', inputRef.current)
   
@@ -237,21 +237,14 @@ console.log(selectesDate, "selectesDate")
               <span className="search-form__hint date">Дата</span>
               <div className="search-form__inputs">
 
-              <DatePicker selected={selectesDate}
-            //  inline locale={ru}
-            onChange={ date=>setSelectedDate(date)}
-            dateFormat="dd-MM-yyyy"
-            ref={inputRefDateFrom}
-            value={selectesDate}
-            // onChange={(ev) => onClickTimeFrom(ev.target.value)}
-            // minDate={ new Date()}
-            // maxDate={ new Date()}
-            filterDate={ date=>date.getDay()!=6 && date.getDay()!=0}
-            //  isClearable
-            showYearDropdown
-            placeholderText='ДД.ММ.ГГ'
-            className="search-form__inputDater"
-     
+              <DatePicker selected={fromDate}
+                onChange={ date=> dispatch(setDateFrom(date))}
+                dateFormat="dd-MM-yyyy"
+                ref={inputRefDateFrom}
+                value={fromDate}
+                showYearDropdown
+                placeholderText='ДД.ММ.ГГГГ'
+                className="search-form__inputDater"
             />                 
            
                 {/* <input ref={inputRefDateFrom}
@@ -262,7 +255,7 @@ console.log(selectesDate, "selectesDate")
 
                 <span className="search-span"></span>
 
-                <input
+                {/* <input
                     type="date"
                     className="search-form__input2" name="lacation-from"
                     ref={inputRefDateTo}
@@ -270,8 +263,16 @@ console.log(selectesDate, "selectesDate")
                     format="DD/MM/YY"
                   
                     onChange={(ev) => onClickTimeTo(ev.target.value)}
-                />
-
+                /> */}
+            <DatePicker selected={toDate}
+              onChange={ date=> dispatch(setDateTo(date))}
+              dateFormat="dd-MM-yyyy"
+              ref={inputRefDateTo}
+              value={toDate}
+              showYearDropdown
+              placeholderText='ДД.ММ.ГГГГ'
+              className="search-form__inputDater"
+            /> 
                
               </div>
             </div>
