@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch} from 'react-redux';
 import TrainCoach from './TrainCoach';
 import './SelectSeatTicket.css';
-import { changeAgeTickets, setTotalPriceAll, changeChildTickets, setObjTicket} from '../../redux/slices/SlicePrice';
+import { changeAgeTickets, setBottomPrice, setTotalPriceAll, changeChildTickets, setObjTicket} from '../../redux/slices/SlicePrice';
 
 function dateFromAndTo(time) {
   if (time) {
@@ -17,44 +17,69 @@ function dateFromAndTo(time) {
 const SelectSeatTicket = () => {
     const trainList = useSelector( (state) => state.trainSlice.trainSelection);
     const classType = useSelector( (state) => state.trainSlice.classType);
+
+    // console.log(classType, '<=classType')
     const totalPriceAll = useSelector( (state) => state.slicePrice.totalPriceAll);
     const objTicket = useSelector( (state) => state.slicePrice.objTicket);
-    
+    const trainCoach = useSelector( (state) => state.slicePrice.trainCoach);
+    const ticket = useSelector( (state) => state.slicePrice.ticket);
+    // const {items, totalPrice} = useSelector( state => state.sliceTicke);
     const time = dateFromAndTo(trainList.departure.duration);
     const [valueAges, setValueAges] = React.useState(1);
     const [valueChild, setValueChild] = React.useState(1);
+    const [price, setPrice] = React.useState(0);
+    // const [itemTicket, setItemTicket] = React.useState([]);
     const [valueChildWithout, setValueChildWithout] = React.useState(0)
     const fourthClass = useSelector( (state) => state.trainSlice.fourthClass);
+    const [topPlaces, setTopPlaces]= React.useState(0)
     const [summ, setSumm]= React.useState(0)
     const dispatch = useDispatch();
     const topPrice = useSelector( (state) => state.slicePrice.topPrice);
+    const bottomPrice = useSelector( (state) => state.slicePrice.bottomPrice);
     const rafValueAges = React.useRef(null);
     // console.log(inputValueAges)
 
     React.useEffect(() =>{
 
+      if(trainCoach.class_type === 'third'){
+        // console.log("получилось")  
+        if(ticket % 2 == 1){
+        setPrice(trainCoach.bottom_price)
+        // setItemTicket([...ticket])
         dispatch(setObjTicket({
           numberOld: Number(valueAges),
           numberChild: Number(valueChild),
-          priceChild: topPrice*0.65,
-          sumOld: Number(valueAges)*topPrice,
-          sumChild: Number(valueChild)*topPrice*0.65,
-          totalPriceAll: Number(valueAges)*topPrice+Number(valueChild)*topPrice*0.65
+          priceChild: price*0.65,
+          sumOld: Number(valueAges)*price,
+          sumChild: Number(valueChild)*price*0.65,
+          items: items.length,
+          totalPriceAll: Number(valueAges)*price+Number(valueChild)*price*0.65
         }
-
-        
         )) 
-
-    },[valueAges, valueChild])
+       
+        }else{
+          setPrice(trainCoach.top_price)
+          dispatch(setObjTicket({
+            numberOld: Number(valueAges),
+            numberChild: Number(valueChild),
+            priceChild: price*0.65,
+            sumOld: Number(valueAges)*price,
+            sumChild: Number(valueChild)*price*0.65,
+            totalPriceAll: Number(valueAges)*price+Number(valueChild)*price*0.65
+          }
+          )) 
+          setPrice(trainCoach.top_price)
+          // console.log("получилось")     
+        }
+      }
+    },[valueAges, valueChild, ticket])
     
-  
-     console.log(objTicket)
+    // console.log(itemTicket, "itemTicket")
+    //  console.log(objTicket)
 
 
     function inputAges(ev) {
-
-      
-    //  console.log(, 'hhhhhh')
+ 
       if (/^[0-5]$/.test(ev.target.value)) {
         
         dispatch(changeAgeTickets({
@@ -62,14 +87,18 @@ const SelectSeatTicket = () => {
           seatsAge: Number(ev.target.value) 
           
         }));
-        console.log(classType, "test")
+        // console.log(classType, "test")
         setValueAges(Number(ev.target.value));
       }
     if(ev.target.classList.contains('tickets-age-input')){
       setSumm(ev.target.value )
-        console.log(summ)
+        // console.log(summ)
     }
     }
+
+    
+    
+
 
     function inputAgesCh(ev) {
       //  console.log(, 'hhhhhh')
@@ -82,13 +111,15 @@ const SelectSeatTicket = () => {
         }
       if(ev.target.classList.contains('tickets-age-input')){
         setSumm(ev.target.value )
-          console.log(summ)
+          // console.log(summ)
       }
       }
    
     dispatch(setTotalPriceAll(topPrice*valueAges))
 
+    // console.log(objTicket, trainCoach.top_price, trainCoach.class_type)
     
+      // console.log(topPlaces)
 
     const hh = time.split(':');
     const hh1 = hh.splice(1, 2)

@@ -25,17 +25,36 @@ const TrainButtonThird = (( {arrSelectThird}) => {
   const dispatch = useDispatch();
   const ticketTrue = useSelector( (state) => state.slicePrice.ticketTrue);
   const seatsType = useSelector( (state) => state.slicePrice.seatsType);
-  
-  
+  const ticket = useSelector( (state) => state.slicePrice.ticket);
+  const [itemTicket, setItemTicket] = React.useState([]);
 
-  // console.log(ticket, 'ticket')
+// const onClickAdd =()=>{
+//   const item ={
+//     id,
+//     ticket
+//   }
+// }
+  const addTicket = (el, id)=>{
+   
+    dispatch(setTicket(el))
+    console.log(ticket, id, 'ticket')
+    setItemTicket({
+      ticket: ticket,
+      id: id,
+      allTicket: [... ticket]
+    }
+
+    )
+  }
+
+  console.log(itemTicket, 'itemTicket')
   return(
     <div className='select_coach'>
         <div className='top-select_coach'>
             <div className='top-row-select_coach'>
-              {arrSelectThird.topWindow.map((el) => {
+              {arrSelectThird.topWindow.map((el, id) => {
                 return (
-                <button value={el} onClick={(e) => dispatch(setTicket(e.target.value))} className={`select_coach-seat-item ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
+                <button value={el} onClick={(e) => addTicket(e.target.value, id)} className={`select_coach-seat-item ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
                 )
               })}
             </div>
@@ -65,30 +84,40 @@ const TrainButtonThird = (( {arrSelectThird}) => {
 })
 
 const TrainButtonSecond = (( {arrSelectSecond}) => {
-  // const [ticket, setTicket]= React.useState();
+  const [id, setId]= React.useState();
   //  console.log(ticket, '<=ticket')
   const dispatch = useDispatch();
+  // const [itemTicket, setItemTicket] = React.useState([]);
   const seatsType = useSelector( (state) => state.slicePrice.seatsType);
   const [activeTicket, setActiveTicket] = React.useState('seat-not-have');
   const ticket = useSelector( (state) => state.slicePrice.ticket);
-//   React.useEffect(() =>{
-    
-//     if(setTicket){
-//       setActiveTicket('select-active-ticket')
-//     }
 
-//   },[ticket])
-// console.log(activeTicket)
+
+  const addTicket = (el, id)=>{
+    dispatch(setTicket(el)),
+    setId(id)
+    // console.log(ticket)
+  }
+// как добавить теперь id? через функцию?
+  React.useEffect(() =>{
+    const item = {
+      id: id,
+      itemT: ticket
+    }
+    console.log(item, ticket, 'ticket')
+  },[ticket])
+  
+// console.log(ticket)
 
 
   return(
     <div className='select_coach'>
         <div className='top-select_coach'>
             <div className='top-row-select_coach'>
-              {arrSelectSecond.topWindow.map((el) => {
+              {arrSelectSecond.topWindow.map((el, id) => {
                 // console.log(ticketTrue, el, '<=ticketTrue1')
                 return ( 
-                <button value={el} onClick={(e) => dispatch(setTicket(e.target.value))} className={`select_coach-seat-item ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
+                <button value={el} onClick={(e) => addTicket(e.target.value, id)} className={`select_coach-seat-item ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
                 )
               })}
             </div>

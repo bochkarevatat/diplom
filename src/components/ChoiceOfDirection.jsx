@@ -5,8 +5,8 @@ import DatePicker from 'react-datepicker';
 import ru from 'date-fns/locale/ru';
 import 'react-datepicker/dist/react-datepicker.css';
 import {setSearchValueTo, setSearchValueFrom, setDateFrom, setDateTo, setIdFrom, setIdTo,setBtn} from '../redux/slices/FilterTrainSlice';
-import InputDate from './InputDate/InputDate';
-import Reactdatepicker from './InputDate/InputDatepicker'
+// import InputDate from './InputDate/InputDate';
+// import Reactdatepicker from './InputDate/InputDatepicker'
 import './components-style/components-style.css';
 // import cityes from '../russia.json'
 
@@ -278,7 +278,7 @@ const ChoiceOfDirection = () => {
                
               </div>
             </div>
-            {/* <Reactdatepicker/> */}
+           
            
             <div className="search-form__button">
             {/* <button onClick={() => setBg(true)} className="search-form__button-submit" type='button'>Найти билеты</button> */}

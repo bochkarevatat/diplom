@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch} from 'react-redux';
 import './SectionInformTicket.css';
-import { setTopPrice} from '../../../redux/slices/SlicePrice';
+import { setTopPrice, setBottomPrice} from '../../../redux/slices/SlicePrice';
 
 
 
@@ -9,8 +9,9 @@ const SectionInformTicket = ()=>{
     const trainCoach = useSelector( (state) => state.slicePrice.trainCoach);
     const seatsType = useSelector( (state) => state.slicePrice.seatsType);
     const classType = useSelector( (state) => state.slicePrice.classType);
-    console.log('classType =>', classType)
+    console.log(' trainCoach =>',  trainCoach)
     const topPrice = useSelector( (state) => state.slicePrice.topPrice);
+    const bottomPrice = useSelector( (state) => state.slicePrice.bottomPrice);
     const [trainCoachSlice, setTrainCoachSlice] = React.useState();
     const dispatch = useDispatch();
     const amountSeats = (amount, type) => {
@@ -97,7 +98,7 @@ const SectionInformTicket = ()=>{
 
 
 
-    // console.log(seatsType)
+    console.log(classType, 'classType')
     return(
 
         <section className="section-inform-ticket">
@@ -136,22 +137,22 @@ const SectionInformTicket = ()=>{
            </div>: 
         classType === 'second' || classType === 'first' ?
         <div>
-        <div className="inform-ticket_top-seats">
-        <span className="top-seats_price-name">верхние</span>
-        <span className="top-seats_price">{`${amountSeats(seatsType, 'third').top}`}</span>
-    </div>
-    <div className="inform-ticket_top-seats">
-        <span className="top-seats_price-name">нижние</span>
-        <span className="top-seats_price">{`${amountSeats(seatsType, 'third').bottom}`}</span>
-    </div>
+            <div className="inform-ticket_top-seats">
+              <span className="top-seats_price-name">верхние</span>
+              <span className="top-seats_price">{`${amountSeats(seatsType, 'third').top}`}</span>
+            </div>
+            <div className="inform-ticket_top-seats">
+              <span className="top-seats_price-name">нижние</span>
+              <span className="top-seats_price">{`${amountSeats(seatsType, 'third').bottom}`}</span>
+            </div>
     
-    </div>: 
+        </div>: 
          classType === 'fourth' ?
          <div>
-         <div className="inform-ticket_top-seats">
-         <span className="top-seats_price-name"></span>
-         <span className="top-seats_price">{`${amountSeats(seatsType, 'third').top}`}</span>
-        </div>
+            <div className="inform-ticket_top-seats">
+                <span className="top-seats_price-name"></span>
+                <span className="top-seats_price">{`${amountSeats(seatsType, 'third').top}`}</span>
+            </div>
      
         </div>:null
             } 
@@ -159,25 +160,71 @@ const SectionInformTicket = ()=>{
             <div className="inform-ticket-price">
                 <div className="inform-ticket-header">стоимость</div>
                 <div className="inform-ticket-price">
-                {classType === 'first' || classType === 'second' || classType === 'third' || classType === 'fourth'?
+                   {classType === 'third' ?
+                    
                     <div>
                     <div className="inform-ticket-price-top">
                         <span className="">{topPrice}</span>
                         <img className="inform-ticket-price-top_ruble" src="img/rubleIcon.png" alt="рубль" />
-                    </div>
-                {/* // classType === 'first' || classType === 'second' || classType === 'third'? */}
+                      </div>
+               
                     <div className="inform-ticket-price-bottom">
                       <span className="">{trainCoach.bottom_price}</span>
                       <img className="inform-ticket-price-top_ruble" src="img/rubleIcon.png" alt="рубль" />
-                      </div>
-                    </div>:
-                    classType === 'third' ?
+                    </div>
                     <div className="inform-ticket-price-side">
                       <span className="">{trainCoach.side_price}</span>
                       <img className="inform-ticket-price-top_ruble" src="img/rubleIcon.png" alt="рубль" />
+                    </div>
                     </div>:null
                     }
-                </div>
+
+                  {classType === 'second'?
+                    
+                    <div>
+                    <div className="inform-ticket-price-top">
+                        <span className="">{topPrice}</span>
+                        <img className="inform-ticket-price-top_ruble" src="img/rubleIcon.png" alt="рубль" />
+                      </div>
+               
+                    <div className="inform-ticket-price-bottom">
+                      <span className="">{trainCoach.bottom_price}</span>
+                      <img className="inform-ticket-price-top_ruble" src="img/rubleIcon.png" alt="рубль" />
+                    </div>
+                    
+                    </div>:null
+                  }
+
+                  {classType === 'first'?
+                    
+                    <div>
+                    
+                    <div className="inform-ticket-price-bottom">
+                      <span className="">{trainCoach.bottom_price}</span>
+                      <img className="inform-ticket-price-top_ruble" src="img/rubleIcon.png" alt="рубль" />
+                    </div>
+                    
+                    </div>:null
+                  }
+
+                  {classType === 'fourth'?
+                    <div>
+                    <div className="inform-ticket-price-bottom">
+                      <span className="">{trainCoach.bottom_price}</span>
+                      <img className="inform-ticket-price-top_ruble" src="img/rubleIcon.png" alt="рубль" />
+                    </div>
+                    </div>:null
+                  }
+                 
+                 </div>
+
+
+
+
+
+
+
+
             </div>
             <div className="inform-ticket-icon">
                 <div className='inform-ticket-icon-header'>

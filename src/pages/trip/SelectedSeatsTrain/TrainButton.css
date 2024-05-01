@@ -148,9 +148,9 @@
   } */
   .select_coach-seat-item{
     align-items: flex-end;
-    background-color: rgb(249, 245, 245);
-    box-sizing: initial;
-    color: rgb(12, 12, 12);
+    /* background-color: rgb(249, 245, 245);
+    color: rgb(12, 12, 12);  */
+    box-sizing: initial; 
     display: flex;
     width: 27px;
     height: 30px;

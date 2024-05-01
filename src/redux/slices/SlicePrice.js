@@ -61,6 +61,7 @@ const initialState = {
     trainCoach: [],
     classType:'',
     topPrice: 0,
+    bottomPrice: 0,
   };
   
   export const slicePrice = createSlice({
@@ -301,6 +302,9 @@ const initialState = {
       setClassType(state, action) {
         state.classType = action.payload;
       },
+      setBottomPrice(state, action) {
+        state.bottomPrice = action.payload;
+      },
       setTopPrice(state, action) {
         state.topPrice = action.payload;
       },
@@ -332,6 +336,7 @@ const initialState = {
     setTrainCoach,
     setClassType,
     setTopPrice,
+    setBottomPrice,
     setObjTicket,
     setTotalPriceAll
   } = slicePrice.actions;

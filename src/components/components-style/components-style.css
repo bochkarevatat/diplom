@@ -356,3 +356,23 @@
     background-repeat: no-repeat;
     background-position: center right 17px;
   }
+
+  .search-form__inputDater{
+    /* margin-left: 35px; */
+    margin-top: 15px;
+    background-color: #fff;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAiCAYAAABIiGl0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAE+SURBVHgB7ZfNjYMwEIXHFgeO3EHa0EFKYDvY7SCpYEvYtLAVrNLBdhBKSAmW+Lv6CgjY5wgiJ4pQSGIiBb6L8YzFM3hszzC6QJIkTffcNM3K87wtDSCKooBzvuv6ruuy8zGcnsTThA+/IMuyRVVVX4yxRWv/0MbsYZc0ACyPg2apmf7wDqeu631Zlj++7wsWx/ESRrUeDo2DxAQ+WZqmO8wwoBHBh4ZMj+AxmV5UT0/Y0juINoFQF2QAtY9J29snwhDdDD2XrwXnxQriv11/Dq5Z2BgW3QHO+e8+f1EUW3UF0qOFwabPadt2iEZc8s3BNQu/nvBd2wlJYtjnRzUhjQjjCn2nG5lgCXOWV8uh5cq1tGXNsVqxVFavVRJOO8AoKig5hNcqyaPxECjc1nq1GGACb2QQtYx5nqurUv4Db2518t5TSfoAAAAASUVORK5CYII=);
+    background-position: center right 12px;
+    background-repeat: no-repeat;
+    border: none;
+    border-radius: 3px;
+    height: 60px;
+    padding-left: 20px;
+    width: 225px;
+    color: #c4bfbf;
+    text-transform: uppercase;
+    font-size: 20px;
+  }
+  input[type=date]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+  }

@@ -3,7 +3,7 @@ import filter from './slices/FilterTrainSlice';
 import sliceProgressLine from './sliceProgressLine';
 import trainSlice from './slices/TrainSlice';
 import slicePrice from './slices/SlicePrice';
-
+import sliceTicket from './slices/SliceTicket';
 
 export const store = configureStore({
     reducer: {
@@ -11,6 +11,7 @@ export const store = configureStore({
         sliceProgressLine,
         trainSlice,
         slicePrice,
+        sliceTicket,
     },
 })
 

@@ -30,7 +30,8 @@ const TrainCoach = () => {
   // const[fourth, setFourth] = React.useState(false);
   // const [classType, setClassType] = React.useState();
   const trainCoach = useSelector( (state) => state.slicePrice.trainCoach);
- 
+  console.log(itemsTrain, 'itemsTrain')
+
   const dispatch = useDispatch();
   const ticket = useSelector( (state) => state.slicePrice.ticket);
   const classType = useSelector( (state) => state.slicePrice.classType);
@@ -52,8 +53,7 @@ const TrainCoach = () => {
       const Debounce = setTimeout(() => {
         dispatch(setClassType(itemsTrain[0].coach.class_type));
         dispatch(setSeatsType(itemsTrain[0].seats))
-        dispatch(setTrainCoach(itemsTrain[0].coach))
-        
+        dispatch(setTrainCoach(itemsTrain[0].coach))   
       }, 1000);
     
       return () => clearTimeout(Debounce);
