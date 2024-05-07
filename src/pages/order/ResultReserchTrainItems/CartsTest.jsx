@@ -45,7 +45,7 @@ return (
           <div className='train-name-direction'>
             <p className='train-name-city'>&#8594;{el.departure.from.city.name}</p>
             <p className='train-name-city'>&#8594;{el.departure.to.city.name}</p>
-            <p className='train-name-city'>&#171;{el.arrival.train.name}&#187;</p>
+            {/* <p className='train-name-city'>&#171;{el.arrival.train.name}&#187;</p> */}
           </div>
           
          
@@ -77,7 +77,7 @@ return (
             
           </div>
 
-          <div className='train-direction-route'>
+          {/* <div className='train-direction-route'>
             <div className='train-direction-from'>
               <div className='direction-time'>{conversionDate(el.arrival.from.datetime)}</div>
               <div className='direction-from'>
@@ -99,7 +99,7 @@ return (
               </div>
             </div>
             
-          </div>
+          </div> */}
 
         </div>  
         

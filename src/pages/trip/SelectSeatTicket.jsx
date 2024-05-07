@@ -52,7 +52,7 @@ const SelectSeatTicket = () => {
           priceChild: price*0.65,
           sumOld: Number(valueAges)*price,
           sumChild: Number(valueChild)*price*0.65,
-          items: items.length,
+          // items: items.length,
           totalPriceAll: Number(valueAges)*price+Number(valueChild)*price*0.65
         }
         )) 

@@ -19,22 +19,25 @@ function SideBarSearch () {
   const [ hide, setHide] = React.useState(false)
   const [ hideFrom, setHideFrom] = React.useState(false)
 
-  const whereFromDate = useSelector( (state) => state.filter.fromDate);
-  const whereToDate = useSelector( (state) => state.filter.toDate);
 
-  const FromDate = whereFromDate.toLocaleDateString('ru-RU', {
-        year: "numeric",
-        month: "numeric",
-        day: "numeric"
-      })
+  // временно закоментировала эту часть, так как вылетал сайт, не знаю почему, 
+  // ниже закомментрованы в инпутах value
+  // const whereFromDate = useSelector( (state) => state.filter.fromDate);
+  // const whereToDate = useSelector( (state) => state.filter.toDate);
 
-      const ToDate = whereToDate.toLocaleDateString('ru-RU', {
-        year: "numeric",
-        month: "numeric",
-        day: "numeric"
-      })
+  // const FromDate = whereFromDate.toLocaleDateString('ru-RU', {
+  //       year: "numeric",
+  //       month: "numeric",
+  //       day: "numeric"
+  //     })
 
-  console.log(whereFromDate, whereToDate)
+  //     const ToDate = whereToDate.toLocaleDateString('ru-RU', {
+  //       year: "numeric",
+  //       month: "numeric",
+  //       day: "numeric"
+  //     })
+
+  // console.log(whereFromDate.toLocaleDateString(), whereToDate)
 
     return (
       <div className="sidebar-left">
@@ -48,7 +51,7 @@ function SideBarSearch () {
 
               placeholder='ДД.ММ.ГГ'
 							// onChange={handleWhereFromDate}
-							value={FromDate}
+							// value={FromDate}
 						/>
 					</div>
 
@@ -58,7 +61,7 @@ function SideBarSearch () {
 							type="text"
               placeholder='ДД.ММ.ГГ'
 							// onChange={}
-							value={ToDate}
+							// value={ToDate}
 						/>
 					</div>
 

@@ -10,7 +10,7 @@ const initialState = {
     currentPage: 1,
     fromDate: '',
     toDate: '',
-    categoryCityfrom: null,
+    categoryCityfrom: 'undefined',
     categoryCityTo: null,
     idCityFrom: null,
     idCityTo: null,

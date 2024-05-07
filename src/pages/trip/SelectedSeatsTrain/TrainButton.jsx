@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch} from 'react-redux';
 import './TrainButton.css'
 import { setTicket} from '../../../redux/slices/SlicePrice';
-
+import {addSeatInTicket, setIdSeat} from '../../../redux/slices/SliceTicket'
 
 
 
@@ -26,35 +26,37 @@ const TrainButtonThird = (( {arrSelectThird}) => {
   const ticketTrue = useSelector( (state) => state.slicePrice.ticketTrue);
   const seatsType = useSelector( (state) => state.slicePrice.seatsType);
   const ticket = useSelector( (state) => state.slicePrice.ticket);
-  const [itemTicket, setItemTicket] = React.useState([]);
-
-// const onClickAdd =()=>{
-//   const item ={
-//     id,
-//     ticket
-//   }
-// }
-  const addTicket = (el, id)=>{
-   
-    dispatch(setTicket(el))
-    console.log(ticket, id, 'ticket')
-    setItemTicket({
-      ticket: ticket,
+  const items = useSelector( (state) => state.sliceTicket.items);
+  const id = useSelector( (state) => state.sliceTicket.idSeat);
+  // const [id, setId]= React.useState();
+  // const [itemTicket, setItemTicket] = React.useState([]);
+  
+  const addTicketEx = (el, id)=>{
+    dispatch(setTicket(el)),
+    dispatch(setIdSeat(id))
+    const item = {
       id: id,
-      allTicket: [... ticket]
+      itemT: ticket
     }
-
-    )
+    dispatch(addSeatInTicket(item))
   }
 
-  console.log(itemTicket, 'itemTicket')
+  React.useEffect(() =>{
+    
+    console.log(items, ticket, 'ticket')
+  },[ticket])
+
+  console.log(items, 'items')
+
+
+
   return(
     <div className='select_coach'>
         <div className='top-select_coach'>
             <div className='top-row-select_coach'>
               {arrSelectThird.topWindow.map((el, id) => {
                 return (
-                <button value={el} onClick={(e) => addTicket(e.target.value, id)} className={`select_coach-seat-item ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
+                <button value={el} onClick={(e) => addTicketEx(e.target.value, id)} className={`select_coach-seat-item ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
                 )
               })}
             </div>
@@ -63,7 +65,7 @@ const TrainButtonThird = (( {arrSelectThird}) => {
         <div className='bottom-row-select_coach'>
             {arrSelectThird.topAisle.map((el) => {
               return (
-              <button value={el} onClick={(e) => dispatch(setTicket(e.target.value))} className={`select_coach-seat-item ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
+              <button value={el} onClick={(e) => addTicketEx(e.target.value, id)} className={`select_coach-seat-item ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
               )
             })}
         </div>
@@ -71,7 +73,7 @@ const TrainButtonThird = (( {arrSelectThird}) => {
     <div className='bottom-row-select_coach_aisle'>
     {arrSelectThird.botSeatAisle.map((el) => {
       return (
-       <button value={el} onClick={(e) => dispatch(setTicket(e.target.value))} className={`select_coach-seat-item_aside ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
+       <button value={el} onClick={(e) => addTicketEx(e.target.value, id)} className={`select_coach-seat-item_aside ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
       )
     })}
   </div>
@@ -93,10 +95,10 @@ const TrainButtonSecond = (( {arrSelectSecond}) => {
   const ticket = useSelector( (state) => state.slicePrice.ticket);
 
 
-  const addTicket = (el, id)=>{
+  const addTicketEx = (el, id)=>{
     dispatch(setTicket(el)),
     setId(id)
-    // console.log(ticket)
+    console.log(id, "id")
   }
 // как добавить теперь id? через функцию?
   React.useEffect(() =>{
@@ -104,6 +106,7 @@ const TrainButtonSecond = (( {arrSelectSecond}) => {
       id: id,
       itemT: ticket
     }
+    // dispatch(addTicket(item))
     console.log(item, ticket, 'ticket')
   },[ticket])
   
@@ -117,7 +120,7 @@ const TrainButtonSecond = (( {arrSelectSecond}) => {
               {arrSelectSecond.topWindow.map((el, id) => {
                 // console.log(ticketTrue, el, '<=ticketTrue1')
                 return ( 
-                <button value={el} onClick={(e) => addTicket(e.target.value, id)} className={`select_coach-seat-item ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
+                <button value={el} onClick={(e) => addTicketEx(e.target.value, id)} className={`select_coach-seat-item ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
                 )
               })}
             </div>

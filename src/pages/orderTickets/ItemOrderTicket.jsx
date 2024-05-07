@@ -1,5 +1,9 @@
 import React from 'react';
 import { useSelector, useDispatch} from 'react-redux';
+import DatePicker from 'react-datepicker';
+import ru from 'date-fns/locale/ru';
+import 'react-datepicker/dist/react-datepicker.css';
+
 import './ItemOrderTicket.css'
 
 
@@ -51,12 +55,13 @@ const ItemOrderTicket = ({num, agesPassengers}) =>{
       });
 
       const [gender, setGender] = React.useState(false);
-      const [dateValue, setDateValue] = React.useState('');
+      const [dateValue, setDateValue] = React.useState(new Date());
       const [validText, setValidText] = React.useState('');
       const [limited, setLimited] = React.useState(false);
       const [button, setButton] = React.useState(false);
+      const inputRefDateBirth = React.useRef(null);
 
-    //   console.log(validText, '<=validText')
+      // console.log(validateDate(inputRefDateBirth.current.input.value), '<=validateDate')
       const getSortAge = ()=> {
         if (none.age === 'none') {
           setNone({ ...none, age: 'list-age-select' });
@@ -81,14 +86,12 @@ const ItemOrderTicket = ({num, agesPassengers}) =>{
         setNone({ ...none, age: 'none' });
       }
 
-      const inputDate =(ev) => {
-        setDateValue(ev.target.value);
-      }
-
       
 
       const blurDate =() => {
-        if (!validateDate(dateValue)) {
+        console.log("проверка проверки")
+        if (!validateDate(inputRefDateBirth.current.input.value)) {
+          console.log("проверка не прошла")
           setNone({ ...none, valid: true });
           setValidText('Дата рождения указана некорректно\n Пример: 24.02.2022');
         }
@@ -227,11 +230,24 @@ const ItemOrderTicket = ({num, agesPassengers}) =>{
           <div className='pass-birth-date'>
             <label className='pass-birth-label' htmlFor="">
               <p>Дата рождения</p>
-              <input className='pass-birth-input' type="date" placeholder='ДД.ММ.ГГ' required
+
+              <DatePicker selected={dateValue}
+                locale={ru}
+                onChange={ date => setDateValue(date)}
+                dateFormat="dd.MM.yyyy"
+                ref={inputRefDateBirth}
+                onBlur={blurDate}
+                value={dateValue}
+                showYearDropdown
+                placeholderText='ДД.ММ.ГГГГ'
+                className="pass-birth-input"
+            />         
+
+              {/* <input className='pass-birth-input' type="date" placeholder='ДД.ММ.ГГ' required
                 value={dateValue}
                 onChange={inputDate}
                 onBlur={blurDate}
-              />
+              /> */}
             </label>
           </div>
         </div>

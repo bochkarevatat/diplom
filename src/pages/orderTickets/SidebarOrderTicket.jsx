@@ -7,6 +7,7 @@ import iconMinus from '../../assets/img/minus.png';
 import iconThere from '../../assets/img/there.png';
 import iconPlus from '../../assets/img/plus.png';
 import iconRubleSmall from '../../assets/img/rubleIcon.png';
+import {setSearchValueTo, setSearchValueFrom, setDateFrom, setDateTo, setIdFrom, setIdTo,setBtn} from '../../redux/slices/FilterTrainSlice';
 
 function conversionDate(time) {
     if (time) {
@@ -21,6 +22,8 @@ function conversionDate(time) {
 const SidebarOrderTicket = () =>{
     const [ hide, setHide] = React.useState(false);
     const [ hideFrom, setHideFrom] = React.useState(false);
+    const [ ToDate, setToDate] = React.useState('');
+    const [ FromDate, setFromDate] = React.useState('');
     const whereFromDate = useSelector( (state) => state.filter.fromDate);
     const whereToDate = useSelector( (state) => state.filter.toDate);
     const objTicket = useSelector( (state) => state.slicePrice.objTicket);
@@ -31,18 +34,40 @@ const SidebarOrderTicket = () =>{
     const [hiddenPassengers, setHiddenPassengers] = React.useState('');
     // console.log(changeChildTickets, '<=changeChildTickets');
     // console.log(whereFromDate, '<=whereFromDate');
-    
-    const FromDate = whereFromDate.toLocaleDateString('ru-RU', {
-      year: "numeric",
-      month: "numeric",
-      day: "numeric"
-    })
+    // const dispatch = useDispatch();
 
-    const ToDate = whereToDate.toLocaleDateString('ru-RU', {
-      year: "numeric",
-      month: "numeric",
-      day: "numeric"
-    })
+    // const FromDate = dispatch(setDateFrom(whereFromDate.toLocaleDateString('ru-RU', {
+    //   year: "numeric",
+    //   month: "numeric",
+    //   day: "numeric"
+    //   })
+    // ))
+   
+
+    // setFromDate(whereFromDate.toLocaleDateString('ru-RU', {
+    //   year: "numeric",
+    //   month: "numeric",
+    //   day: "numeric"
+    // }))
+    React.useEffect(() =>{
+      setToDate(whereToDate.toLocaleDateString('ru-RU', {
+        year: "numeric",
+        month: "numeric",
+        day: "numeric"
+      }))
+   
+    },[whereToDate])
+    
+    console.log(ToDate, whereToDate)
+    console.log(whereFromDate)
+
+
+
+    // const ToDate = whereToDate.toLocaleDateString('ru-RU', {
+    //   year: "numeric",
+    //   month: "numeric",
+    //   day: "numeric"
+    // })
 
    
     function showPassengers() {
@@ -82,7 +107,7 @@ const SidebarOrderTicket = () =>{
                 <div className={`${hide ? 'there-title_title' : 'there-title-hidden'}`}>
                               <div className="there-group">
                                 <div><img className="there-title_img" src={iconThere} alt="" /><span className="there-title-order">Туда</span></div>
-                                <span>  <span className='there-head-date-order'>{FromDate}</span></span>  
+                                <span>  <span className='there-head-date-order'>{whereFromDate}</span></span>  
                                 <img className="iconMinusPlus"
                                   onClick={() => setHide(false)}
                                   src={iconMinus}
@@ -108,7 +133,7 @@ const SidebarOrderTicket = () =>{
                     <div className='there-order'>
                         <div className='there-route-from'>
                          <div className='there-time'>{conversionDate(trainSelection.departure.from.datetime)}</div>
-                        <div className='there-date'>{FromDate}</div>
+                        <div className='there-date'>{whereFromDate}</div>
                         <div className='there-from'>
                             <h5 className='there-city'>{trainSelection.departure.from.city.name}</h5>
                             <p className='there-station'>{trainSelection.departure.from.railway_station_name}</p>
@@ -123,7 +148,7 @@ const SidebarOrderTicket = () =>{
 
                         <div className='there-route-to'>
                          <div className='there-time'>{conversionDate(trainSelection.departure.to.datetime)}</div>
-                        <div className='there-date'>{ToDate}</div>
+                        <div className='there-date'>{whereFromDate}</div>
                         <div className='there-to'>
                             <p className='there-city'>{trainSelection.departure.to.city.name}</p>
                             <p className='there-station'>{trainSelection.departure.to.railway_station_name}</p>
@@ -157,7 +182,7 @@ const SidebarOrderTicket = () =>{
                 <div className={`${hideFrom ? 'there-title_title' : 'there-title-hidden'}`}>
                 <div className="there-group">
                                 <div><img className="there-title_img" src={iconFrom} alt="" /><span className="there-title-order">Обратно</span></div>
-                                <span>  <span className='there-head-date-order'>{FromDate}</span></span>  
+                                <span>  <span className='there-head-date-order'>{whereFromDate}</span></span>  
                                 <img className="iconMinusPlus"
                                   onClick={() => setHide(false)}
                                   src={iconMinus}
@@ -168,39 +193,39 @@ const SidebarOrderTicket = () =>{
                           <div className='there-train-order'>
                         
                         <h5 className='there-train-title'>№ Поезда</h5>
-                        <p className='there-train-text'>{trainSelection.arrival.train._id.slice(0, 3)}</p>
+                        {/* <p className='there-train-text'>{trainSelection.arrival.train._id.slice(0, 3)}</p> */}
                        
                      </div>      
                      <div className='there-train-name'>
                         <h5 className='there-train-title'>Название</h5>
                         <div className='there-train-text-order'>
-                            <p  className='there-train-text'>{trainSelection.arrival.from.city.name}</p>
-                            <p  className='there-train-text'>{trainSelection.arrival.to.city.name}</p>
+                            {/* <p  className='there-train-text'>{trainSelection.arrival.from.city.name}</p>
+                            <p  className='there-train-text'>{trainSelection.arrival.to.city.name}</p> */}
                         </div>
                     </div>
 
                     <div className='there-order'>
                         <div className='there-route-from'>
-                         <div className='there-time'>{conversionDate(trainSelection.arrival.from.datetime)}</div>
-                        <div className='there-date'>{ToDate}</div>
+                         {/* <div className='there-time'>{conversionDate(trainSelection.arrival.from.datetime)}</div> */}
+                        <div className='there-date'>{whereFromDate}</div>
                         <div className='there-from'>
-                            <h5 className='there-city'>{trainSelection.arrival.from.city.name}</h5>
-                            <p className='there-station'>{trainSelection.arrival.from.railway_station_name}</p>
+                            {/* <h5 className='there-city'>{trainSelection.arrival.from.city.name}</h5>
+                            <p className='there-station'>{trainSelection.arrival.from.railway_station_name}</p> */}
                             <p className='there-station'>вокзал</p>
                         </div>
                         </div>
 
                         <div className='there-arrow-time'>
-                            <p className='there-travel-time'>{conversionDate(trainSelection.arrival.duration)}</p>
+                            {/* <p className='there-travel-time'>{conversionDate(trainSelection.arrival.duration)}</p> */}
                             <span className='there-direction-arrow'></span>
                         </div>
 
                         <div className='there-route-to'>
-                         <div className='there-time'>{conversionDate(trainSelection.arrival.to.datetime)}</div>
-                        <div className='there-date'>{ToDate}</div>
+                         {/* <div className='there-time'>{conversionDate(trainSelection.arrival.to.datetime)}</div> */}
+                        <div className='there-date'>{whereFromDate}</div>
                         <div className='there-to'>
-                            <p className='there-city'>{trainSelection.arrival.to.city.name}</p>
-                            <p className='there-station'>{trainSelection.arrival.to.railway_station_name}</p>
+                            {/* <p className='there-city'>{trainSelection.arrival.to.city.name}</p>
+                            <p className='there-station'>{trainSelection.arrival.to.railway_station_name}</p> */}
                             <p className='there-station'>вокзал</p>
                         </div>
                         </div>

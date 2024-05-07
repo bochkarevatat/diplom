@@ -30,12 +30,12 @@ const TrainCoach = () => {
   // const[fourth, setFourth] = React.useState(false);
   // const [classType, setClassType] = React.useState();
   const trainCoach = useSelector( (state) => state.slicePrice.trainCoach);
-  console.log(itemsTrain, 'itemsTrain')
+  // console.log(itemsTrain, 'itemsTrain')
 
   const dispatch = useDispatch();
   const ticket = useSelector( (state) => state.slicePrice.ticket);
   const classType = useSelector( (state) => state.slicePrice.classType);
-  console.log(classType, 'classType')
+  // console.log(classType, 'classType')
 
   React.useEffect(() =>{
   
@@ -60,7 +60,7 @@ const TrainCoach = () => {
       
     }, [itemsTrain, ticket])
 
-  console.log(classType)
+  // console.log(classType)
   
 return (
    <section>

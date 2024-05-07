@@ -56,12 +56,12 @@ const ResultReserchTrain = () =>{
   const dispatch = useDispatch();
 
   
-  const formatII = fromDate.toLocaleDateString('es', {
-    year: "numeric",
-    month: "numeric",
-    day: "numeric"
-  })
-  console.log(fromDate, formatII, "767676")
+  // const toDate = toDateI.toLocaleDateString('ru-RU', {
+  //   year: "numeric",
+  //   month: "numeric",
+  //   day: "numeric"
+  // })
+  // console.log(toDate, toDateI, "767676")
 
 
 
@@ -71,6 +71,7 @@ React.useEffect(() =>{
     .then((res) => {return res.json()})
     .then(data => {
       setResultReserchTrain(data)
+      console.log(data)
       setLoading(false)
     })
   }, [callSetBtn, sortType, filter]) 

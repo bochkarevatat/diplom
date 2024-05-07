@@ -13,15 +13,9 @@ import './components-style/components-style.css';
 const ChoiceOfDirection = () => {
 
   const [ bg, setBg] = React.useState(false)
-
   const [itemslastRout, setitemslastRout] = React.useState([]);
   const [arrCityes, setArrCityes] = React.useState([]);
-  
-  
-  
-
   const dispatch = useDispatch();
-  
   const categoryCityTo = useSelector((state) => state.filter.categoryCityTo)
   const categoryCityFrom = useSelector((state) => state.filter.categoryCityFrom)
   const fromDate = useSelector((state) => state.filter.fromDate)
@@ -60,12 +54,16 @@ const ChoiceOfDirection = () => {
   
 
   React.useEffect(() =>{
-    
-  fetch(`https://students.netoservices.ru/fe-diplom/routes/cities?name=${categoryCityTo}`)
+    const Debounce = setTimeout(() => {
+      fetch(`https://students.netoservices.ru/fe-diplom/routes/cities?name=${categoryCityTo}`)
       .then((res) => {return res.json()}).
       then(arr => {
         setArrCityes(arr)  
-      }) 
+     
+    })
+    }, 500);
+    return () => clearTimeout(Debounce);
+  
   },[categoryCityTo])
 
   // console.log('arrCityes =>', arrCityes)
@@ -73,9 +71,9 @@ const ChoiceOfDirection = () => {
     const Debounce = setTimeout(() => {
       if(itemslastRout){
         dispatch(setIdTo(arrCityes[0]._id));
-        console.log('arrCityes =>', idCityTo)
+        // console.log('arrCityes =>', idCityTo)
       }
-    }, 1000);
+    }, 500);
   
     return () => clearTimeout(Debounce);
     
@@ -85,11 +83,16 @@ const ChoiceOfDirection = () => {
    
 
   React.useEffect(() =>{
-    fetch(`https://students.netoservices.ru/fe-diplom/routes/cities?name=${categoryCityFrom}`).then((res) => {return res.json()}).
+
+    const Debounce = setTimeout(() => {
+      fetch(`https://students.netoservices.ru/fe-diplom/routes/cities?name=${categoryCityFrom}`).then((res) => {return res.json()}).
     then(arr => {
       setitemslastRout(arr)
       
     })
+    }, 500);
+    return () => clearTimeout(Debounce);
+    
   }, [categoryCityFrom])
  
 
@@ -97,7 +100,7 @@ const ChoiceOfDirection = () => {
     const Debounce = setTimeout(() => {
       if(itemslastRout){
         dispatch(setIdFrom(itemslastRout[0]._id));
-        console.log('itemslastRout =>', idCityFrom)
+        // console.log('itemslastRout =>', idCityFrom)
       }
     }, 1000);
   
@@ -128,6 +131,10 @@ const ChoiceOfDirection = () => {
 //   };
 
 
+
+console.log(fromDate, '=<fromDate', toDate, '<=toDate')
+
+
   // const onClickTimeTo = (obj) => {
   //   dispatch(setDateTo(obj));
   //   inputRefDateTo.current?.focus();   
@@ -140,7 +147,7 @@ const ChoiceOfDirection = () => {
     setBg(true);
     
     dispatch(setBtn(true));
-    console.log('aga', callSetBtn) 
+    // console.log('aga', callSetBtn) 
     if(callSetBtn==true){
       dispatch(setBtn(false));
     }
@@ -201,8 +208,11 @@ const ChoiceOfDirection = () => {
                 <input 
                     ref={inputRef}
                     value={categoryCityFrom}
-                    onChange={(ev) => onClickDate (ev.target.value)} type="text" list="cities"
-                    className="search-form__input1" name="lacation-from" placeholder="Откуда" />
+                    onChange={(ev) => onClickDate (ev.target.value)} type="text"
+                    list="cities"
+                    className="search-form__input1"
+                    name="lacation-from"
+                    placeholder="Откуда" />
                 
                 <button onClick={() => console.log("replace")} type="button" className="search-form__btn">
                     <div className={`${bg ? 'search-form__direction' : 'search-form__direction-change'}`} ></div>
@@ -239,9 +249,14 @@ const ChoiceOfDirection = () => {
 
               <DatePicker selected={fromDate}
                 locale={ru}
-                onChange={ date=> dispatch(setDateFrom(date))}
+                onChange={ date => dispatch(setDateFrom(date.toLocaleDateString('ru-RU', {
+                  year: "numeric",
+                  month: "numeric",
+                  day: "numeric"
+                  })
+                ))}
                 dateFormat="dd-MM-yyyy"
-                ref={inputRefDateFrom}
+                // ref={inputRefDateFrom}
                 value={fromDate}
                 showYearDropdown
                 placeholderText='ДД.ММ.ГГГГ'
@@ -267,7 +282,7 @@ const ChoiceOfDirection = () => {
                 /> */}
             <DatePicker selected={toDate}
                locale={ru}
-              onChange={ date=> dispatch(setDateTo(date))}
+              onChange={date => dispatch(setDateTo(date))}
               dateFormat="dd-MM-yyyy"
               ref={inputRefDateTo}
               value={toDate}
