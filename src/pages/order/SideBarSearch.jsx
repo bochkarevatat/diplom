@@ -12,19 +12,31 @@ import CardLastTicket from './CardLastTicket'
 import {setDateFrom} from '../../redux/slices/FilterTrainSlice';
 
 function SideBarSearch () {
-
+  const dispatch = useDispatch();
   const [check, setCheck] = React.useState({coupe: false, reservedSeat: false, seat: false, star: false, wifi:false, express:false
   });
 
   const [ hide, setHide] = React.useState(false)
   const [ hideFrom, setHideFrom] = React.useState(false)
-
+  const [ FromDate, setFromDate] = React.useState();
+  const [ ToDate, setToDate] = React.useState()
 
   // временно закоментировала эту часть, так как вылетал сайт, не знаю почему, 
   // ниже закомментрованы в инпутах value
-  // const whereFromDate = useSelector( (state) => state.filter.fromDate);
-  // const whereToDate = useSelector( (state) => state.filter.toDate);
+  const whereFromDate = useSelector( (state) => state.filter.fromDate);
+  const whereToDate = useSelector( (state) => state.filter.toDate);
 
+  React.useEffect(() =>{
+
+    const Debounce = setTimeout(() => {
+      setFromDate(whereFromDate.toLocaleDateString("ru-RU"))
+      setToDate(whereToDate.toLocaleDateString("ru-RU"))
+    }, 300);
+  
+    return () => clearTimeout(Debounce);
+    
+  }, []) 
+  
   // const FromDate = whereFromDate.toLocaleDateString('ru-RU', {
   //       year: "numeric",
   //       month: "numeric",
@@ -37,7 +49,7 @@ function SideBarSearch () {
   //       day: "numeric"
   //     })
 
-  // console.log(whereFromDate.toLocaleDateString(), whereToDate)
+
 
     return (
       <div className="sidebar-left">
@@ -51,7 +63,7 @@ function SideBarSearch () {
 
               placeholder='ДД.ММ.ГГ'
 							// onChange={handleWhereFromDate}
-							// value={FromDate}
+							value={FromDate}
 						/>
 					</div>
 
@@ -61,7 +73,7 @@ function SideBarSearch () {
 							type="text"
               placeholder='ДД.ММ.ГГ'
 							// onChange={}
-							// value={ToDate}
+							value={ToDate}
 						/>
 					</div>
 

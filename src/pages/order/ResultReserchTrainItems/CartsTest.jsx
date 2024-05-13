@@ -1,7 +1,7 @@
 import React from 'react';
 import { CustomLink } from '../../../components/CustomLink';
 import { useSelector, useDispatch} from 'react-redux';
-
+import { Homepage } from '../../Homepage'
 // import {filterTrain} from '../../../redux/slices/FilterTrainSlice'
 import '../ResultReserchTrain.css';
 import iconRubleSmall from '../../../assets/img/rubleIcon.png';
@@ -27,12 +27,16 @@ const CartsTest = ({cityList}) => {
   // const trainSelection = useSelector( (state) => state.trainSlice.trainSelection);
   // const [train, setTrain] = React.useState([]); 
 
+  console.log(cityList, 'cityList')
+
   
   const dispatch = useDispatch();
 return (
 
     <div className="train">
-            {cityList.map((el) => {
+       
+            {cityList !== undefined ?
+            cityList.map((el) => {
               //  console.log("элемент:", index)
                 return (
                     <div className='train-name-items'>
@@ -164,7 +168,11 @@ return (
         
         </div>
                 )
-            })}
+            })
+          : 
+             <Homepage/>
+          
+          }
         </div>
     
 )

@@ -15,37 +15,37 @@ const ProgressLine = (props) => {
       if (stepOne) {
         setStep({
           one: 'current-step',
-          two: '',
+          two: 'current-step',
           three: '',
           four: ''
         })
-      } else if (stepTwo) {
+      } if (stepTwo) {
         setStep({
           one: 'current-step',
           two: 'current-step',
           three: '',
           four: ''
         });
-      } else if (stepThree) {
+      } if (stepThree) {
         setStep({
           one: 'current-step',
           two: 'current-step',
           three: 'current-step',
           four: ''
         });
-      } else if (stepFour) {
+      } if (stepFour) {
         setStep({
           one: 'current-step',
           two: 'current-step',
           three: 'current-step',
           four: 'current-step'
         });
-      };
+      }
   
     }, [stepOne, stepTwo, stepThree, stepFour ])
   
   
-  console.log("step.one=>", step)
+  console.log("step.one=>", step, stepTwo)
     return (
       <div className='progress-line'>
         <div className={'steps-start ' + step.one}></div>

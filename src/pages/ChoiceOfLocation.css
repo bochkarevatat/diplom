@@ -16,3 +16,19 @@
     align-self: flex-end;
     margin-top: 50px;
 }
+.search-butn {
+    background: #ffa800;
+    border: none;
+    border-radius: 5px;
+    color: #292929;
+    cursor: pointer;
+    font-family: Roboto-bold;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    height: 60px;
+    line-height: 28px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 325px;
+}

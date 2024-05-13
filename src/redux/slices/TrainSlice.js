@@ -23,10 +23,19 @@ const trainSlice = createSlice({
             state.totalTrain = action.payload;
         },
         setTrainSelection(state, action) {
-            state.trainSelection = action.payload;
+            if(!state.trainSelection){
+                console.log("nothing", state.trainSelection)
+            }else{
+                state.trainSelection = action.payload;
+                console.log("yes", state.trainSelection)
+            }
+                
+           
         }
+        
     }
     })
-
+    
+   
     export const {setResultReserchTrain, setTrainPerPage, setTotalTrain, setTrainSelection} = trainSlice.actions;
     export default trainSlice.reducer;

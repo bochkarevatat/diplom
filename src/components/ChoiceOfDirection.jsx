@@ -249,12 +249,7 @@ console.log(fromDate, '=<fromDate', toDate, '<=toDate')
 
               <DatePicker selected={fromDate}
                 locale={ru}
-                onChange={ date => dispatch(setDateFrom(date.toLocaleDateString('ru-RU', {
-                  year: "numeric",
-                  month: "numeric",
-                  day: "numeric"
-                  })
-                ))}
+                onChange={ date => dispatch(setDateFrom(date))}
                 dateFormat="dd-MM-yyyy"
                 // ref={inputRefDateFrom}
                 value={fromDate}

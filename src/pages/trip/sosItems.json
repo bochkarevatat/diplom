@@ -1,0 +1,246 @@
+
+     [
+        {
+            "have_first_class": false,
+            "have_second_class": false,
+            "have_third_class": false,
+            "have_fourth_class": false,
+            "have_wifi": false,
+            "have_air_conditioning": false,
+            "is_express": false,
+            "min_price": 743,
+            "available_seats": 112,
+            "available_seats_info": {
+                "first": 18,
+                "third": 48,
+                "fourth": 62,
+                "second": 64
+            },
+            "departure": {
+                "_id": "65f7f25a3e252100467fc04e",
+                "have_first_class": true,
+                "have_second_class": false,
+                "have_third_class": true,
+                "have_fourth_class": true,
+                "have_wifi": true,
+                "have_air_conditioning": true,
+                "is_express": false,
+                "min_price": 743,
+                "duration": 276120,
+                "available_seats": 128,
+                "available_seats_info": {
+                    "first": 18,
+                    "third": 48,
+                    "fourth": 62
+                },
+                "train": {
+                    "_id": "65f7ee943e252100467cbd97",
+                    "name": "Брусника - 100"
+                },
+                "from": {
+                    "railway_station_name": "Курский",
+                    "city": {
+                        "_id": "65f7ee8d3e252100467cb2a3",
+                        "name": "москва"
+                    },
+                    "datetime": 1728131391
+                },
+                "to": {
+                    "railway_station_name": "Архангельск",
+                    "city": {
+                        "_id": "65f7ee8e3e252100467cb2aa",
+                        "name": "архангельск"
+                    },
+                    "datetime": 1728407511
+                },
+                "price_info": {
+                    "first": {
+                        "price": 2985,
+                        "top_price": 3045,
+                        "bottom_price": 2645
+                    },
+                    "third": {
+                        "top_price": 2650,
+                        "bottom_price": 3905,
+                        "side_price": 4365
+                    },
+                    "fourth": {
+                        "top_price": 961,
+                        "bottom_price": 743
+                    }
+                }
+            },
+            "arrival": {
+                "_id": "65f7f1643e252100467efb43",
+                "have_first_class": false,
+                "have_second_class": true,
+                "have_third_class": true,
+                "have_fourth_class": false,
+                "have_wifi": false,
+                "have_air_conditioning": true,
+                "is_express": false,
+                "min_price": 1707,
+                "duration": 284460,
+                "available_seats": 112,
+                "available_seats_info": {
+                    "second": 64,
+                    "third": 48
+                },
+                "train": {
+                    "_id": "65f7ee923e252100467cbc48",
+                    "name": "undefined - 1"
+                },
+                "from": {
+                    "railway_station_name": "Архангельск",
+                    "city": {
+                        "_id": "65f7ee8e3e252100467cb2aa",
+                        "name": "архангельск"
+                    },
+                    "datetime": 1715734065
+                },
+                "to": {
+                    "railway_station_name": "Ленинградский",
+                    "city": {
+                        "_id": "65f7ee8d3e252100467cb2a3",
+                        "name": "москва"
+                    },
+                    "datetime": 1716018525
+                },
+                "price_info": {
+                    "second": {
+                        "top_price": 2178,
+                        "bottom_price": 1707
+                    },
+                    "third": {
+                        "top_price": 4800,
+                        "bottom_price": 3120,
+                        "side_price": 3620
+                    }
+                }
+            }
+        },
+        {
+            "have_first_class": false,
+            "have_second_class": false,
+            "have_third_class": false,
+            "have_fourth_class": false,
+            "have_wifi": false,
+            "have_air_conditioning": false,
+            "is_express": false,
+            "min_price": 592,
+            "available_seats": 128,
+            "available_seats_info": {
+                "first": 18,
+                "third": 48,
+                "fourth": 62,
+                "second": 32
+            },
+            "departure": {
+                "_id": "65f7f24e3e252100467fb687",
+                "have_first_class": true,
+                "have_second_class": false,
+                "have_third_class": true,
+                "have_fourth_class": true,
+                "have_wifi": true,
+                "have_air_conditioning": false,
+                "is_express": false,
+                "min_price": 900,
+                "duration": 72900,
+                "available_seats": 128,
+                "available_seats_info": {
+                    "first": 18,
+                    "third": 48,
+                    "fourth": 62
+                },
+                "train": {
+                    "_id": "65f7ee933e252100467cbc5d",
+                    "name": "Тройка - 12"
+                },
+                "from": {
+                    "railway_station_name": "Ленинградский",
+                    "city": {
+                        "_id": "65f7ee8d3e252100467cb2a3",
+                        "name": "москва"
+                    },
+                    "datetime": 1728139179
+                },
+                "to": {
+                    "railway_station_name": "Архангельск",
+                    "city": {
+                        "_id": "65f7ee8e3e252100467cb2aa",
+                        "name": "архангельск"
+                    },
+                    "datetime": 1728212079
+                },
+                "price_info": {
+                    "first": {
+                        "price": 4115,
+                        "top_price": 2725,
+                        "bottom_price": 2595
+                    },
+                    "third": {
+                        "top_price": 2940,
+                        "bottom_price": 3885,
+                        "side_price": 4625
+                    },
+                    "fourth": {
+                        "top_price": 900,
+                        "bottom_price": 932
+                    }
+                }
+            },
+            "arrival": {
+                "_id": "65f7f1593e252100467ef25e",
+                "have_first_class": false,
+                "have_second_class": true,
+                "have_third_class": true,
+                "have_fourth_class": true,
+                "have_wifi": true,
+                "have_air_conditioning": false,
+                "is_express": false,
+                "min_price": 592,
+                "duration": 266700,
+                "available_seats": 142,
+                "available_seats_info": {
+                    "second": 32,
+                    "third": 48,
+                    "fourth": 62
+                },
+                "train": {
+                    "_id": "65f7ee943e252100467cbd88",
+                    "name": "Брусника - 45"
+                },
+                "from": {
+                    "railway_station_name": "Архангельск",
+                    "city": {
+                        "_id": "65f7ee8e3e252100467cb2aa",
+                        "name": "архангельск"
+                    },
+                    "datetime": 1715749054
+                },
+                "to": {
+                    "railway_station_name": "Ярославский",
+                    "city": {
+                        "_id": "65f7ee8d3e252100467cb2a3",
+                        "name": "москва"
+                    },
+                    "datetime": 1716015754
+                },
+                "price_info": {
+                    "second": {
+                        "top_price": 1581,
+                        "bottom_price": 2727
+                    },
+                    "third": {
+                        "top_price": 3155,
+                        "bottom_price": 4525,
+                        "side_price": 2910
+                    },
+                    "fourth": {
+                        "top_price": 592,
+                        "bottom_price": 867
+                    }
+                }
+            }
+        }
+    ]

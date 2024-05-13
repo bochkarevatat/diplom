@@ -1,3 +1,20 @@
 .select-order-ticket{
     display: flex;
 }
+.pay-btn{
+    
+        background: #ffa800;
+        border: none;
+        border-radius: 5px;
+        color: #292929;
+        cursor: pointer;
+        font-family: Roboto-bold;
+        font-size: 24px;
+        font-weight: 700;
+        height: 60px;
+        line-height: 28px;
+        text-align: center;
+        text-transform: uppercase;
+        width: 300px;
+        margin-left: auto;
+}

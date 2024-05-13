@@ -4,6 +4,8 @@ import sliceProgressLine from './sliceProgressLine';
 import trainSlice from './slices/TrainSlice';
 import slicePrice from './slices/SlicePrice';
 import sliceTicket from './slices/SliceTicket';
+import errorMessageSlice from './slices/ErrorMessageSlice';
+import addUser from './slices/AddUserSlice'
 
 export const store = configureStore({
     reducer: {
@@ -12,6 +14,7 @@ export const store = configureStore({
         trainSlice,
         slicePrice,
         sliceTicket,
+        errorMessageSlice,
+        addUser,
     },
 })
-

@@ -1,5 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch} from 'react-redux';
+import { CustomLink } from '../../components/CustomLink';
+import{ Homepage} from '../Homepage'
 // import axios from 'axios';
 
 import './ResultReserchTrain.css';
@@ -56,12 +58,12 @@ const ResultReserchTrain = () =>{
   const dispatch = useDispatch();
 
   
-  // const toDate = toDateI.toLocaleDateString('ru-RU', {
+  // const fromDate = fromDate1.toLocaleDateString('ru-RU', {
   //   year: "numeric",
   //   month: "numeric",
   //   day: "numeric"
   // })
-  // console.log(toDate, toDateI, "767676")
+  // console.log(fromDate, "767676")
 
 
 
@@ -116,7 +118,7 @@ React.useEffect(() =>{
   // const objectLength = Object.keys(data).length;
 
  
-
+  
 
 
  
@@ -140,8 +142,13 @@ React.useEffect(() =>{
                 <Filter/>
                 </div>
             </div>
-            
-        <CartsTest cityList={data}/>
+            {data !==undefined ?  
+                    <CartsTest cityList={data}/> :
+                    <div>
+               <Homepage/>
+          </div>
+              }  
+      
 
       
       

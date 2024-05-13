@@ -15,10 +15,12 @@ function dateFromAndTo(time) {
 }
 
 const SelectSeatTicket = () => {
-    const trainList = useSelector( (state) => state.trainSlice.trainSelection);
+  
+
+  
     const classType = useSelector( (state) => state.trainSlice.classType);
 
-    // console.log(classType, '<=classType')
+    const trainList = useSelector( (state) => state.trainSlice.trainSelection);
     const totalPriceAll = useSelector( (state) => state.slicePrice.totalPriceAll);
     const objTicket = useSelector( (state) => state.slicePrice.objTicket);
     const trainCoach = useSelector( (state) => state.slicePrice.trainCoach);
@@ -26,6 +28,7 @@ const SelectSeatTicket = () => {
     // const {items, totalPrice} = useSelector( state => state.sliceTicke);
     const time = dateFromAndTo(trainList.departure.duration);
     const [valueAges, setValueAges] = React.useState(1);
+    
     const [valueChild, setValueChild] = React.useState(1);
     const [price, setPrice] = React.useState(0);
     // const [itemTicket, setItemTicket] = React.useState([]);
@@ -38,7 +41,7 @@ const SelectSeatTicket = () => {
     const bottomPrice = useSelector( (state) => state.slicePrice.bottomPrice);
     const rafValueAges = React.useRef(null);
     // console.log(inputValueAges)
-
+    
     React.useEffect(() =>{
 
       if(trainCoach.class_type === 'third'){
@@ -74,9 +77,6 @@ const SelectSeatTicket = () => {
       }
     },[valueAges, valueChild, ticket])
     
-    // console.log(itemTicket, "itemTicket")
-    //  console.log(objTicket)
-
 
     function inputAges(ev) {
  
@@ -87,7 +87,7 @@ const SelectSeatTicket = () => {
           seatsAge: Number(ev.target.value) 
           
         }));
-        // console.log(classType, "test")
+       
         setValueAges(Number(ev.target.value));
       }
     if(ev.target.classList.contains('tickets-age-input')){
@@ -101,7 +101,7 @@ const SelectSeatTicket = () => {
 
 
     function inputAgesCh(ev) {
-      //  console.log(, 'hhhhhh')
+      
         if (/^[0-3]$/.test(ev.target.value)) {
           dispatch(changeChildTickets({
             classType: classType,
@@ -111,10 +111,10 @@ const SelectSeatTicket = () => {
         }
       if(ev.target.classList.contains('tickets-age-input')){
         setSumm(ev.target.value )
-          // console.log(summ)
       }
       }
-   
+      
+
     dispatch(setTotalPriceAll(topPrice*valueAges))
 
     // console.log(objTicket, trainCoach.top_price, trainCoach.class_type)
@@ -123,9 +123,11 @@ const SelectSeatTicket = () => {
 
     const hh = time.split(':');
     const hh1 = hh.splice(1, 2)
-    // console.log(hh1)
+   
+
+   
     return (
-        
+      <div >    
 <div className='selection-of-seats'>
 
 <div className='selection-of-seats-train-another'>
@@ -226,7 +228,8 @@ const SelectSeatTicket = () => {
            </section>
            
         </div>
-        
+         
+        </div> 
     )
 }
 

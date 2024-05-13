@@ -24,7 +24,7 @@ const selectionFourthClass = {
 const TrainCoach = () => {
   const [itemsTrain, setItemsTrain] = React.useState([]);
   const trainList = useSelector( (state) => state.trainSlice.trainSelection);
-  
+  console.log(trainList, "<=trainList")
   const idTrain = trainList.departure._id
   // const[loading, setLoading] = React.useState(false);
   // const[fourth, setFourth] = React.useState(false);

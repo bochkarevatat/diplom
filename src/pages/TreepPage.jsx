@@ -30,7 +30,7 @@ const TreepPage = (props) => {
         <>
 
 
-        <section className="reserch-progress"><ProgressLine/></section>
+        <section className="reserch-progress"><ProgressLine stepOne={true}/></section>
         
         <section className="reserchItems">
                     
@@ -38,7 +38,8 @@ const TreepPage = (props) => {
 
             <div className='loadLine'><SideBarSearch /></div>
             <div className='right-sitebar'><ResultReserchTrain />
-                <div className='pagination-elem'><PaginationItem
+                <div className='pagination-elem'>
+                    <PaginationItem
                 trainPerPage={trainPerPage}
                 totalTrain={totalTrain}
                 /></div>

@@ -199,22 +199,39 @@ const TrainButtonForth = (({ arrSelectThird}) => {
   },[ticket])
 console.log(ticket)
 
+const addTicketEx = (el, id)=>{
+  dispatch(setTicket(el)),
+  dispatch(setIdSeat(id))
+  const item = {
+    id: id,
+    itemT: ticket
+  }
+  dispatch(addSeatInTicket(item))
+}
+
+// React.useEffect(() =>{
+  
+//   console.log(items, ticket, 'ticket')
+// },[ticket])
+
+console.log(items, 'items')
+
   return(
     <div className='forth-select_coach'>
           <div className='top-select_coach'>
             <div className='top-row-select'>
-              {arrSelectThird.topWindow.map((el) => {
+              {arrSelectThird.topWindow.map((el, id) => {
                 // console.log(el, '<=el')
                 return (
-                <button value={el} onClick={(e) => dispatch(setTicket(e.target.value))} className={`seat-win-top ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
+                <button value={el} onClick={(e) => addTicketEx(e.target.value, id)} className={`seat-win-top ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
                 )
               })}
             </div>
             <div className='top-row-select'>
-              {arrSelectThird.topAisle.map((el) => {
+              {arrSelectThird.topAisle.map((el, id) => {
                 // console.log(el, '<=el')
                 return (
-                <button value={el} onClick={(e) => dispatch(setTicket(e.target.value))} className={`seat-win-top ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
+                <button value={el} onClick={(e) => addTicketEx(e.target.value, id)} className={`seat-win-top ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
                 )
               })}
             </div>
@@ -222,18 +239,18 @@ console.log(ticket)
 
           <div className='bottom-select_coach'>
             <div className='top-row-select-top'>
-              {arrSelectThird.botAisle.map((el) => {
+              {arrSelectThird.botAisle.map((el, id) => {
                 // console.log(el, '<=el')
                 return (
-                <button value={el} onClick={(e) => dispatch(setTicket(e.target.value))} className={`seat-win-bottom ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
+                <button value={el} onClick={(e) => addTicketEx(e.target.value, id)} className={`seat-win-bottom ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
                 )
               })}
             </div>
             <div className='top-row-select-bottom'>
-              {arrSelectThird.botWindow.map((el) => {
+              {arrSelectThird.botWindow.map((el, id) => {
                 // console.log(el, '<=el')
                 return (
-                <button value={el} onClick={(e) => dispatch(setTicket(e.target.value))} className={`seat-win-top ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
+                <button value={el} onClick={(e) => addTicketEx(e.target.value, id)} className={`seat-win-top ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
                 )
               })}
             </div>
