@@ -1,6 +1,9 @@
 import React from 'react';
-import ProgressLine from '../components/ProgressLine'
 
+
+import { useSelector, useDispatch} from 'react-redux';
+import ProgressLine from '../components/ProgressLine'
+import SidebarOrderTicket from './orderTickets/SidebarOrderTicket';
 
 const CheckTickets =()=>{
 
@@ -8,6 +11,10 @@ const CheckTickets =()=>{
         <>
         <section className="reserch-progress">
             <ProgressLine stepFour={true}/></section>
+
+            <div>
+           {/* < SidebarOrderTicket/> */}
+            </div>
             
             
         </>

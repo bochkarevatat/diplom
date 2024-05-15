@@ -3,8 +3,14 @@ import { useSelector, useDispatch} from 'react-redux';
 import DatePicker from 'react-datepicker';
 import ru from 'date-fns/locale/ru';
 import 'react-datepicker/dist/react-datepicker.css';
+import setErrorMessage from '../../redux/slices/ErrorMessageSlice'
 
 import './ItemOrderTicket.css'
+
+function validateName(string) {
+  console.log("поверка имени")
+  return !/[\d\s]/.test(string);
+}
 
 
 const validateDate = (string) =>{
@@ -28,7 +34,11 @@ const validatePassportSeries =(string) => {
     return /^[v,i,x,m]{1,4}[а-я]{1,2}\d{6}$/.test(string);
   }
 
-const ItemOrderTicket = ({num, agesPassengers}) =>{
+const ItemOrderTicket = ({addPassenger, num, agesPassengers}) =>{
+
+
+
+  const dispatch = useDispatch();
 
     const [none, setNone] = React.useState({
         main: false,
@@ -48,6 +58,7 @@ const ItemOrderTicket = ({num, agesPassengers}) =>{
         passportNumber: '',
         birthNumber: ''
       })
+
       const [nameValue, setNameValue] = React.useState({
         name: '',
         nameOfFather: '',
@@ -62,6 +73,36 @@ const ItemOrderTicket = ({num, agesPassengers}) =>{
       const inputRefDateBirth = React.useRef(null);
 
       // console.log(validateDate(inputRefDateBirth.current.input.value), '<=validateDate')
+      
+      const blurSurName = () => {
+        if (!validateName(nameValue.surname)) {
+          dispatch(setErrorMessage({
+            notice: true,
+            text: 'Фамилия указана некорректно.\n Пример: Белоусов'
+          }));
+        }
+      }
+      
+      
+      const blurFirstName =() => {
+        if (!validateName(nameValue.name)) {
+          dispatch(setErrorMessage({
+            notice: true,
+            text: 'Имя указано некорректно.\n Пример: Андрей'
+          }));
+        }
+      }
+      
+      const blurSecondName = ()=> {
+        if (!validateName(nameValue.patronymic)) {
+          dispatch(setErrorMessage({
+            notice: true,
+            text: 'Отчество указано некорректно.\n Пример: Владимирович'
+          }));
+        }
+      }
+
+
       const getSortAge = ()=> {
         if (none.age === 'none') {
           setNone({ ...none, age: 'list-age-select' });
@@ -145,6 +186,13 @@ const ItemOrderTicket = ({num, agesPassengers}) =>{
         }
       }
 
+      const inputSurName =(ev)=>{
+        setNameValue({ ...nameValue, surname: ev.target.value });
+      }
+      const inputFirstName =(ev)=>{
+        setNameValue({ ...nameValue, name: ev.target.value });
+    }
+      
       const nextPassenger = () => {
         if (nameValue.name !== '' && nameValue.patronymic !== '' && nameValue.surname !== '') {
           if (dateValue !== '' && ((docsValue.passportNumber !== '' && docsValue.passportSeries !== '') || docsValue.birthNumber !== '')) {
@@ -196,25 +244,25 @@ const ItemOrderTicket = ({num, agesPassengers}) =>{
           <label className='pass-names-label' htmlFor="">
             <p>Фамилия</p>
             <input className='pass-names-input' type="text" required
-            //   value={nameValue.surname}
-            //   onChange={inputSurName}
-            //   onBlur={blurSurName}
+              value={nameValue.surname}
+              onChange={inputSurName}
+              onBlur={blurSurName}
                />
           </label>
           <label className='pass-names-label' htmlFor="">
             <p>Имя</p>
             <input className='pass-names-input' type="text" required
-            //   value={nameValue.name}
-            //   onChange={inputFirstName}
-            //   onBlur={blurFirstName}
+              value={nameValue.name}
+              onChange={inputFirstName}
+              onBlur={blurFirstName}
                />
           </label>
           <label className='pass-names-label' htmlFor="">
             <p>Отчество</p>
             <input className='pass-names-input' type="text" required
-            //   value={nameValue.patronymic}
+              value={nameValue.patronymic}
             //   onChange={inputSecondName}
-            //   onBlur={blurSecondName} 
+              onBlur={blurSecondName} 
               />
           </label>
         </div>

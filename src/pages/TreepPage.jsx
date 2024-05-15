@@ -37,7 +37,8 @@ const TreepPage = (props) => {
           
 
             <div className='loadLine'><SideBarSearch /></div>
-            <div className='right-sitebar'><ResultReserchTrain />
+            <div className='right-sitebar'>
+                <ResultReserchTrain />
                 <div className='pagination-elem'>
                     <PaginationItem
                 trainPerPage={trainPerPage}

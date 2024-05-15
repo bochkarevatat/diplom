@@ -4,7 +4,7 @@ import { Routes, Route} from 'react-router-dom';
 import { Homepage } from './pages/Homepage';
 import { TreepPage } from './pages/TreepPage';
 import { ChoiceOfLocation} from './pages/ChoiceOfLocation';
-
+import {Blogpage} from './pages/Blogpage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import {OrderTickets}  from './pages/OrderTickets';
 import {CheckTickets} from './pages/CheckTickets';
@@ -27,6 +27,7 @@ function App() {
       <Route path="check" element={<CheckTickets />}> 
       </Route>
       <Route path="*" element={<NotFoundPage />} />
+      <Route path="blogpage" element={<Blogpage />} />
     </Route>
   </Routes>
 

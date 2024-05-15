@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch} from 'react-redux';
 import { CustomLink } from '../../components/CustomLink';
-import{ Homepage} from '../Homepage'
+import{ Blogpage} from '../Blogpage'
 // import axios from 'axios';
 
 import './ResultReserchTrain.css';
@@ -145,7 +145,8 @@ React.useEffect(() =>{
             {data !==undefined ?  
                     <CartsTest cityList={data}/> :
                     <div>
-               <Homepage/>
+                      <h2>ждем...</h2>
+               {/* <Blogpage/> */}
           </div>
               }  
       

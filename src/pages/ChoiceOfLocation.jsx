@@ -3,6 +3,7 @@ import React from 'react';
 import { CustomLink } from '../components/CustomLink';
 import { useSelector, useDispatch} from 'react-redux';
 import SideBarSearch from './order/SideBarSearch';
+import{ Blogpage} from '../pages/Blogpage'
 // import ResultReserchTrain from './order/ResultReserchTrain'
 import ProgressLine from '../components/ProgressLine'
 import {currentStepTwo} from '../redux/sliceProgressLine';
@@ -17,23 +18,28 @@ const stepTwo = useSelector( (state) => state.sliceProgressLine.stepTwo);
 const dispatch = useDispatch();
 const trainSelection = useSelector( (state) => state.trainSlice.trainSelection);
 const [data, setData] = React.useState([]);
-console.log("trainSelection", trainSelection)
+
 const trainList = useSelector( (state) => state.trainSlice.trainSelection);
 const [state, setState] = React.useState({
     data: null,
     loading: true, 
   });
-
+//   console.log("trainList", trainList)
     React.useEffect(() =>{
         const Debounce = setTimeout(() => {
             dispatch(currentStepTwo(true))
             setData(trainSelection)
             console.log("data=>", data)
-          }, 1000);
+          }, 500);
         
           return () => clearTimeout(Debounce);
       
     }, [])
+    // if(){
+
+    // }
+
+console.log("trainList", trainList)
 
     return (
             <>
@@ -48,19 +54,27 @@ const [state, setState] = React.useState({
                      <div className='right-sitebar'>
                         <h2 className='llocation-title'>ВЫБОР МЕСТА</h2>
                       {/* все ломается от этого компонента SelectSeatTicket:  */}
-                      {/* {state.loading == false?
-                            <div><SelectSeatTicket trainList={sosItems}/></div>:
-                       
-                            } */}
-
-                        <div>
-                        <SelectSeatTicket />
-
-                        </div> 
-                        <CustomLink className='location-button' to="/ordertickets">
+                      {trainList.length !== 0?
+                       <div>
+                       <SelectSeatTicket train={trainList}/>
+                       <CustomLink className='location-button' to="/ordertickets">
                             <button className='search-butn'>далее</button>
-                          </CustomLink>
-                    </div>
+                        </CustomLink>
+
+                   </div>:
+                      
+                      <div>
+                      {/* <Blogpage/> */}
+                            <CustomLink className='' to="/">
+
+                            <button className='search-butn'>не загрузилось</button>
+                            </CustomLink>   
+                        </div>
+                            
+                   
+                            }
+
+</div>     
              
                    
             

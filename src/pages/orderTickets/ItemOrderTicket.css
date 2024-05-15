@@ -467,11 +467,11 @@
   }
   
   .pass-valid-close {
-    background-image: url(../../media/images/valid-close.png);
+    background: url('../../assets/img/krest-red.png') center/cover no-repeat;
   }
   
   .pass-valid-ok {
-    background-image: url(../../media/images/valid-ok.png);
+    background: url('../../assets/img/green-galka.png') center/cover no-repeat;
   }
   
   .pass-valid-text {

@@ -14,7 +14,7 @@ function dateFromAndTo(time) {
   return '';
 }
 
-const SelectSeatTicket = () => {
+const SelectSeatTicket = (train) => {
   
 
   
@@ -26,16 +26,16 @@ const SelectSeatTicket = () => {
     const trainCoach = useSelector( (state) => state.slicePrice.trainCoach);
     const ticket = useSelector( (state) => state.slicePrice.ticket);
     // const {items, totalPrice} = useSelector( state => state.sliceTicke);
-    const time = dateFromAndTo(trainList.departure.duration);
+    // const time = dateFromAndTo(train.departure.duration);
     const [valueAges, setValueAges] = React.useState(1);
     
     const [valueChild, setValueChild] = React.useState(1);
     const [price, setPrice] = React.useState(0);
     // const [itemTicket, setItemTicket] = React.useState([]);
     const [valueChildWithout, setValueChildWithout] = React.useState(0)
-    const fourthClass = useSelector( (state) => state.trainSlice.fourthClass);
-    const [topPlaces, setTopPlaces]= React.useState(0)
-    const [summ, setSumm]= React.useState(0)
+    // const fourthClass = useSelector( (state) => state.trainSlice.fourthClass);
+    // const [topPlaces, setTopPlaces]= React.useState(0)
+    // const [summ, setSumm]= React.useState(0)
     const dispatch = useDispatch();
     const topPrice = useSelector( (state) => state.slicePrice.topPrice);
     const bottomPrice = useSelector( (state) => state.slicePrice.bottomPrice);
@@ -121,8 +121,8 @@ const SelectSeatTicket = () => {
     
       // console.log(topPlaces)
 
-    const hh = time.split(':');
-    const hh1 = hh.splice(1, 2)
+    // const hh = dateFromAndTo(train.departure.duration).split(':');
+    // const hh1 = hh.splice(1, 2)
    
 
    
@@ -137,10 +137,12 @@ const SelectSeatTicket = () => {
 
 <div className='selection-of-seats_select-train'>
 
-    <div className='selection-of-seats_items'>
-  <div className='select-train-route'>
-    <span className='select-train-img-train'></span>
-    <div className='select-train-desc'>
+
+
+        <div className='selection-of-seats_items'>
+       <div className='select-train-route'>
+        <span className='select-train-img-train'></span>
+        <div className='select-train-desc'>
       <h5 className='train-desc-name'>{trainList.departure.train.name}</h5> 
       <p className='train-desc-city'>{trainList.departure.from.city.name} &#8594;</p>
       <p className='train-desc-city'>{trainList.departure.to.city.name}</p>
@@ -165,11 +167,14 @@ const SelectSeatTicket = () => {
         <div className='selection-of-seats_duration'>
           <span className='selection-of-seats_duration-img'></span>
           <div className='selection-of-seats_duration-text'>
-            <span>{hh} часов</span>
-            <span>{hh1} минуты</span>
+            <span>{dateFromAndTo(trainList.departure.duration).split(':')} часов</span>
+            <span>{dateFromAndTo(trainList.departure.duration).split(':').splice(1, 2)} минуты</span>
           </div>
         </div>
   </div>
+
+
+    
 
   <div className='amount-tickets'>
         <h4 className='amount-tickets-title'>Количество билетов</h4>
@@ -200,28 +205,35 @@ const SelectSeatTicket = () => {
       </div>
       
 </div>
+      
 
 <div className='coaches-types'>
-        <h4 className='coach-type-title'>Тип вагона</h4>
-        <div className='coach-types'>
-          <div className='coach-type'>
-            <span className={`${trainList.departure.have_fourth_class ? 'type-fourth-img-active' : 'type-fourth-img'}`}></span>
-            <p className={`${trainList.departure.have_fourth_class ? 'type-text-active' : 'type-text'}`}>Сидячий</p>
-          </div>
-          <div className='coach-type'>
-          <span className={`${trainList.departure.have_third_class ? 'type-third-img-active' : 'type-third-img'}`}></span>
-            <p className={`${trainList.departure.have_third_class ? 'type-text-active' : 'type-text'}`}>Плацкарт</p>
-          </div>
-          <div className='coach-type'>
-          <span className={`${trainList.departure.have_second_class ? 'type-second-img-active' : 'type-second-img'}`}></span>
-            <p className={`${trainList.departure.have_second_class ? 'type-text-active' : 'type-text'}`}>Купе</p>
-          </div>
-          <div className='coach-type'>
-          <span className={`${trainList.departure.have_first_class ? 'type-first-img-active' : 'type-first-img'}`}></span>
-            <p className={`${trainList.departure.have_first_class ? 'type-text-active' : 'type-text'}`}>Люкс</p>
-          </div>
-        </div>
-        </div>
+<h4 className='coach-type-title'>Тип вагона</h4>
+<div className='coach-types'>
+  <div className='coach-type'>
+    <span className={`${trainList.departure.have_fourth_class ? 'type-fourth-img-active' : 'type-fourth-img'}`}></span>
+    <p className={`${trainList.departure.have_fourth_class ? 'type-text-active' : 'type-text'}`}>Сидячий</p>
+  </div>
+  <div className='coach-type'>
+  <span className={`${trainList.departure.have_third_class ? 'type-third-img-active' : 'type-third-img'}`}></span>
+    <p className={`${trainList.departure.have_third_class ? 'type-text-active' : 'type-text'}`}>Плацкарт</p>
+  </div>
+  <div className='coach-type'>
+  <span className={`${trainList.departure.have_second_class ? 'type-second-img-active' : 'type-second-img'}`}></span>
+    <p className={`${trainList.departure.have_second_class ? 'type-text-active' : 'type-text'}`}>Купе</p>
+  </div>
+  <div className='coach-type'>
+  <span className={`${trainList.departure.have_first_class ? 'type-first-img-active' : 'type-first-img'}`}></span>
+    <p className={`${trainList.departure.have_first_class ? 'type-text-active' : 'type-text'}`}>Люкс</p>
+  </div>
+</div>
+</div>
+
+   
+
+
+
+
            <TrainCoach /> 
            <section className="price-right">
            <div className="">{objTicket.totalPriceAll}<span><img src='img/rubleIcon.png'></img></span></div>
