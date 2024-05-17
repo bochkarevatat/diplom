@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch} from 'react-redux';
+import { CustomLink } from '../components/CustomLink';
 import SidebarOrderTicket from './orderTickets/SidebarOrderTicket';
 import ProgressLine from '../components/ProgressLine'
 import {currentStepThree} from '../redux/sliceProgressLine';
@@ -8,7 +9,7 @@ import './PayTickets.css';
 
 
 const PayTickets = ()=> {
-
+    const trainSelection = useSelector( (state) => state.trainSlice.trainSelection);
     const stepThree = useSelector( (state) => state.sliceProgressLine.stepThree);
     const dispatch = useDispatch();
 
@@ -29,12 +30,23 @@ const PayTickets = ()=> {
         <div className='select-pay-ticket'>
 
         <div className="pay-section-left">
-        <SidebarOrderTicket />
+        { trainSelection.length !== 0 ?
+            <div>
+                 <SidebarOrderTicket train={trainSelection} />
+            </div>:
+           
+            <CustomLink className='' to="/">
+                <button className='search-butn'>не загрузилось</button>
+            </CustomLink>
+                   
+            }
         </div>
       
         <div className="pay-section">
         <PayTicketsRight />
         </div>
+
+
         </div>
         
     </>

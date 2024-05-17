@@ -19,7 +19,7 @@ function conversionDate(time) {
     return '';
   }
 
-const SidebarOrderTicket = () =>{
+const SidebarOrderTicket = ({train, from, to}) =>{
     const [ hide, setHide] = React.useState(false);
     const [ hideFrom, setHideFrom] = React.useState(false);
     // const [ ToDate, setToDate] = React.useState('');
@@ -108,7 +108,13 @@ const SidebarOrderTicket = () =>{
                 <div className={`${hide ? 'there-title_title' : 'there-title-hidden'}`}>
                               <div className="there-group">
                                 <div><img className="there-title_img" src={iconThere} alt="" /><span className="there-title-order">Туда</span></div>
-                                <span>  <span className='there-head-date-order'>{FromDate}</span></span>  
+                                <span>
+                                  {whereFromDate !==  null ?
+                                  <span className='there-head-date-order'>{FromDate}</span>:
+                                  <span className='there-head-date-order'>{}</span>
+                                  }
+                                  
+                                  </span>  
                                 <img className="iconMinusPlus"
                                   onClick={() => setHide(false)}
                                   src={iconMinus}
@@ -148,8 +154,15 @@ const SidebarOrderTicket = () =>{
                         </div>
 
                         <div className='there-route-to'>
+                         
                          <div className='there-time'>{conversionDate(trainSelection.departure.to.datetime)}</div>
-                        <div className='there-date'>{ToDate}</div>
+                         {ToDate !==  null ?
+                                   <div className='there-date'>{ToDate}</div>:
+                                  <span className='there-head-date-order'>{}</span>
+                                  }
+                      
+
+
                         <div className='there-to'>
                             <p className='there-city'>{trainSelection.departure.to.city.name}</p>
                             <p className='there-station'>{trainSelection.departure.to.railway_station_name}</p>
@@ -177,13 +190,20 @@ const SidebarOrderTicket = () =>{
                           <img className={`${hideFrom ? 'there-title-hidden' : 'iconMinusPlus'}`}    
                               onClick={() => setHideFrom(true)}
                               src={iconPlus} 
-                alt="иконка плюс" />
+                               alt="иконка плюс" />
                 </summary>
   
                 <div className={`${hideFrom ? 'there-title_title' : 'there-title-hidden'}`}>
                 <div className="there-group">
                                 <div><img className="there-title_img" src={iconFrom} alt="" /><span className="there-title-order">Обратно</span></div>
-                                <span>  <span className='there-head-date-order'>{FromDate}</span></span>  
+                                <span>
+                                {FromDate !==  null ?
+                                  <span className='there-head-date-order'>{FromDate}</span>:
+                                  <span className='there-head-date-order'>{}</span>
+                                  }
+                                    
+                                    
+                                    </span>  
                                 <img className="iconMinusPlus"
                                   onClick={() => setHide(false)}
                                   src={iconMinus}
@@ -223,7 +243,14 @@ const SidebarOrderTicket = () =>{
 
                         <div className='there-route-to'>
                          {/* <div className='there-time'>{conversionDate(trainSelection.arrival.to.datetime)}</div> */}
-                        <div className='there-date'>{ToDate}</div>
+                       
+                         {ToDate !==  null ?
+                                   <div className='there-date'>{ToDate}</div>:
+                                  <span className='there-head-date-order'>{}</span>
+                                  }
+                       
+
+
                         <div className='there-to'>
                             {/* <p className='there-city'>{trainSelection.arrival.to.city.name}</p>
                             <p className='there-station'>{trainSelection.arrival.to.railway_station_name}</p> */}
