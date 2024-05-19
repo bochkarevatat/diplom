@@ -1,0 +1,12 @@
+.pay-section_items{
+    display: flex;
+    justify-content: space-evenly;
+}
+.pay-section-left{
+width: 30%;
+}
+.pay-section-right{
+    margin-top: 100px;
+    max-width: 60%;
+    margin-right: 40px;
+}

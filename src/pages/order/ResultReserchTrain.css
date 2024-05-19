@@ -68,11 +68,11 @@
 
 .train-direction-route {
   display: flex;
-  margin: 50px auto auto 40px;
+  margin: 15px 14px;
 }
 
 .train-direction-from {
-  width: 140px;
+  width: 110px;
 }
 
 .direction-time {

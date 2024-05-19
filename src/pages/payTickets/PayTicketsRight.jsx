@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch} from 'react-redux';
 import { CustomLink } from '../../components/CustomLink';
-import { addUserPayment } from '../../redux/slices/AddUserSlice';
+import { addUserPayment } from '../../redux/slices/SliceOrderPassengers';
 import setErrorMessage from '../../redux/slices/ErrorMessageSlice'
 import './PayTicketsRight.css'
 
@@ -49,7 +49,8 @@ const PayTicketsRight = () =>{
 
   const [method, setMethod] = React.useState(false);
   const [ok, setOk] = React.useState(false);
-
+  const { departure, user } = useSelector( (state) => state.orderPassenger);
+  
   const inputSurName =(ev)=> {
     setInputValue({ ...inputValue, surname: ev.target.value });
   };

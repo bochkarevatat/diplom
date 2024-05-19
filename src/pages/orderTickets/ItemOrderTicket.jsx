@@ -3,11 +3,12 @@ import { useSelector, useDispatch} from 'react-redux';
 import DatePicker from 'react-datepicker';
 import ru from 'date-fns/locale/ru';
 import 'react-datepicker/dist/react-datepicker.css';
-import setErrorMessage from '../../redux/slices/ErrorMessageSlice'
+import setErrorMessage from '../../redux/slices/ErrorMessageSlice';
+import { setAddPassenger, removeSeatPassenger } from '../../redux/slices/SliceOrderPassengers';
 
 import './ItemOrderTicket.css'
 
-function validateName(string) {
+const validateName = (string)=> {
   console.log("поверка имени")
   return !/[\d\s]/.test(string);
 }
@@ -34,10 +35,33 @@ const validatePassportSeries =(string) => {
     return /^[v,i,x,m]{1,4}[а-я]{1,2}\d{6}$/.test(string);
   }
 
+  const upperCaseBirthNumber = (string)=> {
+    const upperString = string.toUpperCase();
+    const splitString = upperString.split('');
+    for (let i = 0; i < splitString.length; i += 1) {
+      if (/[А-Я]/.test(splitString[i])) {
+        splitString[i - 1] += ' ';
+        break;
+      }
+    }
+  
+    for (let i = 0; i < splitString.length; i += 1) {
+      if (/\d/.test(splitString[i])) {
+        splitString[i - 1] += ' ';
+        break;
+      }
+    }
+  
+    return splitString.join('');
+  };
+  
+
+
+
 const ItemOrderTicket = ({addPassenger, num, agesPassengers}) =>{
 
 
-
+  const { totalSeatsNumber, seatsChildWithout } = useSelector( (state) => state.addUser);
   const dispatch = useDispatch();
 
     const [none, setNone] = React.useState({
@@ -51,18 +75,18 @@ const ItemOrderTicket = ({addPassenger, num, agesPassengers}) =>{
       const [select, setSelect] = React.useState({
         age: 'Взрослый',
         docs: 'Паспорт РФ',
-        typeDoc: ''
+        typeDoc: 'Паспорт РФ'
       })
       const [docsValue, setDocsValue] =  React.useState({
-        passportSeries: '',
-        passportNumber: '',
+        passportSeries: '9402',
+        passportNumber: '796206',
         birthNumber: ''
       })
 
       const [nameValue, setNameValue] = React.useState({
-        name: '',
-        nameOfFather: '',
-        surname: ''
+        name: 'Андрей',
+        nameOfFather: 'Васильевич',
+        surname: 'Белов'
       });
 
       const [gender, setGender] = React.useState(false);
@@ -154,14 +178,8 @@ const ItemOrderTicket = ({addPassenger, num, agesPassengers}) =>{
         setSelect({ ...select, docs: ev.currentTarget.outerText });
         setNone({ ...none, docs: 'none' });
       }
-
-      const passportSeries = (ev)=>{
-        setDocsValue({ ...docsValue, passportSeries: ev.target.value });
-      }
-
-      const passportNumber = (ev) => {
-        setDocsValue({ ...docsValue, passportNumber: ev.target.value });
-      }
+      console.log(select, 'select')
+      
       const birthNumber = (ev) => {
         setDocsValue({ ...docsValue, birthNumber: ev.target.value });
       }
@@ -192,7 +210,41 @@ const ItemOrderTicket = ({addPassenger, num, agesPassengers}) =>{
       const inputFirstName =(ev)=>{
         setNameValue({ ...nameValue, name: ev.target.value });
     }
-      
+     const inputSecondName =(ev)=> {
+      setNameValue({ ...nameValue, patronymic: ev.target.value });
+    };
+     const passportSeries = (ev)=>{
+      setDocsValue({ ...docsValue, passportSeries: ev.target.value });
+    }
+
+    const passportNumber = (ev) => {
+      setDocsValue({ ...docsValue, passportNumber: ev.target.value });
+    }
+
+    console.log(select.typeDoc, 'select.typeDoc')
+    function addPassengerToStore() {
+      const seats = {
+        coach_id: totalSeatsNumber,
+        person_info: {
+          is_adult: select.age === 'Взрослый' ? true : false,
+          first_name: nameValue.name,
+          last_name: nameValue.surname,
+          patronymic: nameValue.patronymic,
+          gender: gender,
+          birthday: dateValue.toLocaleDateString("ru-RU"),
+          document_type: select.docs,
+          document_data: `${select.typeDoc === 'Паспорт РФ' ? `${docsValue.passportSeries} ${docsValue.passportNumber}` : upperCaseBirthNumber(docsValue.birthNumber)}`
+        },
+        seat_number: totalSeatsNumber[num - 1],
+        is_child: seatsChildWithout > 0 ? true : false,
+        include_children_seat: seatsChildWithout > 0 ? true : false
+      }
+      dispatch(setAddPassenger(seats));
+      setButton(true);
+    }
+
+
+
       const nextPassenger = () => {
         if (nameValue.name !== '' && nameValue.patronymic !== '' && nameValue.surname !== '') {
           if (dateValue !== '' && ((docsValue.passportNumber !== '' && docsValue.passportSeries !== '') || docsValue.birthNumber !== '')) {
@@ -213,6 +265,10 @@ const ItemOrderTicket = ({addPassenger, num, agesPassengers}) =>{
           setValidText('Заполните все поля!');
         }
       }
+
+
+
+
 
     return (
         <div className='passenger'>
@@ -261,7 +317,7 @@ const ItemOrderTicket = ({addPassenger, num, agesPassengers}) =>{
             <p>Отчество</p>
             <input className='pass-names-input' type="text" required
               value={nameValue.patronymic}
-            //   onChange={inputSecondName}
+              onChange={inputSecondName}
               onBlur={blurSecondName} 
               />
           </label>
