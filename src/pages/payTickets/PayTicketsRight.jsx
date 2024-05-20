@@ -40,17 +40,17 @@ const PayTicketsRight = () =>{
 
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = React.useState({
-    name: '',
-    patronymic: '',
-    surname: '',
-    phone: '',
-    email: ''
+    name: 'Иван',
+    patronymic: 'Иванович',
+    surname: 'Иванович',
+    phone: '+7 999 877 76 78',
+    email: 'gmail@gmail.com'
   });
 
   const [method, setMethod] = React.useState(false);
   const [ok, setOk] = React.useState(false);
   const { departure, user } = useSelector( (state) => state.orderPassenger);
-  
+
   const inputSurName =(ev)=> {
     setInputValue({ ...inputValue, surname: ev.target.value });
   };

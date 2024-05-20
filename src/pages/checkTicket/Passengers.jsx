@@ -1,12 +1,15 @@
 import React from 'react';
 import { useSelector, useDispatch} from 'react-redux';
+import { CustomLink } from '../../components/CustomLink';
 
 import "./passengers.css"
 
 const Passengers =()=>{
     const { user, departure } = useSelector( (state) => state.orderPassenger);
+    const objTicket = useSelector( (state) => state.slicePrice.objTicket);
 console.log(user)
     return (
+      <>
     <div className='order-passengers'>
         <h4 className='order-passenger-title'>Пассажиры</h4>
         <div className='order-passenger-container'>
@@ -30,29 +33,38 @@ console.log(user)
             <div className='passenger-container-total'>
               <p>Всего</p>
               <div className='passenger-container-price'>
-                {/* <p>{totalPriceAll}</p> */}
+                <p>{objTicket.totalPriceAll}</p>
                 <span className='details-total-sign'></span>
               </div>
             </div>
-            {/* <button className='passenger-container-btn' onClick={changePassengers}>Изменить</button> */}
+            <CustomLink className='' to="/ordertickets">
+                <button className='passenger-container-btn'>Изменить</button>
+            </CustomLink>
+            
           </div>
         </div>
 
 
       </div>
 
-    //   <div className='order-payment'>
-    //     <h4 className='order-payment-title'>Способ оплаты</h4>
-    //     <div className='order-payment-method'>
-    //       <p className='order-payment-text'>{user.payment_method}</p>
-    //       <button className='order-payment-btn' type='button' onClick={() => changePayment}>Изменить</button>
-    //     </div>
-    //   </div>
+       <div className='order-payment'>
+     <p className='order-payment-title'>Способ оплаты</p>
+     <div className='order-payment-method'>
+      <p className='order-payment-text'>{user.payment_method}</p>
+      <CustomLink className='order-payment-btn' to="/pay">
+         <button className='order-payment-btn' type='button'>Изменить</button>
+       </CustomLink>
+    </div>
+    </div>
 
-    //   <button className='order-btn' type='button' onClick={confirmOrder}>подтвердить</button>
-   
-  
+     <div>
+      <CustomLink className='' to="/succesfull">
+           <button className='order-btn' type='button'>подтвердить</button>
+      </CustomLink>
+      </div>
 
+
+      </>
 
     )
 }

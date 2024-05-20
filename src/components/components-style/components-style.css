@@ -244,7 +244,7 @@
         left: 0;
         top: 0; */
         z-index: 10;
-        padding: 20px 25px 0 25px;
+        /* padding: 20px 25px 0 25px; */
         display: flex;
         box-sizing: border-box;
         width: 900px;
@@ -253,7 +253,7 @@
         /* flex-wrap: wrap; */
         background: rgba(41,41,41,.8);
         border: 0;
-        margin: 15px auto 0 auto;
+        /* margin: 10px auto 0 auto; */
         color:white;
         text-transform: uppercase;
   }
