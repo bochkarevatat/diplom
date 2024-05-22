@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch} from 'react-redux';
 import TrainCoach from './TrainCoach';
 import './SelectSeatTicket.css';
-import { changeAgeTickets, setBottomPrice, setTotalPriceAll, changeChildTickets, setObjTicket} from '../../redux/slices/SlicePrice';
+import { changeAgeTickets, setBottomPrice, setTotalPriceAll, changeChildTickets, setObjTicket, setPrice} from '../../redux/slices/SlicePrice';
 
 function dateFromAndTo(time) {
   if (time) {
@@ -27,55 +27,56 @@ const SelectSeatTicket = (train) => {
     const ticket = useSelector( (state) => state.slicePrice.ticket);
     // const {items, totalPrice} = useSelector( state => state.sliceTicke);
     // const time = dateFromAndTo(train.departure.duration);
-    const [valueAges, setValueAges] = React.useState(1);
+    const [valueAges, setValueAges] = React.useState(0);
     
-    const [valueChild, setValueChild] = React.useState(1);
-    const [price, setPrice] = React.useState(0);
+    const [valueChild, setValueChild] = React.useState(0);
+    const price =useSelector( (state) => state.slicePrice.price)
     // const [itemTicket, setItemTicket] = React.useState([]);
     const [valueChildWithout, setValueChildWithout] = React.useState(0)
     // const fourthClass = useSelector( (state) => state.trainSlice.fourthClass);
     // const [topPlaces, setTopPlaces]= React.useState(0)
+    const [active, setActive]= React.useState(false)
     const [summ, setSumm]= React.useState(0)
     const dispatch = useDispatch();
     const topPrice = useSelector( (state) => state.slicePrice.topPrice);
     const bottomPrice = useSelector( (state) => state.slicePrice.bottomPrice);
     const rafValueAges = React.useRef(null);
+    const [summAll, setSummAll]= React.useState(0)
     // console.log(inputValueAges)
     
-    React.useEffect(() =>{
+    const addActivInput =(el) =>{
+      setActive(true)
+    }
 
-      if(trainCoach.class_type === 'third'){
-        // console.log("получилось")  
-        if(ticket % 2 == 1){
-        setPrice(trainCoach.bottom_price)
-        // setItemTicket([...ticket])
-        dispatch(setObjTicket({
-          numberOld: Number(valueAges),
-          numberChild: Number(valueChild),
-          priceChild: price*0.65,
-          sumOld: Number(valueAges)*price,
-          sumChild: Number(valueChild)*price*0.65,
-          // items: items.length,
-          totalPriceAll: Number(valueAges)*price+Number(valueChild)*price*0.65
-        }
-        )) 
-       
-        }else{
-          setPrice(trainCoach.top_price)
-          dispatch(setObjTicket({
-            numberOld: Number(valueAges),
-            numberChild: Number(valueChild),
-            priceChild: price*0.65,
-            sumOld: Number(valueAges)*price,
-            sumChild: Number(valueChild)*price*0.65,
-            totalPriceAll: Number(valueAges)*price+Number(valueChild)*price*0.65
-          }
-          )) 
-          setPrice(trainCoach.top_price)
-          // console.log("получилось")     
-        }
-      }
-    },[valueAges, valueChild, ticket])
+    React.useEffect(() =>{
+         console.log("totalPriceAll", ticket, price)
+        
+          if(trainCoach.class_type === 'third' && active === true && ticket>0){
+            // console.log(ticket)
+            if(ticket % 2 == 1 && ticket < 33 ){
+             
+              dispatch(setPrice(trainCoach.bottom_price))
+            console.log("нечетное", ticket, price)
+            } else
+            if(ticket % 2 == 0 && ticket<33 ){
+              dispatch(setPrice(trainCoach.top_price));
+           
+              console.log("четное", price) 
+             } else
+              {
+                dispatch(setPrice(trainCoach.side_price));
+               
+              console.log("боковое", ticket, price)  
+            }
+            if(price !==0 && totalPriceAll.length <= valueAges){
+              dispatch(setTotalPriceAll(price))
+              console.log( price, totalPriceAll, "получилось")  
+              
+            }
+            setSummAll(totalPriceAll.reduce((acc, number) => acc + number, 0))
+            } 
+             
+    },[ticket, trainCoach, totalPriceAll])
     
 
     function inputAges(ev) {
@@ -114,13 +115,13 @@ const SelectSeatTicket = (train) => {
       }
       }
       
-
-    dispatch(setTotalPriceAll(topPrice*valueAges))
+     
+    // dispatch(setTotalPriceAll(topPrice*valueAges))
 
     // const hh = dateFromAndTo(train.departure.duration).split(':');
     // const hh1 = hh.splice(1, 2)
    
-
+// console.log(objTicket, 'objTicket')
    
     return (
       <div >    
@@ -163,8 +164,8 @@ const SelectSeatTicket = (train) => {
         <div className='selection-of-seats_duration'>
           <span className='selection-of-seats_duration-img'></span>
           <div className='selection-of-seats_duration-text'>
-            <span>{dateFromAndTo(trainList.departure.duration).split(':')} часов</span>
-            <span>{dateFromAndTo(trainList.departure.duration).split(':').splice(1, 2)} минуты</span>
+            <span>{dateFromAndTo(trainList.departure.duration).split(':').splice(0, 1)} часов</span>
+            <span>{(dateFromAndTo(trainList.departure.duration).split(':')).splice(1, 2)} минуты</span>
           </div>
         </div>
   </div>
@@ -180,6 +181,7 @@ const SelectSeatTicket = (train) => {
               value={''}
               ref={rafValueAges}
               onChange={(ev) => inputAges(ev)}
+              onClick={(e) => addActivInput(e.target.value)}
                />
             <p className='tickets-adults-desc'>Можно добавить еще {5 - valueAges} пассажиров</p>
           </div>
@@ -227,7 +229,7 @@ const SelectSeatTicket = (train) => {
 
            <TrainCoach /> 
            <section className="price-right">
-           <div className="">{objTicket.totalPriceAll}<span><img src='img/rubleIcon.png'></img></span></div>
+           <div className="">{summAll}<span><img src='img/rubleIcon.png'></img></span></div>
            </section>
            
         </div>

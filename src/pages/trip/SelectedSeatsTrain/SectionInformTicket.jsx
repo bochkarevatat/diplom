@@ -9,7 +9,7 @@ const SectionInformTicket = ()=>{
     const trainCoach = useSelector( (state) => state.slicePrice.trainCoach);
     const seatsType = useSelector( (state) => state.slicePrice.seatsType);
     const classType = useSelector( (state) => state.slicePrice.classType);
-    console.log(' trainCoach =>',  trainCoach)
+    // console.log(' trainCoach =>',  trainCoach)
     const topPrice = useSelector( (state) => state.slicePrice.topPrice);
     const bottomPrice = useSelector( (state) => state.slicePrice.bottomPrice);
     const [trainCoachSlice, setTrainCoachSlice] = React.useState();
@@ -98,7 +98,7 @@ const SectionInformTicket = ()=>{
 
 
 
-    console.log(classType, 'classType')
+    // console.log(classType, 'classType')
     return(
 
         <section className="section-inform-ticket">

@@ -108,39 +108,6 @@ const ChoiceOfDirection = () => {
     
   }, [itemslastRout, idCityFrom]);
   
-  // React.useEffect(() =>{
-  //   dispatch(setDateFrom(fromDate));
-  // },[fromDate])
-
-//   const onClickTimeFrom = (obj) => {
-   
-//     // inputRefDateFrom.current?.focus(); 
-//  const formatII = obj.toLocaleDateString('es', {
-//     year: "numeric",
-//     month: "numeric",
-//     day: "numeric"
-//   })
-//   dispatch(setDateFrom(formatII));
-//   // console.log(obj.toLocaleDateString('ru-RU', {
-//   //   year: "numeric",
-//   //   month: "numeric",
-//   //   day: "numeric"
-//   // }))
-//    console.log(fromDate, '=<fromDate')
-//       // inputRefDateFrom.current?.dispatchEvent(event);  
-//   };
-
-
-
-console.log(fromDate, '=<fromDate', toDate, '<=toDate')
-
-
-  // const onClickTimeTo = (obj) => {
-  //   dispatch(setDateTo(obj));
-  //   inputRefDateTo.current?.focus();   
-  // };
-  
-  // console.log('inputRefDateTo.current?', inputRef.current)
   
   
   const onClickButton = ()=>{
@@ -153,35 +120,6 @@ console.log(fromDate, '=<fromDate', toDate, '<=toDate')
     }
   }
 
-// console.log('arrCityes =>', arrCityes)
-// console.log('arrCityes =>', arrCityes[0])
-
-  // React.useEffect(()=> {
-  //   if(name === consts.depCity && departureCity){
-  //     setInputValue(departureCity.name);
-  //   }
-  //   if(name === consts.arrCity && arrivalCity){
-  //     setInputValue(arrivalCity.name);
-  //   }
-  // }, [arrivalCity, departureCity, name]);
-
-  // React.useEffect(() =>{
-  //   fetch("https://students.netoservices.ru/fe-diplom/routes/last").then((res) => {return res.json()}).
-  //   then(arr => {
-  //     setitemslastRout(arr)
-      
-  //   })
-  // }, [])
-    
-  
-  // const idInputValue = arrCityes[0]._id
-
-  // console.log('idInputValue', idInputValue, 'categoryCityFrom==>', categoryCityFrom);
-  // const onClickClear = (obj) => {
-  //   dispatch(setSearchValueFrom(obj));
-  //   inputRef.current?.focus();   
-  // };
-  
     
     return (
       <div className={`${bg ? 'container-reserch-hidden' : 'container-reserch'}`}>

@@ -4,11 +4,11 @@
   box-sizing: border-box;
 }
 
-:root {
+/* :root {
   --color-bg: #2C2C32;
   --color-active: hsl(40, 23%, 95%);
   --color-hover: #FFA800;
-}
+} */
 
 body {
   margin: 0;
@@ -45,10 +45,10 @@ header > a {
   text-decoration: none;
 }
 
- .selected{
+ /* .selected{
   color: var(--color-active);
   color: #a49898;
-} 
+}  */
 
 header > a {
   
@@ -142,10 +142,10 @@ main a:hover {
   text-decoration: underline;
 }
 
-.active {
+/* .active {
   color: var(--color-active);
   cursor: default;
-}
+} */
 .main-background-head{
   display: flex;
   /* border-bottom: 8px solid #ffa800; */

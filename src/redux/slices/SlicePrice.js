@@ -53,13 +53,15 @@ const initialState = {
     // totalAmountTickets: 0,
     // totalPriceAge: 0,
     // totalPriceChild: 0,
-    totalPriceAll: 0,
+    totalPriceAll: [],
     ticket: 0,
     ticketTrue: false,
     result: '',
+    selectedPlacesArr:[],
     seatsType: [],
     trainCoach: [],
     classType:'',
+    price:0,
     topPrice: 0,
     bottomPrice: 0,
   };
@@ -309,8 +311,11 @@ const initialState = {
         state.topPrice = action.payload;
       },
       setTotalPriceAll(state, action) {
-        state.totalPriceAll = action.payload;
-      },
+        state.totalPriceAll.push(action.payload);
+    },
+    setPrice(state, action) {
+      state.price = action.payload;
+  },
       setObjTicket(state, action) {
         state.objTicket = action.payload;
       },
@@ -338,6 +343,7 @@ const initialState = {
     setTopPrice,
     setBottomPrice,
     setObjTicket,
+    setPrice,
     setTotalPriceAll
   } = slicePrice.actions;
   

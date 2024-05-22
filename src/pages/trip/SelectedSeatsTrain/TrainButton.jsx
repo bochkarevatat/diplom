@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch} from 'react-redux';
 import './TrainButton.css'
 import { setTicket} from '../../../redux/slices/SlicePrice';
-import {addSeatInTicket, setIdSeat} from '../../../redux/slices/SliceTicket'
+import {addSeatInTicket, clearTicket} from '../../../redux/slices/SliceTicket'
 
 
 
@@ -19,7 +19,19 @@ function haveSeatsOrNot(numScheme, coach){
   return result;
 }
 
-
+// function haveActiveOrNot(arr, el){
+//   let resultActive = 'select_coach-seat-item';
+//   arr.map((e) => {
+//     if (e === el) {
+//       console.log("работает условие?", e, el)
+//       return resultActive = 'select_coach-seat-item_active';
+      
+//     }
+//     console.log("not работает условие?", e, el)
+//     return null;
+//   });
+//   return resultActive;
+// }
 
 const TrainButtonThird = (( {arrSelectThird}) => {
   const dispatch = useDispatch();
@@ -28,25 +40,31 @@ const TrainButtonThird = (( {arrSelectThird}) => {
   const ticket = useSelector( (state) => state.slicePrice.ticket);
   const items = useSelector( (state) => state.sliceTicket.items);
   const id = useSelector( (state) => state.sliceTicket.idSeat);
-  // const [id, setId]= React.useState();
+  const [item, setItem]= React.useState({id:0,
+    itemT:0,
+  });
+   // const [id, setId]= React.useState();
   // const [itemTicket, setItemTicket] = React.useState([]);
   
-  const addTicketEx = (el, id)=>{
-    dispatch(setTicket(el)),
-    dispatch(setIdSeat(id))
-    const item = {
-      id: id,
-      itemT: ticket
-    }
-    dispatch(addSeatInTicket(item))
+  const addTicketEx = (el, elTar, id, element)=>{
+    // console.log(el, elTar, element, 'el')
+    dispatch(setTicket(el))
+    dispatch(addSeatInTicket(Number(el)))
+    // здесь не работает, конфликт или так нельзя?
+    elTar.classList.add('bebebe')
   }
+ 
 
   React.useEffect(() =>{
+    if(items.length>8){
+      dispatch(clearTicket())
+    }
+    if(ticket !==0){
+      // console.log(items, ticket, "no current ticket")
+    }
     
-    console.log(items, ticket, 'ticket')
-  },[ticket])
-
-  console.log(items, 'items')
+  }, [ticket])
+  
 
 
 
@@ -56,7 +74,7 @@ const TrainButtonThird = (( {arrSelectThird}) => {
             <div className='top-row-select_coach'>
               {arrSelectThird.topWindow.map((el, id) => {
                 return (
-                <button value={el} onClick={(e) => addTicketEx(e.target.value, id)} className={`select_coach-seat-item ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
+                <button value={el} onClick={(e) => addTicketEx(e.target.value, e.target, id, el)} className={`select_coach-seat-item ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
                 )
               })}
             </div>
@@ -96,19 +114,10 @@ const TrainButtonSecond = (( {arrSelectSecond}) => {
 
 
   const addTicketEx = (el, id)=>{
-    dispatch(setTicket(el)),
-    setId(id)
-    console.log(id, "id")
+   
+    
+    dispatch(addSeatInTicket(el))
   }
-// как добавить теперь id? через функцию?
-  React.useEffect(() =>{
-    const item = {
-      id: id,
-      itemT: ticket
-    }
-    // dispatch(addTicket(item))
-    console.log(item, ticket, 'ticket')
-  },[ticket])
   
 // console.log(ticket)
 
@@ -130,7 +139,7 @@ const TrainButtonSecond = (( {arrSelectSecond}) => {
             {arrSelectSecond.topAisle.map((el) => {
             //  console.log(ticketTrue, '<=ticketTrue2')select_coach-seat-item_aisle-noactive
               return (
-              <button value={el} onClick={(e) => dispatch(setTicket(e.target.value))} className={`select_coach-seat-item_aisle-noactive ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
+              <button value={el} onClick={(e) => dispatch(addTicketEx(e.target.value, id))} className={`select_coach-seat-item_aisle-noactive ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
               )
             })}
         </div>
@@ -151,14 +160,10 @@ const TrainButtonFirst = (( {arrSelectSecond}) => {
   const seatsType = useSelector( (state) => state.slicePrice.seatsType);
   const [activeTicket, setActiveTicket] = React.useState('seat-not-have');
   const ticket = useSelector( (state) => state.slicePrice.ticket);
-//   React.useEffect(() =>{
-    
-//     if(setTicket){
-//       setActiveTicket('select-active-ticket')
-//     }
-
-//   },[ticket])
-// console.log(activeTicket)
+  const addTicketEx = (el, id)=>{
+   
+    dispatch(addSeatInTicket(el))
+  }
 
 
   return(
@@ -168,7 +173,7 @@ const TrainButtonFirst = (( {arrSelectSecond}) => {
               {arrSelectSecond.luxSeats.map((el) => {
                 // console.log(ticketTrue, el, '<=ticketTrue1')
                 return ( 
-                <button value={el} onClick={(e) => dispatch(setTicket(e.target.value))} className={`select_coach-seat-item-lux ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
+                <button value={el} onClick={(e) => dispatch(addTicketEx(e.target.value, id))} className={`select_coach-seat-item-lux ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
                 )
               })}
             </div>
@@ -197,24 +202,17 @@ const TrainButtonForth = (({ arrSelectThird}) => {
     }
 
   },[ticket])
-console.log(ticket)
-
-const addTicketEx = (el, id)=>{
-  dispatch(setTicket(el)),
-  dispatch(setIdSeat(id))
-  const item = {
-    id: id,
-    itemT: ticket
+  const addTicketEx = (el, id)=>{
+   
+    dispatch(addSeatInTicket(el))
   }
-  dispatch(addSeatInTicket(item))
-}
 
 // React.useEffect(() =>{
   
 //   console.log(items, ticket, 'ticket')
 // },[ticket])
 
-console.log(items, 'items')
+
 
   return(
     <div className='forth-select_coach'>
