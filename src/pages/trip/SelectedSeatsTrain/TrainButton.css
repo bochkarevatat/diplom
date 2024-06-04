@@ -86,10 +86,10 @@
     border: 3px solid #FDB935
     
   } */
-  .bebebe{
-    background-color: #fd35c1;
+  .seat-selected{
+    background-color:  #FDB935;
   }
-  .seat-have:focus{
+  /* .seat-have:focus{
     background-color: #FDB935;
   }
   .seat-have:visited{
@@ -97,7 +97,7 @@
   }
   .select-active-ticket{
     border: 3px solid #FDB935
-  }
+  } */
   .seat-win-top {
     /* color: black; */
   display: flex;
@@ -129,15 +129,15 @@
   }
   .seat-have {
     color: #000000;
-    background-color: #F2F2F2;
+    /* background-color: #F2F2F2; */
     cursor: pointer;
   }
   
-  .seat-have:hover {
+  /* .seat-have:hover {
     box-sizing: border-box;
     border: 2px solid #FFA800;
     z-index: 1;
-  }
+  } */
   
   .seat-not-have {
     color: #F2F2F2;
@@ -167,7 +167,7 @@
   }
   .select_coach-seat-item-lux{
     align-items: flex-end;
-    background-color: rgb(249, 245, 245);
+    /* background-color: rgb(249, 245, 245); */
     box-sizing: initial;
     color: rgb(12, 12, 12);
     display: flex;

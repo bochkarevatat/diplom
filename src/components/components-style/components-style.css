@@ -13,6 +13,7 @@
     border-bottom: 8px solid #ffa800;
 
   }
+
   .main-background:before{
     background: url("img/bg/image-bg22.png");
     background-repeat: no-repeat;
@@ -33,14 +34,70 @@
     opacity: 0;
     visibility: hidden;
   }
-.show{
+  .header__bg{
+    width: 52%;
+  }
+  .show{
   opacity: 1;
   visibility: visible;
-  width: 48%;
-}
-
-.header-title-right{
+  width: 52%;
+    }
+    .header-bg_items{
+      position: relative;
+      width: 100%;
+      background-color: black;
+      z-index: 10;
+    }
+    .header-items{
+      position: relative;
+      background-color: black;
+      padding: 2rem 0;
+      /* text-align: center; */
+      z-index: 10;
+      display: flex;
+      justify-content: space-evenly;
+      width: 60%;
+    }
+    .header_link {
+      /* position: relative;
+      flex-grow: 1;
+      text-align: center; */
+      line-height: 3rem;
+      cursor: pointer;
+      text-decoration: none;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      font-size: 1rem;
+    }
+    .header__logo{
+      position: relative;
+      height: 10vh;
+      z-index: 20;
+    }
+    .logo {
+      font-weight: 900;
+      font-size: 36px;
+      line-height: 64px;
+      margin-left: 10rem;
+      padding-bottom: 100px;
+      color: white;
+      text-decoration: none;
+    }
+/* .header-title-right{
   color: white;
+} */
+
+.search-form__btn{
+  position: relative;
+    display: flex;
+    width: 30px;
+    min-height: 30px;
+    justify-content: center;
+    align-items: center;
+    color: #e5e5e5;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
 }
 .header__form{
   position: relative;
@@ -50,7 +107,7 @@
   /* flex-direction: column; */
   box-sizing: border-box;
   /* flex: 1 1 100%; */
-  width: 100%;
+  /* width: 100%; */
   background: rgba(41,41,41,.8);
   border: 0;
   margin: 0 auto;
@@ -69,7 +126,7 @@
 }
 .container-header {
   position: relative;
-  width: 80%; 
+  width: 90%; 
   justify-content: space-evenly;
   /* padding-left: 2rem;
   padding-right: 2rem; */ 
@@ -91,6 +148,7 @@
 }
 
 .search-form__button{
+  height: 30%;
   display: flex;
   width: 100%;
   flex-wrap: wrap-reverse;
@@ -101,26 +159,12 @@
 
   .search-form__hint{
     margin-top: 20px;
-    
     font-size: 22px;
   }
   .date{
     /* margin-left: 40px; */
   }
-  header > a {
-    position: relative;
-    flex-grow: 1;
-    text-align: center;
-    line-height: 3rem;
-    cursor: pointer;
-    text-decoration: none;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    font-size: 30px;
-    border-bottom-width: .2rem;
-    border-bottom-style: solid;
-    border-bottom-color: transparent;
-  }
+  
   /* header > a:hover{
     text-decoration: underline;
   } */
@@ -154,7 +198,7 @@
   .search-form__inputs{
     position: relative;
      display: flex; 
-    /* width: 100%;  */
+    width: 100%; 
     flex-grow: 1;
   
   }
@@ -202,14 +246,14 @@
     border-radius: 3px;
     height: 60px;
     padding-left: 20px;
-    width: 225px;
+    width: 100%;
     color: #c4bfbf;
     text-transform: uppercase;
     font-size: 20px;
   }
-  input[type=date]::-webkit-calendar-picker-indicator {
+  /* input[type=date]::-webkit-calendar-picker-indicator {
     opacity: 0;
-  }
+  } */
   .search-span{
     width: 30px;
   }
@@ -224,13 +268,23 @@
   
 .header__col{
   position: relative;
-  width: 50%;
-  font-size: 72px;
-  font-weight: 100;
-  line-height: 84.38px;
+  width: 100%;
+  height: 100%;
+  /* font-size: 4rem; */
+  /* font-weight: 100;
+  line-height: 4rem; */
   opacity: 1;
   color: #FFFFFF;
   z-index: 100;
+  }
+  .header__slogan{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    font-size: 4rem; 
   }
   .header__slogan_thin{
     font-weight: 100;
@@ -243,19 +297,21 @@
     /* position: absolute;
         left: 0;
         top: 0; */
+        height: 90%;
         z-index: 10;
-        /* padding: 20px 25px 0 25px; */
+        padding: 0px 25px;
         display: flex;
         box-sizing: border-box;
-        width: 900px;
+        width: 150%;
         flex-direction: column;
         justify-content: flex-start; 
         /* flex-wrap: wrap; */
         background: rgba(41,41,41,.8);
         border: 0;
-        /* margin: 10px auto 0 auto; */
+        margin: 10px auto 0 auto;
         color:white;
         text-transform: uppercase;
+        overflow: hidden;
   }
   .search-form__button-submit{
     background: #ffa800;
@@ -272,7 +328,7 @@
     text-transform: uppercase;
     width: 227px;
     padding: 0 5px;
-    display: flex;
+    display: block;
     margin-top: 150px;
     margin-left: -375px;
     /* flex-grow: 4;
@@ -325,7 +381,7 @@
     color: #292929;
     border: none;
     border-radius: 3px;
-    width: 325px;
+    width: 100%;
     height: 60px;
     padding-left: 20px;
   }
@@ -362,17 +418,27 @@
     margin-top: 15px;
     background-color: #fff;
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAiCAYAAABIiGl0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAE+SURBVHgB7ZfNjYMwEIXHFgeO3EHa0EFKYDvY7SCpYEvYtLAVrNLBdhBKSAmW+Lv6CgjY5wgiJ4pQSGIiBb6L8YzFM3hszzC6QJIkTffcNM3K87wtDSCKooBzvuv6ruuy8zGcnsTThA+/IMuyRVVVX4yxRWv/0MbsYZc0ACyPg2apmf7wDqeu631Zlj++7wsWx/ESRrUeDo2DxAQ+WZqmO8wwoBHBh4ZMj+AxmV5UT0/Y0juINoFQF2QAtY9J29snwhDdDD2XrwXnxQriv11/Dq5Z2BgW3QHO+e8+f1EUW3UF0qOFwabPadt2iEZc8s3BNQu/nvBd2wlJYtjnRzUhjQjjCn2nG5lgCXOWV8uh5cq1tGXNsVqxVFavVRJOO8AoKig5hNcqyaPxECjc1nq1GGACb2QQtYx5nqurUv4Db2518t5TSfoAAAAASUVORK5CYII=);
-    background-position: center right 12px;
+    background-position: center right 17px;
     background-repeat: no-repeat;
     border: none;
     border-radius: 3px;
+    color: #292929;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
     height: 60px;
+    line-height: 21px;
     padding-left: 20px;
+    position: relative;
+    text-transform: capitalize;
     width: 225px;
-    color: #c4bfbf;
-    text-transform: uppercase;
-    font-size: 20px;
+    appearance: none;
   }
   input[type=date]::-webkit-calendar-picker-indicator {
     opacity: 0;
+  }
+
+  .container-footer{
+    margin-top:-23px;
   }

@@ -2,7 +2,8 @@ import React from 'react';
 import { useSelector, useDispatch} from 'react-redux';
 import './TrainButton.css'
 import { setTicket} from '../../../redux/slices/SlicePrice';
-import {addSeatInTicket, clearTicket} from '../../../redux/slices/SliceTicket'
+import {addSeatInTicket, removeTicket, clearTicket} from '../../../redux/slices/SliceTicket';
+import { changeAgeTickets, setBottomPrice, setSeatSelectedTrue, setTotalPriceAll, changeChildTickets, setObjTicket, setPrice} from '../../../redux/slices/SlicePrice';
 
 
 
@@ -19,19 +20,7 @@ function haveSeatsOrNot(numScheme, coach){
   return result;
 }
 
-// function haveActiveOrNot(arr, el){
-//   let resultActive = 'select_coach-seat-item';
-//   arr.map((e) => {
-//     if (e === el) {
-//       console.log("работает условие?", e, el)
-//       return resultActive = 'select_coach-seat-item_active';
-      
-//     }
-//     console.log("not работает условие?", e, el)
-//     return null;
-//   });
-//   return resultActive;
-// }
+// плацкарт
 
 const TrainButtonThird = (( {arrSelectThird}) => {
   const dispatch = useDispatch();
@@ -40,18 +29,58 @@ const TrainButtonThird = (( {arrSelectThird}) => {
   const ticket = useSelector( (state) => state.slicePrice.ticket);
   const items = useSelector( (state) => state.sliceTicket.items);
   const id = useSelector( (state) => state.sliceTicket.idSeat);
-  const [item, setItem]= React.useState({id:0,
-    itemT:0,
-  });
+  const trainCoach = useSelector( (state) => state.slicePrice.trainCoach);
+  const price =useSelector( (state) => state.slicePrice.price);
+  const seatSelectedTrue =useSelector( (state) => state.slicePrice.seatSelectedTrue);
+  
+  const [item, setItem]= React.useState([]);
    // const [id, setId]= React.useState();
   // const [itemTicket, setItemTicket] = React.useState([]);
   
-  const addTicketEx = (el, elTar, id, element)=>{
-    // console.log(el, elTar, element, 'el')
-    dispatch(setTicket(el))
-    dispatch(addSeatInTicket(Number(el)))
+  const addTicketEx = (el, elTar, id)=>{
+    elTar.classList.toggle('seat-selected');
+    console.log(elTar, el, id)
+    if(el){
+      setItem([...el])
+      console.log(el, item, 'добавление')
+      // dispatch(addSeatInTicket(Number(el)))
+     
+        dispatch(setTicket(el))
+        // if(elTar.classList.contains('seat-selected')){
+        //   elTar.classList.remove('seat-selected')
+        //   console.log('удаление')
+        //   items.filter((number) => number !== el);
+          
+        //   console.log(elTar, items, 'массив elTar')
+        // }
+    }
+    
+     
+    
+    
     // здесь не работает, конфликт или так нельзя?
-    elTar.classList.add('bebebe')
+    
+    // if(elTar.classList.contains('seat-selected')){
+    //   dispatch(removeTicket(Number(el)))
+    //   dispatch(setSeatSelectedTrue(true))
+    //   console.log("seatSelectedTrue", seatSelectedTrue)
+    //   if(el % 2 == 1 && el < 33 ){
+             
+    //     // setPrice(trainCoach.bottom_price)
+    // console.log("нечетное", ticket, price)
+    //   } else
+    //   if(el % 2 == 0 && el<33 ){
+    //     // setPrice(trainCoach.top_price);
+        
+    //     // console.log("четное", price) 
+    //    } else
+    //     {
+    //       // setPrice(trainCoach.side_price);
+          
+    //     // console.log("боковое", ticket)  
+    //   }
+     
+    // }
   }
  
 
@@ -83,7 +112,7 @@ const TrainButtonThird = (( {arrSelectThird}) => {
         <div className='bottom-row-select_coach'>
             {arrSelectThird.topAisle.map((el) => {
               return (
-              <button value={el} onClick={(e) => addTicketEx(e.target.value, id)} className={`select_coach-seat-item ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
+              <button value={el} onClick={(e) => addTicketEx(e.target.value, e.target, id, el)} className={`select_coach-seat-item ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
               )
             })}
         </div>
@@ -91,7 +120,7 @@ const TrainButtonThird = (( {arrSelectThird}) => {
     <div className='bottom-row-select_coach_aisle'>
     {arrSelectThird.botSeatAisle.map((el) => {
       return (
-       <button value={el} onClick={(e) => addTicketEx(e.target.value, id)} className={`select_coach-seat-item_aside ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
+       <button value={el} onClick={(e) => addTicketEx(e.target.value, e.target, id, el)} className={`select_coach-seat-item_aside ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
       )
     })}
   </div>
@@ -103,6 +132,8 @@ const TrainButtonThird = (( {arrSelectThird}) => {
   )
 })
 
+// купе
+
 const TrainButtonSecond = (( {arrSelectSecond}) => {
   const [id, setId]= React.useState();
   //  console.log(ticket, '<=ticket')
@@ -111,16 +142,21 @@ const TrainButtonSecond = (( {arrSelectSecond}) => {
   const seatsType = useSelector( (state) => state.slicePrice.seatsType);
   const [activeTicket, setActiveTicket] = React.useState('seat-not-have');
   const ticket = useSelector( (state) => state.slicePrice.ticket);
+  const [item, setItem]= React.useState([]);
 
-
-  const addTicketEx = (el, id)=>{
-   
-    
-    dispatch(addSeatInTicket(el))
-  }
+  // const addTicketEx = (el, id)=>{
+  //   dispatch(addSeatInTicket(el))
+  // }
   
-// console.log(ticket)
-
+  const addTicketEx = (el, elTar, id)=>{
+    elTar.classList.toggle('seat-selected');
+    console.log(elTar, el, id)
+    if(el){
+      setItem([...el])
+      console.log(el, item, 'добавление')
+      dispatch(setTicket(el))
+    }
+  }
 
   return(
     <div className='select_coach'>
@@ -129,7 +165,7 @@ const TrainButtonSecond = (( {arrSelectSecond}) => {
               {arrSelectSecond.topWindow.map((el, id) => {
                 // console.log(ticketTrue, el, '<=ticketTrue1')
                 return ( 
-                <button value={el} onClick={(e) => addTicketEx(e.target.value, id)} className={`select_coach-seat-item ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
+                <button value={el} onClick={(e) => addTicketEx(e.target.value, e.target, id, el)} className={`select_coach-seat-item ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
                 )
               })}
             </div>
@@ -139,7 +175,7 @@ const TrainButtonSecond = (( {arrSelectSecond}) => {
             {arrSelectSecond.topAisle.map((el) => {
             //  console.log(ticketTrue, '<=ticketTrue2')select_coach-seat-item_aisle-noactive
               return (
-              <button value={el} onClick={(e) => dispatch(addTicketEx(e.target.value, id))} className={`select_coach-seat-item_aisle-noactive ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
+              <button value={el} onClick={(e) => addTicketEx(e.target.value, e.target, id, el)} className={`select_coach-seat-item_aisle-noactive ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
               )
             })}
         </div>
@@ -153,6 +189,7 @@ const TrainButtonSecond = (( {arrSelectSecond}) => {
   )
 })
 
+// люкс
 const TrainButtonFirst = (( {arrSelectSecond}) => {
   // const [ticket, setTicket]= React.useState();
   //  console.log(ticket, '<=ticket')
@@ -160,9 +197,17 @@ const TrainButtonFirst = (( {arrSelectSecond}) => {
   const seatsType = useSelector( (state) => state.slicePrice.seatsType);
   const [activeTicket, setActiveTicket] = React.useState('seat-not-have');
   const ticket = useSelector( (state) => state.slicePrice.ticket);
-  const addTicketEx = (el, id)=>{
-   
-    dispatch(addSeatInTicket(el))
+  const [item, setItem]= React.useState([]);
+
+  
+  const addTicketEx = (el, elTar)=>{
+    elTar.classList.toggle('seat-selected');
+    console.log(elTar, el)
+    if(el){
+      setItem([...el])
+      console.log(el, item, 'добавление')
+      dispatch(setTicket(el))
+    }
   }
 
 
@@ -173,7 +218,7 @@ const TrainButtonFirst = (( {arrSelectSecond}) => {
               {arrSelectSecond.luxSeats.map((el) => {
                 // console.log(ticketTrue, el, '<=ticketTrue1')
                 return ( 
-                <button value={el} onClick={(e) => dispatch(addTicketEx(e.target.value, id))} className={`select_coach-seat-item-lux ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
+                <button value={el} onClick={(e) => addTicketEx(e.target.value, e.target)} className={`select_coach-seat-item-lux ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
                 )
               })}
             </div>
@@ -202,9 +247,17 @@ const TrainButtonForth = (({ arrSelectThird}) => {
     }
 
   },[ticket])
-  const addTicketEx = (el, id)=>{
-   
-    dispatch(addSeatInTicket(el))
+  const [item, setItem]= React.useState([]);
+
+  
+  const addTicketEx = (el, elTar, id)=>{
+    elTar.classList.toggle('seat-selected');
+    console.log(elTar, el, id)
+    if(el){
+      setItem([...el])
+      console.log(el, item, 'добавление')
+      dispatch(setTicket(el))
+    }
   }
 
 // React.useEffect(() =>{
@@ -221,7 +274,7 @@ const TrainButtonForth = (({ arrSelectThird}) => {
               {arrSelectThird.topWindow.map((el, id) => {
                 // console.log(el, '<=el')
                 return (
-                <button value={el} onClick={(e) => addTicketEx(e.target.value, id)} className={`seat-win-top ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
+                <button value={el} onClick={(e) => addTicketEx(e.target.value, e.target)} className={`seat-win-top ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
                 )
               })}
             </div>
@@ -229,7 +282,7 @@ const TrainButtonForth = (({ arrSelectThird}) => {
               {arrSelectThird.topAisle.map((el, id) => {
                 // console.log(el, '<=el')
                 return (
-                <button value={el} onClick={(e) => addTicketEx(e.target.value, id)} className={`seat-win-top ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
+                <button value={el} onClick={(e) => addTicketEx(e.target.value, e.target, id, el)} className={`seat-win-top ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
                 )
               })}
             </div>
@@ -240,7 +293,7 @@ const TrainButtonForth = (({ arrSelectThird}) => {
               {arrSelectThird.botAisle.map((el, id) => {
                 // console.log(el, '<=el')
                 return (
-                <button value={el} onClick={(e) => addTicketEx(e.target.value, id)} className={`seat-win-bottom ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
+                <button value={el} onClick={(e) => addTicketEx(e.target.value, e.target, id, el)} className={`seat-win-bottom ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
                 )
               })}
             </div>
@@ -248,7 +301,7 @@ const TrainButtonForth = (({ arrSelectThird}) => {
               {arrSelectThird.botWindow.map((el, id) => {
                 // console.log(el, '<=el')
                 return (
-                <button value={el} onClick={(e) => addTicketEx(e.target.value, id)} className={`seat-win-top ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
+                <button value={el} onClick={(e) => addTicketEx(e.target.value, e.target, id, el)} className={`seat-win-top ${haveSeatsOrNot(el, seatsType)}`}>{el}</button>
                 )
               })}
             </div>

@@ -56,7 +56,7 @@ return(
    
             <div className='select-order-ticket'>
                { trainSelection.length !== 0 ?
-            <div>
+            <div className='select-order-sidebarOrderTicket'>
                  <SidebarOrderTicket train={trainSelection} />
             </div>:
            
@@ -65,9 +65,9 @@ return(
             </CustomLink>
                    
     }
-        <div>
+        <div className='select-order-itemOrderTicket'>
 
-        <ItemOrderTicket num={1} agesPassengers={2} addPassenger={addPassenger}/>
+        <ItemOrderTicket num={1} agesPassengers={1} addPassenger={addPassenger}/>
         <div className='add-passengers' onClick={addPassenger}>
             <h4 className='add-passenger-title'>Добавить пассажира</h4>
             <span className='add-passenger-img'></span>

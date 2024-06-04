@@ -40,11 +40,15 @@ const initialState = {
     },
     objTicket: {
       numberOld: 0,
+      topPrice:0,
+      bottomPrice: 0,
+      sidePrice: 0,
       numberChild: 0,
       priceChild: 0,
       sumOld: 0,
       sumChild: 0,
-      totalPriceAll: 0
+      totalPriceAll: 0,
+      
      },
     // seatsChildWithout: 0,
     totalSeatsAge: 0,
@@ -54,6 +58,7 @@ const initialState = {
     // totalPriceAge: 0,
     // totalPriceChild: 0,
     totalPriceAll: [],
+    totalPriceAllCh: [],
     ticket: 0,
     ticketTrue: false,
     result: '',
@@ -64,6 +69,7 @@ const initialState = {
     price:0,
     topPrice: 0,
     bottomPrice: 0,
+    seatSelectedTrue: false,
   };
   
   export const slicePrice = createSlice({
@@ -310,14 +316,24 @@ const initialState = {
       setTopPrice(state, action) {
         state.topPrice = action.payload;
       },
+      
       setTotalPriceAll(state, action) {
         state.totalPriceAll.push(action.payload);
+        
     },
+    setTotalPriceAllCh(state, action) {
+      state.totalPriceAllCh.push(action.payload);
+      
+  },
     setPrice(state, action) {
       state.price = action.payload;
   },
       setObjTicket(state, action) {
         state.objTicket = action.payload;
+      },
+      
+      setSeatSelectedTrue(state, action) {
+        state.seatSelectedTrue = action.payload;
       },
     }
   });
@@ -344,7 +360,9 @@ const initialState = {
     setBottomPrice,
     setObjTicket,
     setPrice,
-    setTotalPriceAll
+    setSeatSelectedTrue,
+    setTotalPriceAll,
+    setTotalPriceAllCh
   } = slicePrice.actions;
   
   export const slicePriceState = (state) => state.slicePrice;

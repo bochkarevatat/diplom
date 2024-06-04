@@ -14,6 +14,8 @@ const SectionInformTicket = ()=>{
     const bottomPrice = useSelector( (state) => state.slicePrice.bottomPrice);
     const [trainCoachSlice, setTrainCoachSlice] = React.useState();
     const dispatch = useDispatch();
+
+    
     const amountSeats = (amount, type) => {
         let top = 0;
         let bottom = 0;

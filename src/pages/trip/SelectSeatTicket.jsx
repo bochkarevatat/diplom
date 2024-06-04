@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch} from 'react-redux';
 import TrainCoach from './TrainCoach';
 import './SelectSeatTicket.css';
-import { changeAgeTickets, setBottomPrice, setTotalPriceAll, changeChildTickets, setObjTicket, setPrice} from '../../redux/slices/SlicePrice';
+import { changeAgeTickets, setBottomPrice, setSeatSelectedTrue, setTotalPriceAll, setTotalPriceAllCh, changeChildTickets, setObjTicket, setPrice} from '../../redux/slices/SlicePrice';
 
 function dateFromAndTo(time) {
   if (time) {
@@ -22,6 +22,7 @@ const SelectSeatTicket = (train) => {
 
     const trainList = useSelector( (state) => state.trainSlice.trainSelection);
     const totalPriceAll = useSelector( (state) => state.slicePrice.totalPriceAll);
+    const totalPriceAllCh = useSelector( (state) => state.slicePrice.totalPriceAllCh);
     const objTicket = useSelector( (state) => state.slicePrice.objTicket);
     const trainCoach = useSelector( (state) => state.slicePrice.trainCoach);
     const ticket = useSelector( (state) => state.slicePrice.ticket);
@@ -35,50 +36,243 @@ const SelectSeatTicket = (train) => {
     const [valueChildWithout, setValueChildWithout] = React.useState(0)
     // const fourthClass = useSelector( (state) => state.trainSlice.fourthClass);
     // const [topPlaces, setTopPlaces]= React.useState(0)
-    const [active, setActive]= React.useState(false)
-    const [summ, setSumm]= React.useState(0)
+    const [active, setActive]= React.useState(false);
+    const [activeCh, setActiveCh]= React.useState(false)
+    const [summ, setSumm]= React.useState(0);
+    const [catArrAllsumm, setCatArrAllsumm]= React.useState(0);
+    const seatSelectedTrue =useSelector( (state) => state.slicePrice.seatSelectedTrue);
+    const [arr, setArr]= React.useState({
+      el: 0,
+      price: 0,
+    });
+    // const [price, setPrice]= React.useState(0)
     const dispatch = useDispatch();
-    const topPrice = useSelector( (state) => state.slicePrice.topPrice);
-    const bottomPrice = useSelector( (state) => state.slicePrice.bottomPrice);
+    // const topPrice = useSelector( (state) => state.slicePrice.topPrice);
+    // const bottomPrice = useSelector( (state) => state.slicePrice.bottomPrice);
     const rafValueAges = React.useRef(null);
-    const [summAll, setSummAll]= React.useState(0)
+    const [summAll, setSummAll]= React.useState(0);
+    const [summAllCh, setSummAllCh]= React.useState(0)
     // console.log(inputValueAges)
-    
+    const items = useSelector( (state) => state.sliceTicket.items);
+
     const addActivInput =(el) =>{
       setActive(true)
     }
-
+    const addActivInputChild =()=>{
+      setActiveCh(true)
+    }
+// плацкарт
     React.useEffect(() =>{
-         console.log("totalPriceAll", ticket, price)
-        
+      
+        const Debounce = setTimeout(() => {
           if(trainCoach.class_type === 'third' && active === true && ticket>0){
-            // console.log(ticket)
+            console.log('item', items)
+            setActiveCh(false)
             if(ticket % 2 == 1 && ticket < 33 ){
-             
+              // console.log("нечетное", ticket, price)
               dispatch(setPrice(trainCoach.bottom_price))
-            console.log("нечетное", ticket, price)
+              // console.log("нечетное", ticket, trainCoach.bottom_price)
             } else
             if(ticket % 2 == 0 && ticket<33 ){
               dispatch(setPrice(trainCoach.top_price));
-           
-              console.log("четное", price) 
+              // console.log("четное", price) 
              } else
               {
                 dispatch(setPrice(trainCoach.side_price));
-               
-              console.log("боковое", ticket, price)  
             }
-            if(price !==0 && totalPriceAll.length <= valueAges){
-              dispatch(setTotalPriceAll(price))
-              console.log( price, totalPriceAll, "получилось")  
-              
-            }
-            setSummAll(totalPriceAll.reduce((acc, number) => acc + number, 0))
-            } 
-             
-    },[ticket, trainCoach, totalPriceAll])
-    
 
+           
+              if(price !==0 &&  totalPriceAll.length < valueAges){
+                dispatch(setTotalPriceAll(price))
+                console.log( price, totalPriceAll, "получилось взрослые")  
+              }
+            }
+
+            if(trainCoach.class_type === 'third' && activeCh === true && ticket>0){
+              setActive(false)
+              console.log( activeCh, "получилось activeCh")  
+              if(ticket % 2 == 1 && ticket < 33 ){
+                dispatch(setPrice(trainCoach.bottom_price))
+                console.log( price, "получилось activeCh") 
+              } else
+              if(ticket % 2 == 0 && ticket<33 ){
+                dispatch(setPrice(trainCoach.top_price));
+               } else{
+                  dispatch(setPrice(trainCoach.side_price));
+              }
+              if(price !==0 &&  totalPriceAllCh.length < valueChild){
+                dispatch(setTotalPriceAllCh(price))
+                console.log( price, totalPriceAllCh, "получилось дети")   
+              }
+            }
+
+            
+            // setCatArrAllsumm([...totalPriceAll, ...totalPriceAllCh])
+            // console.log(setCatArrAllsumm([...totalPriceAll, ...totalPriceAllCh]))
+            // setSummAllCh(catArrAllsumm.reduce((acc, number) => acc + number, 0))
+            // console.log(summAll)
+            dispatch(setObjTicket({
+              numberOld: valueAges,
+              numberChild: valueChild,
+              priceChild: totalPriceAllCh,
+              sumOld: totalPriceAll.reduce((acc, number) => acc + number, 0),
+              sumChild: totalPriceAllCh.reduce((acc, number) => acc + number, 0)*0.65,
+              totalPriceAll: objTicket.sumOld+objTicket.sumChild}))
+            }, 1000);
+
+            
+              return () => clearTimeout(Debounce);
+             
+    },[ticket, totalPriceAll, totalPriceAllCh, summAll]);
+
+    // купе
+    React.useEffect(() =>{
+      
+      const Debounce = setTimeout(() => {
+        if(trainCoach.class_type === 'second' && active === true && ticket>0){
+          console.log('item', items)
+          setActiveCh(false)
+          if(ticket % 2 == 1 && ticket < 33 ){
+            dispatch(setPrice(trainCoach.bottom_price))
+          } else {
+            dispatch(setPrice(trainCoach.top_price));
+           } 
+
+         
+            if(price !==0 &&  totalPriceAll.length < valueAges){
+              dispatch(setTotalPriceAll(price))
+              console.log( price, totalPriceAll, "получилось взрослые купе")  
+            }
+          }
+
+          if(trainCoach.class_type === 'second' && activeCh === true && ticket>0){
+            setActive(false)
+            console.log( activeCh, "получилось activeCh")  
+            if(ticket % 2 == 1 && ticket < 33 ){
+              dispatch(setPrice(trainCoach.bottom_price))
+              console.log( price, "получилось activeCh") 
+            } else{
+              dispatch(setPrice(trainCoach.top_price));
+             
+            if(price !==0 &&  totalPriceAllCh.length < valueChild){
+              dispatch(setTotalPriceAllCh(price))
+              console.log( price, totalPriceAllCh, "получилось дети купе")   
+            }
+          }
+        }
+          dispatch(setObjTicket({
+            numberOld: valueAges,
+            numberChild: valueChild,
+            priceChild: totalPriceAllCh,
+            sumOld: totalPriceAll.reduce((acc, number) => acc + number, 0),
+            sumChild: totalPriceAllCh.reduce((acc, number) => acc + number, 0)*0.65,
+            totalPriceAll: objTicket.sumOld+objTicket.sumChild}))
+          }, 1000);
+
+          
+            return () => clearTimeout(Debounce);
+           
+  },[ticket, totalPriceAll, totalPriceAllCh, totalPriceAll]);
+
+    // console.log(trainCoach)
+
+
+  // люкс
+  
+  React.useEffect(() =>{
+      
+    const Debounce = setTimeout(() => {
+      if(trainCoach.class_type === 'first' && active === true && ticket>0){
+        console.log('item', items)
+        setActiveCh(false)
+        dispatch(setPrice(trainCoach.price))
+
+       
+          if(price !==0 &&  totalPriceAll.length < valueAges){
+            dispatch(setTotalPriceAll(price))
+            console.log( price, totalPriceAll, "получилось взрослые купе")  
+          }
+        }
+
+        if(trainCoach.class_type === 'second' && activeCh === true && ticket>0){
+          setActive(false)
+          dispatch(setPrice(trainCoach.price))
+          console.log( activeCh, "получилось activeCh")  
+          if(price !==0 &&  totalPriceAllCh.length < valueChild){
+            dispatch(setTotalPriceAllCh(price))
+            console.log( price, totalPriceAllCh, "получилось дети купе")   
+          }
+      }
+        dispatch(setObjTicket({
+          numberOld: valueAges,
+          numberChild: valueChild,
+          priceChild: totalPriceAllCh,
+          sumOld: totalPriceAll.reduce((acc, number) => acc + number, 0),
+          sumChild: totalPriceAllCh.reduce((acc, number) => acc + number, 0)*0.65,
+          totalPriceAll: objTicket.sumOld+objTicket.sumChild}))
+        }, 1000);
+
+        
+          return () => clearTimeout(Debounce);
+         
+},[ticket, totalPriceAll, totalPriceAllCh, totalPriceAll]);
+
+
+// сидячие места
+  
+React.useEffect(() =>{
+      
+  const Debounce = setTimeout(() => {
+    if(trainCoach.class_type === 'forth' && active === true && ticket>0){
+     setActiveCh(false)
+     if(ticket % 2 == 1 && ticket < 33 ){
+      // console.log("нечетное", ticket, price)
+      dispatch(setPrice(trainCoach.bottom_price))
+      // console.log("нечетное", ticket, trainCoach.bottom_price)
+    } else
+    if(ticket % 2 == 0 && ticket<33 ){
+      dispatch(setPrice(trainCoach.top_price));
+      // console.log("четное", price) 
+     } else
+      {
+        dispatch(setPrice(trainCoach.side_price));
+    }
+
+     
+        if(price !==0 &&  totalPriceAll.length < valueAges){
+          dispatch(setTotalPriceAll(price))
+          console.log( price, totalPriceAll, "получилось взрослые купе")  
+        }
+      }
+
+      if(trainCoach.class_type === 'second' && activeCh === true && ticket>0){
+        setActive(false)
+        dispatch(setPrice(trainCoach.price))
+        console.log( activeCh, "получилось activeCh")  
+        if(price !==0 &&  totalPriceAllCh.length < valueChild){
+          dispatch(setTotalPriceAllCh(price))
+          console.log( price, totalPriceAllCh, "получилось дети купе")   
+        }
+    }
+      dispatch(setObjTicket({
+        numberOld: valueAges,
+        numberChild: valueChild,
+        priceChild: totalPriceAllCh,
+        sumOld: totalPriceAll.reduce((acc, number) => acc + number, 0),
+        sumChild: totalPriceAllCh.reduce((acc, number) => acc + number, 0)*0.65,
+        totalPriceAll: objTicket.sumOld+objTicket.sumChild}))
+      }, 1000);
+
+      
+        return () => clearTimeout(Debounce);
+       
+},[ticket, totalPriceAll, totalPriceAllCh, totalPriceAll]);
+  console.log( objTicket, "получилось")  
+    
+    
+    
+    
+    
     function inputAges(ev) {
  
       if (/^[0-5]$/.test(ev.target.value)) {
@@ -189,7 +383,10 @@ const SelectSeatTicket = (train) => {
           <div className='tickets-age-inputs'>
             <input className='tickets-age-input' type="text" placeholder={`Детских - ${valueChild}`}
               value={''}
-              onChange={(ev) => inputAgesCh(ev)} />
+              onChange={(ev) => inputAgesCh(ev)}
+              onClick={(e) => addActivInputChild(e.target.value)}
+              />
+              
             <p className='tickets-adults-desc'>Можно добавить еще {5 - valueChild} детей до 10 лет. Свое место в вагоне, как у взрослых, но дешевле
               в среднем на 50-65%</p>
           </div>
@@ -229,7 +426,7 @@ const SelectSeatTicket = (train) => {
 
            <TrainCoach /> 
            <section className="price-right">
-           <div className="">{summAll}<span><img src='img/rubleIcon.png'></img></span></div>
+           <div className="">{objTicket.totalPriceAll}<span><img src='img/rubleIcon.png'></img></span></div>
            </section>
            
         </div>
