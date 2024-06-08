@@ -14,7 +14,7 @@
     cursor: default;
   }
   .select_coach-seat-item_aisle-noactive{
-    background-color: rgb(88, 85, 85);
+    /* background-color: rgb(88, 85, 85); */
     align-items: flex-end;
   background-color: rgb(185, 185, 185);
   box-sizing: initial;

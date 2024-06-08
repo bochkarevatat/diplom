@@ -33,7 +33,7 @@ console.log(user)
             <div className='passenger-container-total'>
               <p>Всего</p>
               <div className='passenger-container-price'>
-                <p>{objTicket.totalPriceAll}</p>
+                <p>{objTicket.totalPrice}</p>
                 <span className='details-total-sign'></span>
               </div>
             </div>

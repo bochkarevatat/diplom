@@ -44,6 +44,7 @@ const initialState = {
       bottomPrice: 0,
       sidePrice: 0,
       numberChild: 0,
+      allNumber:0,
       priceChild: 0,
       sumOld: 0,
       sumChild: 0,

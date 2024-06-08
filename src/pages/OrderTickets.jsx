@@ -26,9 +26,10 @@ const whereFromDate = useSelector( (state) => state.filter.fromDate);
     // const ToDate = whereToDate.toLocaleDateString("de-DE")
 
 
+console.log(objTicket.allNumber)
+  
 
-    
-const addPassenger =()=> {
+    const addPassenger =()=> {
     
     setAmountPassengers(objTicket.numberOld + objTicket.numberChild)
     console.log(amountPassengers, objTicket.numberOld,objTicket,'addComponents')
@@ -44,11 +45,11 @@ const addPassenger =()=> {
 //   });
 //   return result;
     
-    // if (amountPassengers >= 1) {
-    //   setAmountPassengers((prev) => prev -= 1);
-    //   setAddComponents([...addComponents, 1]);
+    if (amountPassengers >= 1) {
+      setAmountPassengers((prev) => prev -= 1);
+      setAddComponents([...addComponents, 1]);
     //   console.log(component, 'addComponents')
-    // }
+    }
   }
 
     React.useEffect(() =>{
@@ -83,13 +84,18 @@ return(
                    
     }
         <div className='select-order-itemOrderTicket'>
-
-        <ItemOrderTicket num={1} agesPassengers={1} addPassenger={addPassenger}/>
+        {addComponents.map((e, i) => <ItemOrderTicket
+            addPassenger={addPassenger}
+            agesPassengers={2}
+            num={e + i}
+            key={e + i} />)}
+        {/* <ItemOrderTicket num={1} agesPassengers={1} addPassenger={addPassenger}/>
+        <div className={result}><ItemOrderTicket num={1} agesPassengers={1} addPassenger={addPassenger}/></div> */}
         <div className='add-passengers' onClick={addPassenger}>
             <h4 className='add-passenger-title'>Добавить пассажира</h4>
             <span className='add-passenger-img'></span>
          </div>
-         <div className={result}><ItemOrderTicket num={1} agesPassengers={1} addPassenger={addPassenger}/></div>
+         {/* <div className={result}><ItemOrderTicket num={1} agesPassengers={1} addPassenger={addPassenger}/></div> */}
          <CustomLink className='' to="/pay">
             <button className='pay-btn'>далее</button>
         </CustomLink>

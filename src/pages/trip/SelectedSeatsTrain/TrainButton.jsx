@@ -260,10 +260,7 @@ const TrainButtonForth = (({ arrSelectThird}) => {
     }
   }
 
-// React.useEffect(() =>{
-  
-//   console.log(items, ticket, 'ticket')
-// },[ticket])
+
 
 
 

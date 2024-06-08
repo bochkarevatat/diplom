@@ -57,8 +57,14 @@
     font-weight: 700;
     margin-left: 10px;
 }
+.inform-ticket-prices{
+    height: 100%;
+    }
 .inform-ticket-price{
-
+    height: 48%;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
 }
 .inform-ticket-header{
     color: grey;

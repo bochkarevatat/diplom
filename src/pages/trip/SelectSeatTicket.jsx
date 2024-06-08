@@ -115,6 +115,7 @@ const SelectSeatTicket = (train) => {
               numberOld: valueAges,
               numberChild: valueChild,
               priceChild: totalPriceAllCh,
+              allNumber:valueAges+valueChild,
               sumOld: totalPriceAll.reduce((acc, number) => acc + number, 0),
               sumChild: totalPriceAllCh.reduce((acc, number) => acc + number, 0)*0.65,
               totalPrice: objTicket.sumOld+objTicket.sumChild}))
@@ -164,6 +165,7 @@ const SelectSeatTicket = (train) => {
             numberOld: valueAges,
             numberChild: valueChild,
             priceChild: totalPriceAllCh,
+            allNumber:valueAges+valueChild,
             sumOld: totalPriceAll.reduce((acc, number) => acc + number, 0),
             sumChild: totalPriceAllCh.reduce((acc, number) => acc + number, 0)*0.65,
             totalPrice: objTicket.sumOld+objTicket.sumChild}))
@@ -207,6 +209,7 @@ const SelectSeatTicket = (train) => {
           numberOld: valueAges,
           numberChild: valueChild,
           priceChild: totalPriceAllCh,
+          allNumber:valueAges+valueChild,
           sumOld: totalPriceAll.reduce((acc, number) => acc + number, 0),
           sumChild: totalPriceAllCh.reduce((acc, number) => acc + number, 0)*0.65,
           totalPrice: objTicket.sumOld+objTicket.sumChild}))
@@ -249,6 +252,7 @@ React.useEffect(() =>{
         numberOld: valueAges,
         numberChild: valueChild,
         priceChild: totalPriceAllCh,
+        allNumber:valueAges+valueChild,
         sumOld: totalPriceAll.reduce((acc, number) => acc + number, 0),
         sumChild: totalPriceAllCh.reduce((acc, number) => acc + number, 0)*0.65,
         totalPrice: objTicket.sumOld+objTicket.sumChild}))

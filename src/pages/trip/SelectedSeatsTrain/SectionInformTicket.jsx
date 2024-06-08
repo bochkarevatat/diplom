@@ -167,9 +167,9 @@ const SectionInformTicket = ()=>{
         </div>:null
             } 
             </div>
-            <div className="inform-ticket-price">
+            <div className="inform-ticket-prices">
                 <div className="inform-ticket-header">стоимость</div>
-                <div className="inform-ticket-price">
+                <div className="inform-ticket-prices">
                    {classType === 'third' ?
                     
                     <div>
@@ -191,7 +191,7 @@ const SectionInformTicket = ()=>{
 
                   {classType === 'second'?
                     
-                    <div>
+                    <div className='inform-ticket-price'>
                     <div className="inform-ticket-price-top">
                         <span className="">{topPrice}</span>
                         <img className="inform-ticket-price-top_ruble" src="img/rubleIcon.png" alt="рубль" />
