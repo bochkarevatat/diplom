@@ -61,27 +61,27 @@
 }
 .top-row-select{
     margin-top: 4px;
-    margin-left: 145px;
+    margin-left: 125px;
     border: 1px solid white;
     display: flex;
     justify-content: space-between;
-    width: 75%;
+    width: 78%;
 }
 .top-row-select-top{
     margin-top: 2px;
-    margin-left: 200px;
+    margin-left: 165px;
     border: 1px solid white;
     display: flex;
     justify-content: space-between;
-    width: 63.5%;
+    width: 68.4%;
 }
 .top-row-select-bottom{
   margin-top: 2px;
-    margin-left: 156px;
+    margin-left: 116px;
     border: 1px solid white;
     display: flex;
     justify-content: space-between;
-    width: 73%;
+    width: 79%;
 }
 
 /* .select_coach-seat-item:nth-of-type(2n + 1){
@@ -326,7 +326,7 @@
     font-size: 14px;
     z-index: 100;
     /* top:0; */
-    left: 5.3%;
+    left: 2%;
   }
   /* first class */
   

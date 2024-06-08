@@ -47,7 +47,7 @@ const initialState = {
       priceChild: 0,
       sumOld: 0,
       sumChild: 0,
-      totalPriceAll: 0,
+      totalPrice: 0,
       
      },
     // seatsChildWithout: 0,

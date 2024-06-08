@@ -203,7 +203,7 @@ const ChoiceOfDirection = () => {
                     className="search-form__input2" name="lacation-from" placeholder="ДД/ММ/ГГ"/> */}
 
                 <span className="search-span"></span>
-
+                    {/* <div className='search-form__btn'></div> */}
                 {/* <input
                     type="date"
                     className="search-form__input2" name="lacation-from"

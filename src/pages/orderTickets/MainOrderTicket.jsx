@@ -12,17 +12,20 @@ const MainOrderTicket = ()=>{
         age: objTicket.numberOld,
         child: objTicket.numberChild
       });
+
+
     function addPassenger() {
+      console.log(amountPassengers, 'amountPassengers')
         if (amountPassengers >= 1) {
           setAmountPassengers((prev) => prev -= 1);
           setAddComponents([...addComponents, 1]);
         }
       }
-    
+    console.log(addComponents)
       function nextStepToOrder() {
         if (agesPassengers.age === 0 && agesPassengers.child === 0) {
           console.log('далее')
-        };
+        }
       }
 
     return (

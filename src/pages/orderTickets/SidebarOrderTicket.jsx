@@ -306,7 +306,7 @@ const SidebarOrderTicket = ({train, from, to}) =>{
                       <div className='train-all-price'>
                       <p>итог</p>
                       <span>
-                      <span className='train-price-yell'>{objTicket.totalPriceAll}</span>
+                      <span className='train-price-yell'>{objTicket.totalPrice}</span>
                       <img className="iconRubleSmall" src={iconRubleSmall} alt="иконка - рубль" /></span>
                       
                       </div>

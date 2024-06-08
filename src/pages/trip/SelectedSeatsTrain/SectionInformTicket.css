@@ -43,6 +43,7 @@
 .number-seats-total{
     color: black;
     margin-left: 10px;
+    font-size: 24px;
 }
 .inform-ticket_top-seats{
     margin-bottom: 25px;
@@ -94,7 +95,7 @@
     font-size: 24px;
     font-weight: 700;
     line-height:21px;
-    margin-top: 33px;
+    margin-top: 3px;
 }
 .inform-ticket-price-side{
     color:black;

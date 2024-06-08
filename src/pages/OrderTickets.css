@@ -55,3 +55,10 @@
     margin-left: auto;
     align-self: center;
   }
+
+  .close-passanger{
+    display: none;
+  }
+  .open-passanger{
+    background-color: #ffa800;
+  }

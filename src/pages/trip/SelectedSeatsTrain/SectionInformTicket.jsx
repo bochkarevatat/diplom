@@ -137,7 +137,7 @@ const SectionInformTicket = ()=>{
                 <span className="top-seats_price">{`${amountSeats(seatsType, 'third').side}`}</span>
               </div>
            </div>: 
-        classType === 'second' || classType === 'first' ?
+        classType === 'second'?
         <div>
             <div className="inform-ticket_top-seats">
               <span className="top-seats_price-name">верхние</span>
@@ -146,6 +146,14 @@ const SectionInformTicket = ()=>{
             <div className="inform-ticket_top-seats">
               <span className="top-seats_price-name">нижние</span>
               <span className="top-seats_price">{`${amountSeats(seatsType, 'third').bottom}`}</span>
+            </div>
+    
+        </div>: 
+        classType === 'first'?
+        <div>
+            <div className="inform-ticket_top-seats">
+              <span className="top-seats_price-name"></span>
+              <span className="top-seats_price"></span>
             </div>
     
         </div>: 
@@ -202,7 +210,7 @@ const SectionInformTicket = ()=>{
                     <div>
                     
                     <div className="inform-ticket-price-bottom">
-                      <span className="">{trainCoach.bottom_price}</span>
+                      <span className="">{trainCoach.price}</span>
                       <img className="inform-ticket-price-top_ruble" src="img/rubleIcon.png" alt="рубль" />
                     </div>
                     

@@ -117,7 +117,7 @@ const SelectSeatTicket = (train) => {
               priceChild: totalPriceAllCh,
               sumOld: totalPriceAll.reduce((acc, number) => acc + number, 0),
               sumChild: totalPriceAllCh.reduce((acc, number) => acc + number, 0)*0.65,
-              totalPriceAll: objTicket.sumOld+objTicket.sumChild}))
+              totalPrice: objTicket.sumOld+objTicket.sumChild}))
             }, 1000);
 
             
@@ -166,15 +166,15 @@ const SelectSeatTicket = (train) => {
             priceChild: totalPriceAllCh,
             sumOld: totalPriceAll.reduce((acc, number) => acc + number, 0),
             sumChild: totalPriceAllCh.reduce((acc, number) => acc + number, 0)*0.65,
-            totalPriceAll: objTicket.sumOld+objTicket.sumChild}))
+            totalPrice: objTicket.sumOld+objTicket.sumChild}))
           }, 1000);
 
           
             return () => clearTimeout(Debounce);
            
-  },[ticket, totalPriceAll, totalPriceAllCh, totalPriceAll]);
+  },[ticket, totalPriceAll, totalPriceAllCh, totalPriceAll, objTicket.totalPriceAll]);
 
-    // console.log(trainCoach)
+    console.log(ticket, objTicket.totalPriceAll)
 
 
   // люкс
@@ -194,7 +194,7 @@ const SelectSeatTicket = (train) => {
           }
         }
 
-        if(trainCoach.class_type === 'second' && activeCh === true && ticket>0){
+        if(trainCoach.class_type === 'first' && activeCh === true && ticket>0){
           setActive(false)
           dispatch(setPrice(trainCoach.price))
           console.log( activeCh, "получилось activeCh")  
@@ -209,39 +209,30 @@ const SelectSeatTicket = (train) => {
           priceChild: totalPriceAllCh,
           sumOld: totalPriceAll.reduce((acc, number) => acc + number, 0),
           sumChild: totalPriceAllCh.reduce((acc, number) => acc + number, 0)*0.65,
-          totalPriceAll: objTicket.sumOld+objTicket.sumChild}))
+          totalPrice: objTicket.sumOld+objTicket.sumChild}))
         }, 1000);
 
         
           return () => clearTimeout(Debounce);
          
-},[ticket, totalPriceAll, totalPriceAllCh, totalPriceAll]);
+},[ticket, totalPriceAll, totalPriceAllCh, totalPriceAll,objTicket.totalPrice]);
 
+console.log(totalPriceAll, trainCoach, 'trainCoach')
 
 // сидячие места
   
 React.useEffect(() =>{
       
   const Debounce = setTimeout(() => {
-    if(trainCoach.class_type === 'forth' && active === true && ticket>0){
+    console.log(price, 'price forth',trainCoach.class_type)
+    if(trainCoach.class_type === 'fourth' && active === true && ticket>0){
      setActiveCh(false)
-     if(ticket % 2 == 1 && ticket < 33 ){
-      // console.log("нечетное", ticket, price)
-      dispatch(setPrice(trainCoach.bottom_price))
-      // console.log("нечетное", ticket, trainCoach.bottom_price)
-    } else
-    if(ticket % 2 == 0 && ticket<33 ){
-      dispatch(setPrice(trainCoach.top_price));
-      // console.log("четное", price) 
-     } else
-      {
-        dispatch(setPrice(trainCoach.side_price));
-    }
-
      
+        dispatch(setPrice(trainCoach.bottom_price));
+        console.log(price, 'price forth',trainCoach.class_type)
         if(price !==0 &&  totalPriceAll.length < valueAges){
           dispatch(setTotalPriceAll(price))
-          console.log( price, totalPriceAll, "получилось взрослые купе")  
+          console.log( price, totalPriceAll, "получилось взрослые места")  
         }
       }
 
@@ -260,13 +251,13 @@ React.useEffect(() =>{
         priceChild: totalPriceAllCh,
         sumOld: totalPriceAll.reduce((acc, number) => acc + number, 0),
         sumChild: totalPriceAllCh.reduce((acc, number) => acc + number, 0)*0.65,
-        totalPriceAll: objTicket.sumOld+objTicket.sumChild}))
+        totalPrice: objTicket.sumOld+objTicket.sumChild}))
       }, 1000);
 
       
         return () => clearTimeout(Debounce);
        
-},[ticket, totalPriceAll, totalPriceAllCh, totalPriceAll]);
+},[ticket, totalPriceAll, totalPriceAllCh, totalPriceAll, objTicket.totalPrice]);
   console.log( objTicket, "получилось")  
     
     
@@ -426,7 +417,7 @@ React.useEffect(() =>{
 
            <TrainCoach /> 
            <section className="price-right">
-           <div className="">{objTicket.totalPriceAll}<span><img src='img/rubleIcon.png'></img></span></div>
+           <div className="">{objTicket.totalPrice}<span><img src='img/rubleIcon.png'></img></span></div>
            </section>
            
         </div>

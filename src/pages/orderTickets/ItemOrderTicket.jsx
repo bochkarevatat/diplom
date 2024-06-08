@@ -279,7 +279,7 @@ const ItemOrderTicket = ({addPassenger, num, agesPassengers}) =>{
         
         <h4 className='pass-header-title'>Пассажир {num}</h4>
         <span className={none.main ? 'pass-header-close' : 'none'}
-         onClick={(e) => console.log(e)}
+         onClick={(e) => console.log(e, none)}
          >
 
          </span>
